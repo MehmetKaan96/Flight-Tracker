@@ -16,12 +16,12 @@
 		D334784C2A6BE32000DEAFD8 /* DelaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334784B2A6BE32000DEAFD8 /* DelaysCollectionViewCell.swift */; };
 		D334784E2A6BEE6B00DEAFD8 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D334784D2A6BEE6B00DEAFD8 /* SearchCollectionViewCell.swift */; };
 		D33478722A6EA9A500DEAFD8 /* SearchViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33478712A6EA9A500DEAFD8 /* SearchViewControllerExtension.swift */; };
+		D33478742A6EACD900DEAFD8 /* DetailsViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33478732A6EACD900DEAFD8 /* DetailsViewControllerExtension.swift */; };
 		D33F6AB62A686972004D00CB /* OnboardScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F6AB52A686972004D00CB /* OnboardScreenViewController.swift */; };
 		D33F6AB82A686A6D004D00CB /* OnboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F6AB72A686A6D004D00CB /* OnboardCollectionViewCell.swift */; };
 		D33F6CBF2A5D7801002E9BEE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F6CBE2A5D7801002E9BEE /* DetailsViewController.swift */; };
 		D33F6CC72A5D9B2A002E9BEE /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F6CC62A5D9B2A002E9BEE /* InfoView.xib */; };
 		D33F6CC92A5D9C20002E9BEE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F6CC82A5D9C20002E9BEE /* InfoView.swift */; };
-		D36DB3FE2A68B7480054616F /* NavControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36DB3FD2A68B7480054616F /* NavControllerExtension.swift */; };
 		D38D013C2A4C4C03007F0F05 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D013B2A4C4C03007F0F05 /* UIViewExtension.swift */; };
 		D38D013E2A4C4E3E007F0F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D013D2A4C4E3E007F0F05 /* Constants.swift */; };
 		D38D01472A4C9FCA007F0F05 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D01462A4C9FCA007F0F05 /* ViewControllerExtension.swift */; };
@@ -58,12 +58,12 @@
 		D334784B2A6BE32000DEAFD8 /* DelaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		D334784D2A6BEE6B00DEAFD8 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		D33478712A6EA9A500DEAFD8 /* SearchViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerExtension.swift; sourceTree = "<group>"; };
+		D33478732A6EACD900DEAFD8 /* DetailsViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerExtension.swift; sourceTree = "<group>"; };
 		D33F6AB52A686972004D00CB /* OnboardScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardScreenViewController.swift; sourceTree = "<group>"; };
 		D33F6AB72A686A6D004D00CB /* OnboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D33F6CBE2A5D7801002E9BEE /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D33F6CC62A5D9B2A002E9BEE /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		D33F6CC82A5D9C20002E9BEE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		D36DB3FD2A68B7480054616F /* NavControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerExtension.swift; sourceTree = "<group>"; };
 		D38D013B2A4C4C03007F0F05 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D38D013D2A4C4E3E007F0F05 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D38D01462A4C9FCA007F0F05 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -180,9 +180,9 @@
 				D38D01462A4C9FCA007F0F05 /* ViewControllerExtension.swift */,
 				D38D014A2A4DC5F2007F0F05 /* ExtensionMapViewController.swift */,
 				D3A5747A2A684621006F528D /* UIImageExtension.swift */,
-				D36DB3FD2A68B7480054616F /* NavControllerExtension.swift */,
 				D33477FD2A697E6600DEAFD8 /* DelaysViewControllerExtension.swift */,
 				D33478712A6EA9A500DEAFD8 /* SearchViewControllerExtension.swift */,
+				D33478732A6EACD900DEAFD8 /* DetailsViewControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -374,11 +374,11 @@
 				D3B9EE812A3F7B6100328CC1 /* AppDelegate.swift in Sources */,
 				D3B9EE832A3F7B6100328CC1 /* SceneDelegate.swift in Sources */,
 				D3A574702A67D655006F528D /* FlightDelaysListViewModel.swift in Sources */,
-				D36DB3FE2A68B7480054616F /* NavControllerExtension.swift in Sources */,
 				D323C6FF2A4B00760043D377 /* APINetwork.swift in Sources */,
 				D38D01472A4C9FCA007F0F05 /* ViewControllerExtension.swift in Sources */,
 				D38D01532A4E2ED1007F0F05 /* FlightInfoViewModel.swift in Sources */,
 				D33F6CBF2A5D7801002E9BEE /* DetailsViewController.swift in Sources */,
+				D33478742A6EACD900DEAFD8 /* DetailsViewControllerExtension.swift in Sources */,
 				D3A574762A68341D006F528D /* FavouriteFlights.swift in Sources */,
 				D3A5747B2A684621006F528D /* UIImageExtension.swift in Sources */,
 				D31B394C2A4A577900660A7F /* MapViewController.swift in Sources */,

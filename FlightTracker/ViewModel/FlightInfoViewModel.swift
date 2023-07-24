@@ -7,8 +7,6 @@ class FlightInfoViewModel {
     let flightDuration: BehaviorSubject<Int?> = BehaviorSubject(value: nil)
     let disposeBag = DisposeBag()
 
-    // MARK: - Refactored Version
-
     func fetchFlightInfo(flightIata: String) {
         APINetwork.shared.fetchFlightInfo(flightIata: flightIata)
             .subscribe(onNext: { [weak self] flightInfo in

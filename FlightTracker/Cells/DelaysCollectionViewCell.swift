@@ -26,6 +26,5 @@ class DelaysCollectionViewCell: UICollectionViewCell {
         self.layer.borderWidth = 1.25
         self.layer.cornerRadius = 5
         self.setupGradientBackground(isVertical: false)
-//        IATAStack.setupGradientBackground(isVertical: false)
     }
 }
