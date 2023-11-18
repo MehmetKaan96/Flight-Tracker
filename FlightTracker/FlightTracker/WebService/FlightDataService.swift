@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FlightDataService {
-    func fetchFlights(flightStatus: String?, completion: @escaping(Result<RealTimeFlightData, NetworkError>) -> Void)
+    func fetchFlights(completion: @escaping(Result<[Flights], NetworkError>) -> Void)
 }

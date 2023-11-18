@@ -28,6 +28,10 @@
 		D384E77E2B078DFB0013789A /* FlightDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E77D2B078DFB0013789A /* FlightDataService.swift */; };
 		D384E7802B078E8B0013789A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E77F2B078E8B0013789A /* APIManager.swift */; };
 		D384E7832B078EBE0013789A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7822B078EBE0013789A /* Constants.swift */; };
+		D3C222C82B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222C72B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift */; };
+		D3C222CA2B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */; };
+		D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */; };
+		D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		D384E77D2B078DFB0013789A /* FlightDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDataService.swift; sourceTree = "<group>"; };
 		D384E77F2B078E8B0013789A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D384E7822B078EBE0013789A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D3C222C72B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeFlightsViewModel.swift; sourceTree = "<group>"; };
+		D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeFlightsViewModelDelegate.swift; sourceTree = "<group>"; };
+		D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
+		D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,8 @@
 		D384E7672B0782600013789A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D3C222C72B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift */,
+				D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,6 +221,7 @@
 			children = (
 				D384E76F2B0782700013789A /* OnboardingModel.swift */,
 				D384E7782B078D4F0013789A /* RealTimeFlightData.swift */,
+				D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				D384E7342B0781830013789A /* MainViewController.swift */,
+				D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -383,13 +395,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C222CA2B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift in Sources */,
 				D384E7352B0781830013789A /* MainViewController.swift in Sources */,
 				D384E77C2B078DD00013789A /* NetworkError.swift in Sources */,
 				D384E7702B0782700013789A /* OnboardingModel.swift in Sources */,
+				D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */,
 				D384E7802B078E8B0013789A /* APIManager.swift in Sources */,
 				D384E77E2B078DFB0013789A /* FlightDataService.swift in Sources */,
 				D384E7832B078EBE0013789A /* Constants.swift in Sources */,
+				D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
+				D3C222C82B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift in Sources */,
 				D384E7312B0781830013789A /* AppDelegate.swift in Sources */,
 				D384E7332B0781830013789A /* SceneDelegate.swift in Sources */,
 				D384E76D2B0782680013789A /* OnboardingViewController.swift in Sources */,

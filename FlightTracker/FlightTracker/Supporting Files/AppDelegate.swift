@@ -33,10 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func showMainScreen() {
         window = UIWindow()
-//        let service: MovieService = APIManager()
-//        let viewModel = MoviesViewModel(movieService: service)
-//        let mainViewController = MainViewController(viewModel: viewModel)
-        let mainViewController = MainViewController()
+        let service: FlightDataService = APIManager()
+        let viewModel = RealtimeFlightsViewModel(flightsService: service)
+        let mainViewController = MainViewController(viewModel: viewModel)
         let navCon = UINavigationController(rootViewController: mainViewController)
         window?.rootViewController = navCon
         window?.makeKeyAndVisible()

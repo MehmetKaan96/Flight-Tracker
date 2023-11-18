@@ -80,12 +80,11 @@ class OnboardingViewController: UIViewController {
     @objc func nextButtonTapped(_ sender: UIButton) {
         if currentPage == onboardingData.count - 1 {
             UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
-//            let service: MovieService = APIManager()
-//            let viewModel = MoviesViewModel(movieService: service)
-//            let vc = MainViewController(viewModel: viewModel)
-            let vc = MainViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            let service: FlightDataService = APIManager()
+            let viewModel = RealtimeFlightsViewModel(flightsService: service)
+            let mainViewController = MainViewController(viewModel: viewModel)
+            mainViewController.modalPresentationStyle = .fullScreen
+            self.present(mainViewController, animated: true)
         } else {
             let nextIndex = min(currentPage + 1, onboardingData.count - 1)
             setPage(index: nextIndex)

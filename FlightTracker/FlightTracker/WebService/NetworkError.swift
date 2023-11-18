@@ -11,6 +11,7 @@ enum NetworkError: Error {
     case requestFailed
     case invalidData
     case decodeError
+    case invalidURL
     var localizedDescription: String {
         switch self {
         case .requestFailed:
@@ -19,6 +20,8 @@ enum NetworkError: Error {
             return "Invalid Data"
         case .decodeError:
             return "Decoding Error"
+        case .invalidURL:
+            return "Invalid URL"
         }
     }
 }
