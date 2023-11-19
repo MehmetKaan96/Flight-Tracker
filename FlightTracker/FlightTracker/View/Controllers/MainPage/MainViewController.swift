@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
     let filterButton = UIButton()
-    let listView = CustomPage(tableViewController: UITableViewController())
+    let listView = MainListViewController()
     
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel
@@ -66,11 +66,12 @@ class MainViewController: UIViewController {
             make.centerY.equalTo(segmentControl.snp.centerY)
         }
         
-        listView.isHidden = true
-        view.addSubview(listView)
-        listView.snp.makeConstraints { make in
+        listView.view.isHidden = true
+        view.addSubview(listView.view)
+        listView.view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         view.bringSubviewToFront(segmentControl)
     }
 
@@ -79,13 +80,13 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.mapView.isHidden = false
-                self.listView.isHidden = true
+                self.listView.view.isHidden = true
             }
         } else if sender.selectedSegmentIndex == 1 {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.mapView.isHidden = true
-                self.listView.isHidden = false
+                self.listView.view.isHidden = false
             }
         }
     }

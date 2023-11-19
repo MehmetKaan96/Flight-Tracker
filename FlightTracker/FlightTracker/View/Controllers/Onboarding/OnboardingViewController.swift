@@ -24,7 +24,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setGradientBackground()
+        view.setGradientBackground()
     }
     
     private func setupUI() {
@@ -119,18 +119,4 @@ class OnboardingViewController: UIViewController {
             nextButton.setTitle("Next", for: .normal)
         }
     }
-    
-    private func setGradientBackground() {
-        let colorTop = UIColor.gradientTop.cgColor
-        let colorBottom = UIColor.theme.cgColor
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 0.4]
-        gradientLayer.frame = self.view.bounds
-        
-        self.view.layer.insertSublayer(gradientLayer, at:0)
-    }
-    
-    
 }
