@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
     let filterButton = UIButton()
+    let listView = CustomPage()
     
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel
@@ -49,9 +50,8 @@ class MainViewController: UIViewController {
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
         view.addSubview(segmentControl)
-        view.bringSubviewToFront(segmentControl)
         segmentControl.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top).offset(view.frame.size.height / 15)
+            make.top.equalTo(view.snp.top).offset(view.frame.size.height / 10.5)
             make.centerX.equalToSuperview()
         }
         
@@ -65,13 +65,28 @@ class MainViewController: UIViewController {
             make.right.equalTo(view.snp.right).inset(20)
             make.centerY.equalTo(segmentControl.snp.centerY)
         }
+        
+        listView.isHidden = true
+        view.addSubview(listView)
+        listView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        view.bringSubviewToFront(segmentControl)
     }
 
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            mapView.isHidden = false
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.mapView.isHidden = false
+                self.listView.isHidden = true
+            }
         } else if sender.selectedSegmentIndex == 1 {
-            mapView.isHidden = true
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.mapView.isHidden = true
+                self.listView.isHidden = false
+            }
         }
     }
 }

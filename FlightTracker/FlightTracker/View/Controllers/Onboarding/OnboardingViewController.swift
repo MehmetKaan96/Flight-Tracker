@@ -22,9 +22,12 @@ class OnboardingViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setGradientBackground()
+    }
+    
     private func setupUI() {
-        view.backgroundColor = .theme
-        
         view.addSubview(onboardingAnimation)
         onboardingAnimation.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
@@ -117,6 +120,17 @@ class OnboardingViewController: UIViewController {
         }
     }
     
+    private func setGradientBackground() {
+        let colorTop = UIColor.gradientTop.cgColor
+        let colorBottom = UIColor.theme.cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 0.4]
+        gradientLayer.frame = self.view.bounds
+        
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
     
 }
-
