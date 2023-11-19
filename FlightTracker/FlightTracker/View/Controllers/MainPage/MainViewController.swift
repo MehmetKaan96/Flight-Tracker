@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
     let filterButton = UIButton()
-    let listView = CustomPage()
+    let listView = CustomPage(tableViewController: UITableViewController())
     
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel

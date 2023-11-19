@@ -33,6 +33,7 @@
 		D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */; };
 		D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */; };
 		D3EE61002B0A07C1008EA536 /* CustomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE60FF2B0A07C1008EA536 /* CustomPage.swift */; };
+		D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
 		D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightAnnotation.swift; sourceTree = "<group>"; };
 		D3EE60FF2B0A07C1008EA536 /* CustomPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPage.swift; sourceTree = "<group>"; };
+		D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +262,7 @@
 		D3C222CF2B09130C00C3EF61 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				D384E7802B078E8B0013789A /* APIManager.swift in Sources */,
 				D384E77E2B078DFB0013789A /* FlightDataService.swift in Sources */,
 				D384E7832B078EBE0013789A /* Constants.swift in Sources */,
+				D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */,
 				D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
 				D3C222C82B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift in Sources */,
