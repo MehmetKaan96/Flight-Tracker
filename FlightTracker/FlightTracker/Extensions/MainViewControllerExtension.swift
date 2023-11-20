@@ -11,7 +11,29 @@ import MapKit
 extension MainViewController: RealtimeFlightsViewModelDelegate {
     func fetchFlights(_ flights: [Flights]) {
         DispatchQueue.main.async {
-            flightsArray = flights
+            flightsArray = flights.compactMap { flight in
+                guard flight.aircraft_icao != nil,
+                      flight.dir != nil,
+                      flight.arr_iata != nil,
+                      flight.dep_iata != nil,
+                      flight.dep_iata != nil,
+                      flight.flight_iata != nil,
+                      flight.airline_iata != nil,
+                      flight.airline_icao != nil,
+                      flight.alt != nil,
+                      flight.arr_icao != nil,
+                      flight.dep_icao != nil,
+                      flight.flag != nil,
+                      flight.flight_icao != nil,
+                      flight.flight_number != nil,
+                      flight.reg_number != nil,
+                      flight.speed != nil,
+                      flight.status != nil,
+                      flight.v_speed != nil else {
+                    return nil
+                }
+                return flight
+            }
             self.showFlightsOnMap()
         }
     }

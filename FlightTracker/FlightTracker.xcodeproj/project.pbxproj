@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D37484A72B0B72150005FC8F /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = D37484A62B0B72150005FC8F /* Hero */; };
+		D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */; };
+		D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AD2B0B84CD0005FC8F /* DetailPage.swift */; };
 		D384E7312B0781830013789A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7302B0781830013789A /* AppDelegate.swift */; };
 		D384E7332B0781830013789A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7322B0781830013789A /* SceneDelegate.swift */; };
 		D384E7352B0781830013789A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7342B0781830013789A /* MainViewController.swift */; };
@@ -56,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
+		D37484AD2B0B84CD0005FC8F /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		D384E72D2B0781830013789A /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D384E7302B0781830013789A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D384E7322B0781830013789A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D384E7732B0782D00013789A /* Lottie in Frameworks */,
+				D37484A72B0B72150005FC8F /* Hero in Frameworks */,
 				D384E7762B0782E90013789A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +122,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D37484A82B0B733B0005FC8F /* RealTimeFlights */ = {
+			isa = PBXGroup;
+			children = (
+				D3C222C72B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift */,
+				D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */,
+			);
+			path = RealTimeFlights;
+			sourceTree = "<group>";
+		};
+		D37484A92B0B734C0005FC8F /* FlightDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FlightDetails;
+			sourceTree = "<group>";
+		};
+		D37484AA2B0B73740005FC8F /* DetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */,
+			);
+			path = DetailPage;
+			sourceTree = "<group>";
+		};
 		D384E7242B0781830013789A = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +217,8 @@
 		D384E7672B0782600013789A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D3C222C72B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift */,
-				D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */,
+				D37484A92B0B734C0005FC8F /* FlightDetails */,
+				D37484A82B0B733B0005FC8F /* RealTimeFlights */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -205,6 +235,7 @@
 		D384E7692B0782680013789A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				D37484AD2B0B84CD0005FC8F /* DetailPage.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -212,6 +243,7 @@
 		D384E76A2B0782680013789A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D37484AA2B0B73740005FC8F /* DetailPage */,
 				D384E7772B0785870013789A /* MainPage */,
 				D384E76B2B0782680013789A /* Onboarding */,
 			);
@@ -300,6 +332,7 @@
 			packageProductDependencies = (
 				D384E7722B0782D00013789A /* Lottie */,
 				D384E7752B0782E90013789A /* SnapKit */,
+				D37484A62B0B72150005FC8F /* Hero */,
 			);
 			productName = FlightTracker;
 			productReference = D384E72D2B0781830013789A /* FlightTracker.app */;
@@ -376,6 +409,7 @@
 			packageReferences = (
 				D384E7712B0782D00013789A /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				D384E7742B0782E90013789A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D37484A52B0B72150005FC8F /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = D384E72E2B0781830013789A /* Products */;
 			projectDirPath = "";
@@ -426,6 +460,7 @@
 				D3C222CA2B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift in Sources */,
 				D384E7352B0781830013789A /* MainViewController.swift in Sources */,
 				D384E77C2B078DD00013789A /* NetworkError.swift in Sources */,
+				D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */,
 				D384E7702B0782700013789A /* OnboardingModel.swift in Sources */,
 				D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */,
 				D39C4E452B0A916400DD998E /* MainListViewCExtension.swift in Sources */,
@@ -434,6 +469,7 @@
 				D39C4E402B0A7F2900DD998E /* MainListViewController.swift in Sources */,
 				D39C4E432B0A890A00DD998E /* UIViewExtension.swift in Sources */,
 				D384E7832B078EBE0013789A /* Constants.swift in Sources */,
+				D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */,
 				D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */,
 				D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
@@ -787,6 +823,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D37484A52B0B72150005FC8F /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.2;
+			};
+		};
 		D384E7712B0782D00013789A /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -806,6 +850,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D37484A62B0B72150005FC8F /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D37484A52B0B72150005FC8F /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
 		D384E7722B0782D00013789A /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D384E7712B0782D00013789A /* XCRemoteSwiftPackageReference "lottie-spm" */;

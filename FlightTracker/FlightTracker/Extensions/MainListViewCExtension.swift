@@ -24,6 +24,11 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(flightsArray[indexPath.row].flight_iata)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 
@@ -48,9 +53,9 @@ extension MainListViewController: UISearchBarDelegate {
 extension MainListViewController: RealtimeFlightsViewModelDelegate {
     func fetchFlights(_ flights: [Flights]) {
         DispatchQueue.main.async {
-            flightsArray = flights
+//            flightsArray = flights
             self.tableView.reloadData()
-            print("List VC\(flightsArray.count)")
+//            print("List VC\(flightsArray.count)")
         }
     }
 }

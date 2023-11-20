@@ -9,11 +9,22 @@ import UIKit
 
 class MainListViewController: UIViewController  {
     
+    let viewModel: RealtimeFlightsViewModel
+    
     let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createUI()
+    }
+    init(viewModel: RealtimeFlightsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLayoutSubviews() {
@@ -22,13 +33,14 @@ class MainListViewController: UIViewController  {
     }
     
     private func createUI() {
-        let service: FlightDataService = APIManager()
-        let viewModel = RealtimeFlightsViewModel(flightsService: service)
-        viewModel.delegate = self
-        viewModel.fetchFlights()
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search Flight"
+        searchBar.barTintColor = .clear
+        searchBar.backgroundImage = UIImage()
         searchBar.searchTextField.backgroundColor = .clear
+        searchBar.searchTextField.borderStyle = .roundedRect
+        searchBar.searchTextField.layer.borderWidth = 0.5
+        searchBar.searchTextField.layer.cornerRadius = 10
         searchBar.delegate = self
         searchBar.backgroundColor = .clear
         view.addSubview(searchBar)

@@ -15,10 +15,11 @@ class MainViewController: UIViewController {
     let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
     let filterButton = UIButton()
-    let listView = MainListViewController()
+    var listView: MainListViewController
     
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel
+        self.listView = MainListViewController(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
     }
@@ -87,6 +88,7 @@ class MainViewController: UIViewController {
                 guard let self = self else { return }
                 self.mapView.isHidden = true
                 self.listView.view.isHidden = false
+                self.listView.tableView.reloadData()
             }
         }
     }

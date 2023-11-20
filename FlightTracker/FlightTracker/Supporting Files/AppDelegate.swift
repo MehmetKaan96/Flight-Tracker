@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewModel = RealtimeFlightsViewModel(flightsService: service)
         let mainViewController = MainViewController(viewModel: viewModel)
         let navCon = UINavigationController(rootViewController: mainViewController)
+        navCon.isHeroEnabled = true
         window?.rootViewController = navCon
         window?.makeKeyAndVisible()
     }

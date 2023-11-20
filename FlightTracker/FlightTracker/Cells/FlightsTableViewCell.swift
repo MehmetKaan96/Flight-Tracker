@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Hero
 
 class FlightsTableViewCell: UITableViewCell {
     
@@ -14,9 +16,11 @@ class FlightsTableViewCell: UITableViewCell {
     var arrIATA = UILabel()
     var aircraftICAO = UILabel()
     var flightIATA = UILabel()
+    var statusLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.isHeroEnabled = true
         createUI()
     }
     
@@ -26,6 +30,7 @@ class FlightsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isHeroEnabled = true
         createUI()
     }
 
@@ -49,6 +54,8 @@ class FlightsTableViewCell: UITableViewCell {
         }
         
         let planeImage = UIImageView()
+        planeImage.isHeroEnabled = true
+        planeImage.heroID = "plane"
         planeImage.image = UIImage(systemName: "airplane")
         backgroundImage.addSubview(planeImage)
         backgroundImage.bringSubviewToFront(planeImage)
@@ -75,6 +82,16 @@ class FlightsTableViewCell: UITableViewCell {
         arrIATA.snp.makeConstraints { make in
             make.top.equalTo(backgroundImage.snp.top).offset(10)
             make.right.equalToSuperview().inset(20)
+        }
+        
+        statusLabel.numberOfLines = 0
+        statusLabel.textAlignment = .center
+        backgroundImage.addSubview(statusLabel)
+        backgroundImage.bringSubviewToFront(statusLabel)
+        statusLabel.snp.makeConstraints { make in
+            make.left.equalTo(depIATA.snp.right).offset(30)
+            make.right.equalTo(arrIATA.snp.left).offset(-30)
+            make.top.equalTo(backgroundImage.snp.top).offset(10)
         }
 
         aircraftICAO.numberOfLines = 0
@@ -109,6 +126,7 @@ class FlightsTableViewCell: UITableViewCell {
     }
     
     func configure(flight: Flights) {
+        self.statusLabel.text = flight.status ?? "N/A"
         self.aircraftICAO.text = flight.aircraft_icao ?? "N/A"
         self.arrIATA.text = flight.arr_iata ?? "N/A"
         self.depIATA.text = flight.dep_iata ?? "N/A"
