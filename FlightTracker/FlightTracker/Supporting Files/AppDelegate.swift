@@ -34,12 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func showMainScreen() {
         window = UIWindow()
-        let service: FlightDataService = APIManager()
-        let viewModel = RealtimeFlightsViewModel(flightsService: service)
-        let mainViewController = MainViewController(viewModel: viewModel)
-        let navCon = UINavigationController(rootViewController: mainViewController)
-        navCon.isHeroEnabled = true
-        window?.rootViewController = navCon
+//        let service: FlightDataService = APIManager()
+//        let viewModel = RealtimeFlightsViewModel(flightsService: service)
+//        let mainViewController = MainViewController(viewModel: viewModel)
+//        let navCon = UINavigationController(rootViewController: mainViewController)
+//        navCon.isHeroEnabled = true
+//        window?.rootViewController = navCon
+        let vc = FlightDetailViewController()
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
     
