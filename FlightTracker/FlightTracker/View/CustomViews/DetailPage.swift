@@ -40,6 +40,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.isPagingEnabled = false
         scrollView.delegate = self
         scrollView.backgroundColor = .clear
+        scrollView.contentSize = CGSize(width: self.frame.size.width, height: self.frame.size.height * 2)
         addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -53,7 +54,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.addSubview(dateAndIataLabel)
         dateAndIataLabel.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top).offset(10)
-            make.left.equalTo(snp.left).offset(50)
+                make.left.equalTo(snp.left).offset(50)
         }
         
         depAndArrCountry.text = "İstanbul to Los Angeles"
@@ -70,10 +71,10 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetailView.layer.cornerRadius = 15
         scrollView.addSubview(aircraftDetailView)
         aircraftDetailView.snp.makeConstraints { make in
-            make.width.equalTo(scrollView.snp.width).inset(20)
-            make.centerX.equalTo(scrollView)
-            make.height.equalTo((UIScreen.main.bounds.height * 2) / 4.5)
-            make.top.equalTo(depAndArrCountry).offset(30)
+            make.width.equalTo(scrollView.snp.width).inset(10)
+                make.centerX.equalTo(scrollView)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.45)
+                make.top.equalTo(depAndArrCountry).offset(30)
         }
         
         departureDetailView.backgroundColor = .white
@@ -81,8 +82,8 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.addSubview(departureDetailView)
         departureDetailView.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetailView.snp.bottom).offset(20)
-            make.width.equalTo(scrollView.snp.width).inset(20)
-            make.height.equalTo((UIScreen.main.bounds.height * 2) / 4)
+            make.width.equalTo(scrollView.snp.width).inset(10)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.6)
             make.centerX.equalTo(scrollView)
         }
         
@@ -92,21 +93,22 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.addSubview(arrivalDetailView)
         arrivalDetailView.snp.makeConstraints { make in
             make.top.equalTo(departureDetailView.snp.bottom).offset(20)
-            make.width.equalTo(scrollView.snp.width).inset(20)
-            make.height.equalTo((UIScreen.main.bounds.height * 2) / 4)
+            make.width.equalTo(scrollView.snp.width).inset(10)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.6)
             make.bottom.equalTo(scrollView.snp.bottom).inset(20)
             make.centerX.equalTo(scrollView)
         }
         
         let planeModel = UILabel()
         planeModel.text = "Airbus A350-900"
-        planeModel.textAlignment = .center
+        planeModel.textAlignment = .left
         planeModel.numberOfLines = 0
         planeModel.font = .systemFont(ofSize: 18, weight: .semibold)
         aircraftDetailView.addSubview(planeModel)
         planeModel.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetailView.snp.top).offset(25)
             make.left.equalTo(aircraftDetailView.snp.left).offset(15)
+            make.right.equalTo(aircraftDetailView.snp.right)
         }
         
         let planeImage = UIImageView()
@@ -123,8 +125,9 @@ class CustomPage: UIView, UIScrollViewDelegate {
         
         aircraftDetailView.addSubview(aircraftDetail1)
         aircraftDetail1.snp.makeConstraints { make in
-            make.top.equalTo(planeImage.snp.bottom).offset(10)
-            make.centerX.equalTo(aircraftDetailView.snp.centerX)
+            make.top.equalTo(planeImage.snp.bottom)
+            make.centerX.equalTo(snp.centerX)
+                make.height.equalTo(aircraftDetailView.snp.height).multipliedBy(0.2)
         }
         aircraftDetail1.setInfoDetail1(with: "Airbus")
         aircraftDetail1.setInfoDetail2(with: "Turboshaft")
@@ -133,19 +136,23 @@ class CustomPage: UIView, UIScrollViewDelegate {
         
         aircraftDetailView.addSubview(aircraftDetail2)
         aircraftDetail2.snp.makeConstraints { make in
-            make.top.equalTo(aircraftDetail1.snp.bottom).offset(90)
-            make.centerX.equalTo(aircraftDetailView.snp.centerX)
+            make.top.equalTo(aircraftDetail1.snp.bottom).offset(10)
+            make.centerX.equalTo(snp.centerX)
+            make.height.equalTo(aircraftDetailView.snp.height).multipliedBy(0.2)
+            make.bottom.equalTo(aircraftDetailView.snp.bottom)
         }
         
         aircraftDetail2.setInfoDetail1(with: "2015")
         aircraftDetail2.setInfoDetail2(with: "6")
         aircraftDetail2.setInfoDetail3(with: "2")
-
+        
     }
     
-}
-
-
-#Preview() {
-    CustomPage()
+    func addShadow(to view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.6
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 7
+    }
+    
 }

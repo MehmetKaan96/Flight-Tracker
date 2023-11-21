@@ -43,13 +43,12 @@ class CustomAircraftInfoView: UIView {
         
         let labelStack = UIStackView()
         labelStack.alignment = .fill
-        labelStack.distribution = .fillProportionally
+        labelStack.distribution = .fillEqually
         labelStack.axis = .horizontal
         addSubview(labelStack)
         labelStack.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.top.equalToSuperview().offset(10)
             make.left.right.equalToSuperview()
-            make.height.equalTo(50)
         }
         
         
@@ -58,18 +57,12 @@ class CustomAircraftInfoView: UIView {
         infoText1.textColor = .systemGray
         infoText1.font = .systemFont(ofSize: 17, weight: .medium)
         labelStack.addArrangedSubview(infoText1)
-        infoText1.snp.makeConstraints { make in
-            make.width.equalTo(labelStack.snp.width).dividedBy(3)
-        }
         
         infoText2.textAlignment = .center
         infoText2.numberOfLines = 0
         infoText2.textColor = .systemGray
         infoText2.font = .systemFont(ofSize: 17, weight: .medium)
         labelStack.addArrangedSubview(infoText2)
-        infoText2.snp.makeConstraints { make in
-            make.width.equalTo(labelStack.snp.width).dividedBy(3)
-        }
         
         infoText3.textAlignment = .right
         infoText3.numberOfLines = 0
@@ -81,7 +74,7 @@ class CustomAircraftInfoView: UIView {
         
         let detailStack = UIStackView()
         detailStack.axis = .horizontal
-        detailStack.distribution = .fill
+        detailStack.distribution = .fillEqually
         detailStack.alignment = .fill
         addSubview(detailStack)
         detailStack.snp.makeConstraints { make in

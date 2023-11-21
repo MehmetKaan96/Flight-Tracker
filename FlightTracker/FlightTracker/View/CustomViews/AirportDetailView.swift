@@ -27,4 +27,3 @@ class AirportDetailView: UIView {
         
     }
 }
-

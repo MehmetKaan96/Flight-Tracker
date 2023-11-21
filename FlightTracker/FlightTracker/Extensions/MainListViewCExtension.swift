@@ -26,7 +26,10 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(flightsArray[indexPath.row].flight_iata)
+        let vc = FlightDetailViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.heroModalAnimationType = .pageIn(direction: .left)
+        present(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
