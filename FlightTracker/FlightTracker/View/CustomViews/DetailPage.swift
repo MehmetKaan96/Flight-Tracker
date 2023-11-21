@@ -17,6 +17,8 @@ class CustomPage: UIView, UIScrollViewDelegate {
     let arrivalDetailView = UIView()
     let aircraftDetailView = UIView()
     let departureDetailView = UIView()
+    let aircraftDetail1 = CustomAircraftInfoView(info1: "Manufacturer", info2: "Type", info3: "Engine")
+    let aircraftDetail2 = CustomAircraftInfoView(info1: "Built", info2: "Age", info3: "Engine Count")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,11 +72,11 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetailView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width).inset(20)
             make.centerX.equalTo(scrollView)
-            make.height.equalTo((UIScreen.main.bounds.height * 2) / 4)
+            make.height.equalTo((UIScreen.main.bounds.height * 2) / 4.5)
             make.top.equalTo(depAndArrCountry).offset(30)
         }
         
-        departureDetailView.backgroundColor = .blue
+        departureDetailView.backgroundColor = .white
         departureDetailView.layer.cornerRadius = 15
         scrollView.addSubview(departureDetailView)
         departureDetailView.snp.makeConstraints { make in
@@ -116,8 +118,29 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetailView.addSubview(planeImage)
         planeImage.snp.makeConstraints { make in
             make.top.equalTo(planeModel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview()
+            make.left.right.equalToSuperview().inset(5)
         }
+        
+        aircraftDetailView.addSubview(aircraftDetail1)
+        aircraftDetail1.snp.makeConstraints { make in
+            make.top.equalTo(planeImage.snp.bottom).offset(10)
+            make.centerX.equalTo(aircraftDetailView.snp.centerX)
+        }
+        aircraftDetail1.setInfoDetail1(with: "Airbus")
+        aircraftDetail1.setInfoDetail2(with: "Turboshaft")
+        aircraftDetail1.setInfoDetail3(with: "Landplane")
+        
+        
+        aircraftDetailView.addSubview(aircraftDetail2)
+        aircraftDetail2.snp.makeConstraints { make in
+            make.top.equalTo(aircraftDetail1.snp.bottom).offset(90)
+            make.centerX.equalTo(aircraftDetailView.snp.centerX)
+        }
+        
+        aircraftDetail2.setInfoDetail1(with: "2015")
+        aircraftDetail2.setInfoDetail2(with: "6")
+        aircraftDetail2.setInfoDetail3(with: "2")
+
     }
     
 }

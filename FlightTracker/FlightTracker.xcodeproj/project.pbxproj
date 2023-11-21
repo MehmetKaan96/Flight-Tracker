@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */; };
+		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
 		D37484A72B0B72150005FC8F /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = D37484A62B0B72150005FC8F /* Hero */; };
 		D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */; };
 		D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AD2B0B84CD0005FC8F /* DetailPage.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAircraftInfoView.swift; sourceTree = "<group>"; };
+		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
 		D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
 		D37484AD2B0B84CD0005FC8F /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		D384E72D2B0781830013789A /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				D37484AD2B0B84CD0005FC8F /* DetailPage.swift */,
+				D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */,
+				D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -472,8 +478,10 @@
 				D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */,
 				D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */,
 				D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */,
+				D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
 				D3C222C82B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift in Sources */,
+				D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */,
 				D384E7312B0781830013789A /* AppDelegate.swift in Sources */,
 				D384E7332B0781830013789A /* SceneDelegate.swift in Sources */,
 				D384E76D2B0782680013789A /* OnboardingViewController.swift in Sources */,
