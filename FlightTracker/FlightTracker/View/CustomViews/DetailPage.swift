@@ -20,6 +20,9 @@ class CustomPage: UIView, UIScrollViewDelegate {
     let aircraftDetail1 = CustomAircraftInfoView(info1: "Manufacturer", info2: "Type", info3: "Engine")
     let aircraftDetail2 = CustomAircraftInfoView(info1: "Built", info2: "Age", info3: "Engine Count")
     
+    let departureDetail = AirportDetailView()
+    let arrivalDetail = AirportDetailView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createUI()
@@ -73,7 +76,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetailView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width).inset(10)
                 make.centerX.equalTo(scrollView)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.45)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.5)
                 make.top.equalTo(depAndArrCountry).offset(30)
         }
         
@@ -83,18 +86,18 @@ class CustomPage: UIView, UIScrollViewDelegate {
         departureDetailView.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.6)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.55)
             make.centerX.equalTo(scrollView)
         }
         
         
-        arrivalDetailView.backgroundColor = .green
+        arrivalDetailView.backgroundColor = .white
         arrivalDetailView.layer.cornerRadius = 15
         scrollView.addSubview(arrivalDetailView)
         arrivalDetailView.snp.makeConstraints { make in
             make.top.equalTo(departureDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.6)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.55)
             make.bottom.equalTo(scrollView.snp.bottom).inset(20)
             make.centerX.equalTo(scrollView)
         }
@@ -146,6 +149,27 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetail2.setInfoDetail2(with: "6")
         aircraftDetail2.setInfoDetail3(with: "2")
         
+        
+        departureDetail.setGate(with: "D")
+        departureDetail.setAirport(with: "Departure Airport Info")
+        departureDetail.setTerminal(with: "96")
+        departureDetail.setDepartTime(with: "18:00 UTC")
+        departureDetail.setAirportName(using: "İstanbul Havalimanı")
+        departureDetailView.addSubview(departureDetail)
+        departureDetail.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
+        
+        arrivalDetail.setGate(with: "M")
+        arrivalDetail.setAirport(with: "Arrival Airport Info")
+        arrivalDetail.setTerminal(with: "20")
+        arrivalDetail.setArrivalTime(with: "23:00 UTC")
+        arrivalDetail.setAirportName(using: "Los Angeles Airport")
+        arrivalDetailView.addSubview(arrivalDetail)
+        arrivalDetail.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
+        
     }
     
     func addShadow(to view: UIView) {
@@ -155,4 +179,8 @@ class CustomPage: UIView, UIScrollViewDelegate {
         view.layer.shadowRadius = 7
     }
     
+}
+
+#Preview() {
+    CustomPage()
 }

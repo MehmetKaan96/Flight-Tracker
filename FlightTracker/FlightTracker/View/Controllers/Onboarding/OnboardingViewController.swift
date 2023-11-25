@@ -57,7 +57,8 @@ class OnboardingViewController: UIViewController {
             make.height.equalTo(45)
         }
         
-        nextButton.configuration = .filled()
+        nextButton.configuration = .plain()
+        nextButton.backgroundColor = .theme
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(100)
