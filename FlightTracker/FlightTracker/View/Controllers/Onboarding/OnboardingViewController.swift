@@ -57,7 +57,11 @@ class OnboardingViewController: UIViewController {
             make.height.equalTo(45)
         }
         
-        nextButton.configuration = .plain()
+        if #available(iOS 15.0, *) {
+            nextButton.configuration = .plain()
+        } else {
+            // Fallback on earlier versions
+        }
         nextButton.backgroundColor = .theme
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
@@ -69,7 +73,11 @@ class OnboardingViewController: UIViewController {
         pageControl.numberOfPages = onboardingData.count
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.currentPageIndicatorTintColor = .white
-        pageControl.direction = .leftToRight
+        if #available(iOS 16.0, *) {
+            pageControl.direction = .leftToRight
+        } else {
+            // Fallback on earlier versions
+        }
         view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
             make.top.equalTo(nextButton.snp.bottom).offset(20)

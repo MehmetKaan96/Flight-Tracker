@@ -57,7 +57,11 @@ class MainViewController: UIViewController {
         }
         
         filterButton.setImage(UIImage(named: "filter"), for: .normal)
-        filterButton.configuration = .plain()
+        if #available(iOS 15.0, *) {
+            filterButton.configuration = .plain()
+        } else {
+            // Fallback on earlier versions
+        }
         filterButton.backgroundColor = .clear
         filterButton.imageView?.clipsToBounds = true
         view.addSubview(filterButton)

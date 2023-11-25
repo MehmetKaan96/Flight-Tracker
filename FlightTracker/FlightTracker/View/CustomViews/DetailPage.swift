@@ -62,6 +62,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         
         depAndArrCountry.text = "İstanbul to Los Angeles"
         depAndArrCountry.textAlignment = .center
+        depAndArrCountry.textColor = .black
         depAndArrCountry.numberOfLines = 0
         depAndArrCountry.font = .systemFont(ofSize: 15, weight: .semibold)
         scrollView.addSubview(depAndArrCountry)
@@ -76,7 +77,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetailView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width).inset(10)
                 make.centerX.equalTo(scrollView)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.5)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.55)
                 make.top.equalTo(depAndArrCountry).offset(30)
         }
         
@@ -86,7 +87,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         departureDetailView.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.55)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.5)
             make.centerX.equalTo(scrollView)
         }
         
@@ -97,7 +98,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         arrivalDetailView.snp.makeConstraints { make in
             make.top.equalTo(departureDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.55)
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.5)
             make.bottom.equalTo(scrollView.snp.bottom).inset(20)
             make.centerX.equalTo(scrollView)
         }
@@ -105,11 +106,12 @@ class CustomPage: UIView, UIScrollViewDelegate {
         let planeModel = UILabel()
         planeModel.text = "Airbus A350-900"
         planeModel.textAlignment = .left
+        planeModel.textColor = .black
         planeModel.numberOfLines = 0
         planeModel.font = .systemFont(ofSize: 18, weight: .semibold)
         aircraftDetailView.addSubview(planeModel)
         planeModel.snp.makeConstraints { make in
-            make.top.equalTo(aircraftDetailView.snp.top).offset(25)
+            make.top.equalTo(aircraftDetailView.snp.top)
             make.left.equalTo(aircraftDetailView.snp.left).offset(15)
             make.right.equalTo(aircraftDetailView.snp.right)
         }
@@ -122,8 +124,8 @@ class CustomPage: UIView, UIScrollViewDelegate {
         planeImage.clipsToBounds = true
         aircraftDetailView.addSubview(planeImage)
         planeImage.snp.makeConstraints { make in
-            make.top.equalTo(planeModel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview().inset(5)
+            make.top.equalTo(planeModel.snp.bottom)
+            make.left.right.equalToSuperview()
         }
         
         aircraftDetailView.addSubview(aircraftDetail1)
@@ -141,7 +143,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         aircraftDetail2.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetail1.snp.bottom).offset(10)
             make.centerX.equalTo(snp.centerX)
-            make.height.equalTo(aircraftDetailView.snp.height).multipliedBy(0.2)
+            make.height.equalTo(aircraftDetailView.snp.height).multipliedBy(0.25)
             make.bottom.equalTo(aircraftDetailView.snp.bottom)
         }
         
@@ -154,20 +156,20 @@ class CustomPage: UIView, UIScrollViewDelegate {
         departureDetail.setAirport(with: "Departure Airport Info")
         departureDetail.setTerminal(with: "96")
         departureDetail.setDepartTime(with: "18:00 UTC")
-        departureDetail.setAirportName(using: "İstanbul Havalimanı")
+        departureDetail.setAirportName(using: "İstanbul Airport")
         departureDetailView.addSubview(departureDetail)
         departureDetail.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.edges.equalToSuperview()
         }
         
         arrivalDetail.setGate(with: "M")
         arrivalDetail.setAirport(with: "Arrival Airport Info")
         arrivalDetail.setTerminal(with: "20")
         arrivalDetail.setArrivalTime(with: "23:00 UTC")
-        arrivalDetail.setAirportName(using: "Los Angeles Airport")
+        arrivalDetail.setAirportName(using: "Los Angeles International Airport")
         arrivalDetailView.addSubview(arrivalDetail)
         arrivalDetail.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.edges.equalToSuperview()
         }
         
     }

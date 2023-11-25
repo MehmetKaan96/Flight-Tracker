@@ -68,6 +68,7 @@ class FlightsTableViewCell: UITableViewCell {
                 
         depIATA.numberOfLines = 0
         depIATA.textAlignment = .center
+        depIATA.textColor = .black
         backgroundImage.addSubview(depIATA)
         backgroundImage.bringSubviewToFront(depIATA)
         depIATA.snp.makeConstraints { make in
@@ -77,6 +78,7 @@ class FlightsTableViewCell: UITableViewCell {
         
         arrIATA.numberOfLines = 0
         arrIATA.textAlignment = .center
+        arrIATA.textColor = .black
         backgroundImage.addSubview(arrIATA)
         backgroundImage.bringSubviewToFront(arrIATA)
         arrIATA.snp.makeConstraints { make in
@@ -86,6 +88,7 @@ class FlightsTableViewCell: UITableViewCell {
         
         statusLabel.numberOfLines = 0
         statusLabel.textAlignment = .center
+        statusLabel.textColor = .black
         backgroundImage.addSubview(statusLabel)
         backgroundImage.bringSubviewToFront(statusLabel)
         statusLabel.snp.makeConstraints { make in
@@ -96,6 +99,7 @@ class FlightsTableViewCell: UITableViewCell {
 
         aircraftICAO.numberOfLines = 0
         aircraftICAO.textAlignment = .center
+        aircraftICAO.textColor = .black
         backgroundImage.addSubview(aircraftICAO)
         backgroundImage.bringSubviewToFront(aircraftICAO)
         aircraftICAO.snp.makeConstraints { make in
@@ -105,6 +109,7 @@ class FlightsTableViewCell: UITableViewCell {
 
         flightIATA.numberOfLines = 0
         flightIATA.textAlignment = .center
+        flightIATA.textColor = .black
         backgroundImage.addSubview(flightIATA)
         backgroundImage.bringSubviewToFront(flightIATA)
         flightIATA.snp.makeConstraints { make in

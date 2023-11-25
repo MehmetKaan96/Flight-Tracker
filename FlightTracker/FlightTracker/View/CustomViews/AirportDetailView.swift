@@ -36,103 +36,91 @@ class AirportDetailView: UIView {
     
     private func createUI() {
         
+        airportInfoLabel.textColor = .black
         airportInfoLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         airportInfoLabel.numberOfLines = 0
         addSubview(airportInfoLabel)
         airportInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(snp.left).offset(10)
+            make.left.equalTo(snp.left).offset(20)
             make.right.equalTo(snp.right).offset(-100)
+            make.height.equalTo(snp.height).dividedBy(10)
         }
         
         let nameStack = UIStackView()
         nameStack.axis = .horizontal
         nameStack.spacing = 10
         nameStack.distribution = .fillEqually
-        addSubview(nameStack)
-        nameStack.snp.makeConstraints { make in
-            make.top.equalTo(airportInfoLabel.snp.bottom).offset(50)
-            make.left.right.equalToSuperview().inset(10)
-        }
         
         let airportNameLabel = UILabel()
         airportNameLabel.text = "Airport Name:"
+        airportNameLabel.textColor = .systemGray
         airportNameLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        nameStack.addArrangedSubview(airportNameLabel)
-        
         airportName.numberOfLines = 0
         airportName.font = .systemFont(ofSize: 16, weight: .regular)
+        airportName.textColor = .black
+        nameStack.addArrangedSubview(airportNameLabel)
         nameStack.addArrangedSubview(airportName)
         
         let timeStack = UIStackView()
         timeStack.axis = .horizontal
         timeStack.spacing = 10
         timeStack.distribution = .fillEqually
-        addSubview(timeStack)
-        timeStack.snp.makeConstraints { make in
-            make.top.equalTo(nameStack.snp.bottom).offset(30)
-            make.left.right.equalToSuperview().inset(10)
-        }
         
         let flightTime = UILabel()
         flightTime.text = "Time:"
+        flightTime.textColor = .systemGray
         flightTime.font = .systemFont(ofSize: 18, weight: .medium)
-        timeStack.addArrangedSubview(flightTime)
-        
         flightTimeText.font = .systemFont(ofSize: 16, weight: .regular)
         flightTimeText.numberOfLines = 0
+        flightTimeText.textColor = .black
+        timeStack.addArrangedSubview(flightTime)
         timeStack.addArrangedSubview(flightTimeText)
         
         let terminalStack = UIStackView()
         terminalStack.axis = .horizontal
         terminalStack.spacing = 10
         terminalStack.distribution = .fillEqually
-        addSubview(terminalStack)
-        terminalStack.snp.makeConstraints { make in
-            make.top.equalTo(timeStack.snp.bottom).offset(30)
-            make.left.right.equalToSuperview().inset(10)
-        }
         
         let terminalLabel = UILabel()
         terminalLabel.text = "Terminal:"
         terminalLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        terminalStack.addArrangedSubview(terminalLabel)
-        
+        terminalLabel.textColor = .systemGray
         terminalText.font = .systemFont(ofSize: 16, weight: .regular)
         terminalText.numberOfLines = 0
+        terminalText.textColor = .black
+        terminalStack.addArrangedSubview(terminalLabel)
         terminalStack.addArrangedSubview(terminalText)
         
         let gateStack = UIStackView()
         gateStack.axis = .horizontal
         gateStack.spacing = 10
         gateStack.distribution = .fillEqually
-        addSubview(gateStack)
-        gateStack.snp.makeConstraints { make in
-            make.top.equalTo(terminalStack.snp.bottom).offset(30)
-            make.left.right.equalToSuperview().inset(10)
-        }
         
         let gateLabel = UILabel()
         gateLabel.text = "Gate:"
+        gateLabel.textColor = .systemGray
         gateLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        gateStack.addArrangedSubview(gateLabel)
-        
         gateText.font = .systemFont(ofSize: 16, weight: .regular)
         gateText.numberOfLines = 0
+        gateText.textColor = .black
+        gateStack.addArrangedSubview(gateLabel)
         gateStack.addArrangedSubview(gateText)
         
         
         let fullInfoStack = UIStackView()
         fullInfoStack.axis = .vertical
         addSubview(fullInfoStack)
-        fullInfoStack.distribution = .fillEqually
+        fullInfoStack.distribution = .fillProportionally
         fullInfoStack.addArrangedSubview(nameStack)
         fullInfoStack.addArrangedSubview(timeStack)
         fullInfoStack.addArrangedSubview(terminalStack)
         fullInfoStack.addArrangedSubview(gateStack)
         fullInfoStack.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.top.equalTo(airportInfoLabel.snp.bottom).offset(10)
+            make.left.equalTo(snp.left).offset(20)
+            make.right.equalTo(snp.right).inset(20)
+            make.bottom.equalTo(snp.bottom).inset(10)
         }
         
     }

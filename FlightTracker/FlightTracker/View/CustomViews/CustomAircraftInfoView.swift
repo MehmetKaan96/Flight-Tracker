@@ -84,16 +84,19 @@ class CustomAircraftInfoView: UIView {
         
         info1Detail.font = .systemFont(ofSize: 18, weight: .medium)
         info1Detail.textAlignment = .left
+        info1Detail.textColor = .black
         info1Detail.numberOfLines = 0
         detailStack.addArrangedSubview(info1Detail)
         
         info2Detail.font = .systemFont(ofSize: 18, weight: .medium)
         info2Detail.textAlignment = .center
+        info2Detail.textColor = .black
         info2Detail.numberOfLines = 0
         detailStack.addArrangedSubview(info2Detail)
         
         info3Detail.font = .systemFont(ofSize: 18, weight: .medium)
         info3Detail.textAlignment = .right
+        info3Detail.textColor = .black
         info3Detail.numberOfLines = 0
         detailStack.addArrangedSubview(info3Detail)
     }
