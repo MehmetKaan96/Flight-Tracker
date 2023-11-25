@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     lazy var mapView = MKMapView()
     let filterButton = UIButton()
     var listView: MainListViewController
+    let segmentControl = UISegmentedControl()
     
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel
@@ -45,7 +46,6 @@ class MainViewController: UIViewController {
         mapView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        let segmentControl = UISegmentedControl()
         segmentControl.insertSegment(withTitle: "Map View", at: 0, animated: true)
         segmentControl.insertSegment(withTitle: "List View", at: 1, animated: true)
         segmentControl.selectedSegmentIndex = 0

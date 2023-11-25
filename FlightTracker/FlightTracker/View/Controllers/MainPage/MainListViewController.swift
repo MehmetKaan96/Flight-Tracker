@@ -8,15 +8,11 @@
 import UIKit
 
 class MainListViewController: UIViewController  {
-    
+    let searchBar = UISearchBar()
     let viewModel: RealtimeFlightsViewModel
     
     let tableView = UITableView()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        createUI()
-    }
+    
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -27,13 +23,34 @@ class MainListViewController: UIViewController  {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        createUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        
+        searchBar.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(150)
+            make.left.right.equalToSuperview().inset(10)
+        }
+        
+        tableView.snp.remakeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.setGradientBackground()
     }
     
     private func createUI() {
-        let searchBar = UISearchBar()
+        
         searchBar.placeholder = "Search Flight"
         searchBar.barTintColor = .clear
         searchBar.backgroundImage = UIImage()

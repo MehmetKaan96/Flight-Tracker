@@ -8,6 +8,8 @@
 import Foundation
 
 class Constants {
-    static let baseURL = "https://airlabs.co/api/v9/flights?api_key="
+    static let baseURL = "https://airlabs.co/api/v9/"
+    static let allFlights = "flights?api_key="
+    static let flightInfo = "flight?flight_iata="
     static let API_KEY = "YOUR_API_KEY"
 }

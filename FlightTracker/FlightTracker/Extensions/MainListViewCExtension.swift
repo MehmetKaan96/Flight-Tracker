@@ -26,10 +26,31 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = FlightDetailViewController()
-        vc.modalPresentationStyle = .fullScreen
-        vc.heroModalAnimationType = .pageIn(direction: .left)
-        present(vc, animated: true)
+//        let vc = FlightDetailViewController()
+//        vc.hero.isEnabled = true
+//        vc.hero.modalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
+        
+        let service: FlightDataService = APIManager()
+        let viewModel = FlightDetailsViewModel(service: service)
+        
+        if filteredArray.isEmpty {
+            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: flightsArray[indexPath.row].flight_iata)
+            vc.hero.isEnabled = true
+            vc.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        } else {
+            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: filteredArray[indexPath.row].flight_iata)
+            vc.hero.isEnabled = true
+            vc.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        }
+        
+        
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

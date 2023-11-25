@@ -11,7 +11,6 @@ import SnapKit
 import Hero
 
 class CustomPage: UIView, UIScrollViewDelegate {
-    
     let dateAndIataLabel = UILabel()
     let depAndArrCountry = UILabel()
     let arrivalDetailView = UIView()
@@ -19,7 +18,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
     let departureDetailView = UIView()
     let aircraftDetail1 = CustomAircraftInfoView(info1: "Manufacturer", info2: "Type", info3: "Engine")
     let aircraftDetail2 = CustomAircraftInfoView(info1: "Built", info2: "Age", info3: "Engine Count")
-    
+    let planeModel = UILabel()
     let departureDetail = AirportDetailView()
     let arrivalDetail = AirportDetailView()
     
@@ -48,7 +47,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+                
         dateAndIataLabel.text = "Wed, 20 OCT - SQ 705"
         dateAndIataLabel.textColor = .systemGray
         dateAndIataLabel.font = .systemFont(ofSize: 13, weight: .regular)
@@ -57,7 +56,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.addSubview(dateAndIataLabel)
         dateAndIataLabel.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top).offset(10)
-                make.left.equalTo(snp.left).offset(50)
+            make.left.equalTo(snp.left).offset(50)
         }
         
         depAndArrCountry.text = "İstanbul to Los Angeles"
@@ -103,7 +102,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
             make.centerX.equalTo(scrollView)
         }
         
-        let planeModel = UILabel()
+        
         planeModel.text = "Airbus A350-900"
         planeModel.textAlignment = .left
         planeModel.textColor = .black
@@ -180,9 +179,4 @@ class CustomPage: UIView, UIScrollViewDelegate {
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 7
     }
-    
-}
-
-#Preview() {
-    CustomPage()
 }

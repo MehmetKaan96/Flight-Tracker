@@ -56,12 +56,12 @@ class FlightsTableViewCell: UITableViewCell {
         let planeImage = UIImageView()
         planeImage.isHeroEnabled = true
         planeImage.heroID = "plane"
-        planeImage.image = UIImage(systemName: "airplane")
+        planeImage.image = UIImage(named: "miniplane")
         backgroundImage.addSubview(planeImage)
         backgroundImage.bringSubviewToFront(planeImage)
         planeImage.snp.makeConstraints { make in
-            make.height.equalTo(20)
-            make.width.equalTo(20)
+            make.height.equalTo(30)
+            make.width.equalTo(50)
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
         }
