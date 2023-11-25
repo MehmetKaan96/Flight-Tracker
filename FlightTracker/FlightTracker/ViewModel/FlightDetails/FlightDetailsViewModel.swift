@@ -26,4 +26,26 @@ class FlightDetailsViewModel {
             }
         }
     }
+    
+    func fetchDepartureAirport(with code: String) {
+        flightService.getAirport(with: code) { result in
+            switch result {
+            case .success(let airport):
+                self.delegate?.fetchDepartureAirport(airport)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchArrivalAirport(with code: String) {
+        flightService.getAirport(with: code) { result in
+            switch result {
+            case .success(let airport):
+                self.delegate?.fetchArrivalAirport(airport)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

@@ -57,4 +57,31 @@ class APIManager: FlightDataService {
             }
         }).resume()
     }
+    
+    func getAirport(with code: String, completion: @escaping (Result<Airport, NetworkError>) -> Void) {
+        guard let url = URL(string: Constants.baseURL + Constants.airports + "\(code)&api_key=" + Constants.API_KEY) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+            if let _ = error {
+                completion(.failure(.requestFailed))
+            }
+            
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(Airport.self, from: data)
+                completion(.success(decodedData))
+            } catch  {
+                completion(.failure(.decodeError))
+            }
+            
+        }).resume()
+    }
+    
 }

@@ -48,7 +48,6 @@ class CustomPage: UIView, UIScrollViewDelegate {
             make.edges.equalToSuperview()
         }
                 
-        dateAndIataLabel.text = "Wed, 20 OCT - SQ 705"
         dateAndIataLabel.textColor = .systemGray
         dateAndIataLabel.font = .systemFont(ofSize: 13, weight: .regular)
         dateAndIataLabel.textAlignment = .center
@@ -59,7 +58,6 @@ class CustomPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(snp.left).offset(50)
         }
         
-        depAndArrCountry.text = "İstanbul to Los Angeles"
         depAndArrCountry.textAlignment = .center
         depAndArrCountry.textColor = .black
         depAndArrCountry.numberOfLines = 0
@@ -103,7 +101,6 @@ class CustomPage: UIView, UIScrollViewDelegate {
         }
         
         
-        planeModel.text = "Airbus A350-900"
         planeModel.textAlignment = .left
         planeModel.textColor = .black
         planeModel.numberOfLines = 0
@@ -133,11 +130,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
             make.centerX.equalTo(snp.centerX)
                 make.height.equalTo(aircraftDetailView.snp.height).multipliedBy(0.2)
         }
-        aircraftDetail1.setInfoDetail1(with: "Airbus")
-        aircraftDetail1.setInfoDetail2(with: "Turboshaft")
-        aircraftDetail1.setInfoDetail3(with: "Landplane")
-        
-        
+
         aircraftDetailView.addSubview(aircraftDetail2)
         aircraftDetail2.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetail1.snp.bottom).offset(10)
@@ -145,27 +138,12 @@ class CustomPage: UIView, UIScrollViewDelegate {
             make.height.equalTo(aircraftDetailView.snp.height).multipliedBy(0.25)
             make.bottom.equalTo(aircraftDetailView.snp.bottom)
         }
-        
-        aircraftDetail2.setInfoDetail1(with: "2015")
-        aircraftDetail2.setInfoDetail2(with: "6")
-        aircraftDetail2.setInfoDetail3(with: "2")
-        
-        
-        departureDetail.setGate(with: "D")
-        departureDetail.setAirport(with: "Departure Airport Info")
-        departureDetail.setTerminal(with: "96")
-        departureDetail.setDepartTime(with: "18:00 UTC")
-        departureDetail.setAirportName(using: "İstanbul Airport")
+
         departureDetailView.addSubview(departureDetail)
         departureDetail.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        arrivalDetail.setGate(with: "M")
-        arrivalDetail.setAirport(with: "Arrival Airport Info")
-        arrivalDetail.setTerminal(with: "20")
-        arrivalDetail.setArrivalTime(with: "23:00 UTC")
-        arrivalDetail.setAirportName(using: "Los Angeles International Airport")
+
         arrivalDetailView.addSubview(arrivalDetail)
         arrivalDetail.snp.makeConstraints { make in
             make.edges.equalToSuperview()

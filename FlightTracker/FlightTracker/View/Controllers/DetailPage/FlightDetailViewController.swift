@@ -12,12 +12,16 @@ class FlightDetailViewController: UIViewController {
     let viewModel: FlightDetailsViewModel
     let page = CustomPage()
     var selectedIATA: String?
+    var depIATA: String?
+    var arrIATA: String?
     
-    init(viewModel: FlightDetailsViewModel, selectedIATA: String?) {
+    init(viewModel: FlightDetailsViewModel, selectedIATA: String?, dep_iata: String?, arr_iata: String?) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
         self.selectedIATA = selectedIATA
+        self.depIATA = dep_iata
+        self.arrIATA = arr_iata
     }
     
     required init?(coder: NSCoder) {
@@ -31,9 +35,10 @@ class FlightDetailViewController: UIViewController {
     }
     
     private func createUI() {
-        guard let iata = selectedIATA else { return }
+        guard let iata = selectedIATA, let depiata = depIATA, let arriata = arrIATA else { return }
         viewModel.fetchFlightInfo(with: iata)
-        
+        viewModel.fetchDepartureAirport(with: depiata)
+        viewModel.fetchArrivalAirport(with: arriata)
         self.isHeroEnabled = true
         view.addSubview(page)
         page.snp.makeConstraints { make in
@@ -48,27 +53,41 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
         DispatchQueue.main.async { [self] in
             page.planeModel.text = flight.response.model
             
-            page.dateAndIataLabel.text = flight.response.aircraftIcao
-            page.aircraftDetail1.setInfoDetail1(with: flight.response.manufacturer ?? "N/A")
-            page.aircraftDetail1.setInfoDetail2(with: flight.response.type ?? "N/A")
-            page.aircraftDetail1.setInfoDetail3(with: flight.response.engine ?? "N/A")
-//            
-            page.aircraftDetail2.setInfoDetail1(with: String(describing: flight.response.built) ?? "N/A")
-            page.aircraftDetail2.setInfoDetail2(with: String(describing: flight.response.age) ?? "N/A")
-            page.aircraftDetail2.setInfoDetail3(with: flight.response.engineCount ?? "N/A")
-//            
-            page.dateAndIataLabel.text = ((flight.response.depTime ?? "N/A") + " " + (flight.response.flightIata ?? "N/A")) ?? "N/A"
-            page.departureDetail.setGate(with: flight.response.depGate ?? "N/A")
-            page.departureDetail.setAirport(with: flight.response.depIata ?? "N/A")
-            page.departureDetail.setTerminal(with: flight.response.depTerminal ?? "N/A")
-            page.departureDetail.setDepartTime(with: flight.response.depActual ?? "N/A")
-            page.departureDetail.setAirportName(using: flight.response.depCity ?? "N/A")
+            page.aircraftDetail1.setInfoDetail1(with: flight.response.manufacturer ?? "Not Yet Available")
+            page.aircraftDetail1.setInfoDetail2(with: flight.response.type ?? "Not Yet Available")
+            page.aircraftDetail1.setInfoDetail3(with: flight.response.engine ?? "Not Yet Available")
+//
+            
+            guard let built = flight.response.built, let age = flight.response.age else { return }
+            page.aircraftDetail2.setInfoDetail1(with: "\(built)")
+            page.aircraftDetail2.setInfoDetail2(with: "\(age)")
+            page.aircraftDetail2.setInfoDetail3(with: flight.response.engineCount ?? "Not Yet Available")
+//
+            page.dateAndIataLabel.text = ((flight.response.depTime ?? "Not Yet Available") + " " + (flight.response.flightIata ?? "Not Yet Available"))
+            page.departureDetail.setGate(with: flight.response.depGate ?? "Not Yet Available")
+            page.departureDetail.setAirport(with: "Departure Airport Info")
+            page.departureDetail.setTerminal(with: flight.response.depTerminal ?? "Not Yet Available")
+            page.departureDetail.setDepartTime(with: flight.response.depActual ?? "Not Yet Available")
+            
 
-            page.arrivalDetail.setGate(with: flight.response.arrGate ?? "N/A")
-            page.arrivalDetail.setAirport(with: flight.response.arrIata ?? "N/A")
-            page.arrivalDetail.setTerminal(with: flight.response.arrTerminal ?? "N/A")
-            page.arrivalDetail.setArrivalTime(with: flight.response.arrTime ?? "N/A")
-            page.arrivalDetail.setAirportName(using: flight.response.arrCity ?? "N/A")
+            page.arrivalDetail.setGate(with: flight.response.arrGate ?? "Not Yet Available")
+            page.arrivalDetail.setAirport(with: "Arrival Airport Info")
+            page.arrivalDetail.setTerminal(with: flight.response.arrTerminal ?? "Not Yet Available")
+            page.arrivalDetail.setArrivalTime(with: flight.response.arrTime ?? "Not Yet Available")
+            
+            page.depAndArrCountry.text = ((flight.response.depCity ?? "Not Yet Available") + " to " + (flight.response.arrCity ?? "Not Yet Available"))
+        }
+    }
+    
+    func fetchDepartureAirport(_ airport: Airport) {
+        DispatchQueue.main.async { [self] in
+            page.departureDetail.setAirportName(using: airport.response.first?.name ?? "Not Yet Available")
+        }
+    }
+    
+    func fetchArrivalAirport(_ airport: Airport) {
+        DispatchQueue.main.async { [self] in
+            page.arrivalDetail.setAirportName(using: airport.response.first?.name ?? "Not Yet Available")
         }
     }
 }

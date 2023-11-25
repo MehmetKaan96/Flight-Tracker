@@ -36,13 +36,13 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         let viewModel = FlightDetailsViewModel(service: service)
         
         if filteredArray.isEmpty {
-            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: flightsArray[indexPath.row].flight_iata)
+            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: flightsArray[indexPath.row].flight_iata, dep_iata: flightsArray[indexPath.row].dep_iata, arr_iata: flightsArray[indexPath.row].arr_iata)
             vc.hero.isEnabled = true
             vc.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         } else {
-            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: filteredArray[indexPath.row].flight_iata)
+            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: filteredArray[indexPath.row].flight_iata, dep_iata: filteredArray[indexPath.row].dep_iata, arr_iata: filteredArray[indexPath.row].arr_iata)
             vc.hero.isEnabled = true
             vc.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
             vc.modalPresentationStyle = .fullScreen
