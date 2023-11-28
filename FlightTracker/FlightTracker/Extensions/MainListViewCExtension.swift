@@ -25,13 +25,7 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
         
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = FlightDetailViewController()
-//        vc.hero.isEnabled = true
-//        vc.hero.modalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true)
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         let service: FlightDataService = APIManager()
         let viewModel = FlightDetailsViewModel(service: service)
         
