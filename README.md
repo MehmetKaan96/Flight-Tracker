@@ -19,7 +19,7 @@ In this project I focused on a Flight Tracker App using Airlabs API.
 6. Singleton Pattern
 7. Unit Tests
 
-##Frameworks
+## Frameworks
 1. Snapkit
 2. Hero
 3. Lottie
