@@ -1,7 +1,7 @@
 ### Real-Time Flight Tracker
 In this project I focused on a Flight Tracker App using Airlabs API.
 
-##Features Will Be Added
+## Features Will Be Added
 1. Delayed Flights
 2. Favourite Flights
 3. Notification
