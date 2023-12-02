@@ -34,16 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func showMainScreen() {
         window = UIWindow()
-            let service: FlightDataService = APIManager()
-            let viewModel = RealtimeFlightsViewModel(flightsService: service)
-        let detailViewModel = FlightDetailsViewModel(service: service)
-            let mainViewController = MainViewController(viewModel: viewModel)
-            let navCon = UINavigationController(rootViewController: mainViewController)
-            navCon.isHeroEnabled = true
-            window?.rootViewController = navCon
-//       window?.rootViewController = FlightDetailViewController(viewModel: detailViewModel)
-//        window?.rootViewController = CustomTabBarController()
-            window?.makeKeyAndVisible()
+        let customTabBarController = CustomTabBarController()
+        window?.rootViewController = customTabBarController
+        
+        window?.makeKeyAndVisible()
     }
     
 }

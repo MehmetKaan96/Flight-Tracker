@@ -31,10 +31,11 @@ class MainListViewController: UIViewController  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.fetchFlights()
         tableView.reloadData()
         
         searchBar.snp.remakeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(150)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.left.right.equalToSuperview().inset(10)
         }
         
@@ -62,7 +63,7 @@ class MainListViewController: UIViewController  {
         searchBar.backgroundColor = .clear
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(150)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.left.right.equalToSuperview().inset(10)
         }
         

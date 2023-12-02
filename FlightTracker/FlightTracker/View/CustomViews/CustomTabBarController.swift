@@ -15,11 +15,15 @@ class CustomTabBarController: UITabBarController {
     }
     
     private func setupTabs() {
-        let service: FlightDataService = APIManager()
-        let viewModel = RealtimeFlightsViewModel(flightsService: service)
+        self.tabBar.backgroundColor = .gradientTop.withAlphaComponent(0.4)
         
-        let mainVC = self.createNav(with: "Map View", image: UIImage(systemName: "globe"), vc: MainViewController(viewModel: viewModel))
-        let listVC = self.createNav(with: "List View", image: UIImage(systemName: "tablecells"), vc: MainListViewController(viewModel: viewModel))
+        let service: FlightDataService = APIManager()
+        let mapViewModel = RealtimeFlightsViewModel(flightsService: service)
+        let listViewModel = RealtimeFlightsViewModel(flightsService: service)
+        
+        let mainVC = self.createNav(with: "Map View", image: UIImage(systemName: "globe"), vc: MainViewController(viewModel: mapViewModel))
+        let listVC = self.createNav(with: "List View", image: UIImage(systemName: "tablecells"), vc: MainListViewController(viewModel: listViewModel))
+        
         
         setViewControllers([mainVC, listVC], animated: true)
     }

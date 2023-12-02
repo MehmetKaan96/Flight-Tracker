@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Hero
 
-class CustomPage: UIView, UIScrollViewDelegate {
+class DetailPage: UIView, UIScrollViewDelegate {
     let dateAndIataLabel = UILabel()
     let depAndArrCountry = UILabel()
     let arrivalDetailView = UIView()
@@ -21,6 +21,7 @@ class CustomPage: UIView, UIScrollViewDelegate {
     let planeModel = UILabel()
     let departureDetail = AirportDetailView()
     let arrivalDetail = AirportDetailView()
+    let backButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +48,16 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-                
+        
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        scrollView.addSubview(backButton)
+//        backButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.top).offset(20)
+            make.left.equalTo(scrollView.snp.left).offset(15)
+        }
+        
+        dateAndIataLabel.text = "lksjfkjafkjshgks"
         dateAndIataLabel.textColor = .systemGray
         dateAndIataLabel.font = .systemFont(ofSize: 13, weight: .regular)
         dateAndIataLabel.textAlignment = .center
@@ -55,9 +65,10 @@ class CustomPage: UIView, UIScrollViewDelegate {
         scrollView.addSubview(dateAndIataLabel)
         dateAndIataLabel.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top).offset(10)
-            make.left.equalTo(snp.left).offset(50)
+            make.left.equalTo(backButton.snp.left).offset(30)
         }
         
+        depAndArrCountry.text = "şsflksjlkdjfglsdg"
         depAndArrCountry.textAlignment = .center
         depAndArrCountry.textColor = .black
         depAndArrCountry.numberOfLines = 0

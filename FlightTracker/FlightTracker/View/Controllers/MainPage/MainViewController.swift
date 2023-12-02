@@ -15,12 +15,9 @@ class MainViewController: UIViewController {
     let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
     let filterButton = UIButton()
-    var listView: MainListViewController
-    let segmentControl = UISegmentedControl()
     
     init(viewModel: RealtimeFlightsViewModel) {
         self.viewModel = viewModel
-        self.listView = MainListViewController(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = self
     }
@@ -46,15 +43,6 @@ class MainViewController: UIViewController {
         mapView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        segmentControl.insertSegment(withTitle: "Map View", at: 0, animated: true)
-        segmentControl.insertSegment(withTitle: "List View", at: 1, animated: true)
-        segmentControl.selectedSegmentIndex = 0
-        segmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
-        view.addSubview(segmentControl)
-        segmentControl.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top).offset(view.frame.size.height / 10.5)
-            make.centerX.equalToSuperview()
-        }
         
         filterButton.setImage(UIImage(named: "filter"), for: .normal)
         if #available(iOS 15.0, *) {
@@ -68,33 +56,8 @@ class MainViewController: UIViewController {
         filterButton.snp.makeConstraints { make in
             make.top.equalTo(view.snp.top).offset(view.frame.size.height / 15)
             make.right.equalTo(view.snp.right).inset(20)
-            make.centerY.equalTo(segmentControl.snp.centerY)
-        }
-        
-        listView.view.isHidden = true
-        view.addSubview(listView.view)
-        listView.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        view.bringSubviewToFront(segmentControl)
-    }
-
-    @objc func segmentValueChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.mapView.isHidden = false
-                self.listView.view.isHidden = true
-            }
-        } else if sender.selectedSegmentIndex == 1 {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.mapView.isHidden = true
-                self.listView.view.isHidden = false
-                self.listView.tableView.reloadData()
-            }
         }
     }
 }
+
 

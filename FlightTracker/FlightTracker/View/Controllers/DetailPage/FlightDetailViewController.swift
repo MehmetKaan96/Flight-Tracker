@@ -10,7 +10,7 @@ import UIKit
 class FlightDetailViewController: UIViewController {
 
     let viewModel: FlightDetailsViewModel
-    let page = CustomPage()
+    let page = DetailPage()
     var selectedIATA: String?
     var depIATA: String?
     var arrIATA: String?
@@ -44,6 +44,12 @@ class FlightDetailViewController: UIViewController {
         page.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        page.backButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)
+    }
+    
+    @objc func previousPage() {
+        self.dismiss(animated: true)
     }
     
 }
