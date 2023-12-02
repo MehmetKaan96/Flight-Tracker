@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */; };
 		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
+		D32A2BFD2B1B7BE000AC323F /* MiniDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2BFC2B1B7BE000AC323F /* MiniDetailPage.swift */; };
 		D37484A72B0B72150005FC8F /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = D37484A62B0B72150005FC8F /* Hero */; };
 		D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */; };
 		D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AD2B0B84CD0005FC8F /* DetailPage.swift */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAircraftInfoView.swift; sourceTree = "<group>"; };
 		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
+		D32A2BFC2B1B7BE000AC323F /* MiniDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPage.swift; sourceTree = "<group>"; };
 		D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
 		D37484AD2B0B84CD0005FC8F /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		D384E72D2B0781830013789A /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 				D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */,
 				D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */,
 				D3AA31282B123EA9003E07D4 /* CustomTabBarController.swift */,
+				D32A2BFC2B1B7BE000AC323F /* MiniDetailPage.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				D39C4E402B0A7F2900DD998E /* MainListViewController.swift in Sources */,
 				D39C4E432B0A890A00DD998E /* UIViewExtension.swift in Sources */,
 				D3AA31292B123EA9003E07D4 /* CustomTabBarController.swift in Sources */,
+				D32A2BFD2B1B7BE000AC323F /* MiniDetailPage.swift in Sources */,
 				D384E7832B078EBE0013789A /* Constants.swift in Sources */,
 				D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */,
 				D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */,
@@ -693,7 +697,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -721,7 +725,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
