@@ -44,7 +44,8 @@ extension MainViewController: RealtimeFlightsViewModelDelegate {
                 guard let self = self else { return }
                 guard let dir = flight.dir else { return }
                 let coordinate = CLLocationCoordinate2D(latitude: flight.lat, longitude: flight.lng)
-                let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir)
+                guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { return }
+                let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: iata, dep_iata: dep, arr_iata: arr)
                 self.mapView.addAnnotation(flightAnnotation)
             }
         }
@@ -67,5 +68,19 @@ extension MainViewController: MKMapViewDelegate {
         annotationView.transform = CGAffineTransform(rotationAngle: CGFloat(radians))
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+        guard let flightAnnotation = annotation as? FlightAnnotation else { return }
+        
+        let detailViewController = FlightDetailViewController(viewModel: FlightDetailsViewModel(service: APIManager()), selectedIATA: flightAnnotation.flightIATA, dep_iata: flightAnnotation.depIATA, arr_iata: flightAnnotation.arrIATA)
+        
+        if let sheet = detailViewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+            
+            self.present(detailViewController, animated: true)
+        }
+        
     }
 }

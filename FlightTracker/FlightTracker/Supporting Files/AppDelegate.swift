@@ -34,9 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func showMainScreen() {
         window = UIWindow()
-        let customTabBarController = CustomTabBarController()
-        window?.rootViewController = customTabBarController
-        
+//        let customTabBarController = CustomTabBarController()
+//        window?.rootViewController = customTabBarController
+        window?.rootViewController = MiniDetailPageViewController()
         window?.makeKeyAndVisible()
     }
     
