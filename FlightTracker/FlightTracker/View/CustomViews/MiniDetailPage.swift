@@ -11,7 +11,7 @@ import MapKit
 
 class MiniDetailPage: UIView {
     let flightIATALabel = UILabel()
-    let mapView = MKMapView()
+    lazy var mapView = MKMapView()
     let depCode = UILabel()
     let depCity = UILabel()
     let arrCode = UILabel()
@@ -41,10 +41,9 @@ class MiniDetailPage: UIView {
         addSubview(mapView)
         mapView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(snp.height).dividedBy(2)
+            make.height.equalTo(snp.height).dividedBy(2.5)
         }
         
-        flightIATALabel.text = "TK996"
         flightIATALabel.textColor = .black.withAlphaComponent(0.6)
         flightIATALabel.textAlignment = .center
         flightIATALabel.numberOfLines = 0
@@ -75,7 +74,6 @@ class MiniDetailPage: UIView {
             make.left.equalToSuperview().offset(40)
         }
         
-        depCode.text = "LAX"
         depCode.textAlignment = .center
         depCode.font = .systemFont(ofSize: 40, weight: .semibold)
         infoView.addSubview(depCode)
@@ -84,7 +82,6 @@ class MiniDetailPage: UIView {
             make.left.equalTo(fromLabel)
         }
         
-        depCity.text = "Los Angeles"
         depCity.font = .systemFont(ofSize: 15, weight: .regular)
         infoView.addSubview(depCity)
         depCity.snp.makeConstraints { make in
@@ -104,7 +101,6 @@ class MiniDetailPage: UIView {
             make.right.equalToSuperview().inset(40)
         }
         
-        arrCode.text = "IST"
         arrCode.textAlignment = .center
         arrCode.font = .systemFont(ofSize: 40, weight: .semibold)
         infoView.addSubview(arrCode)
@@ -113,7 +109,6 @@ class MiniDetailPage: UIView {
             make.right.equalTo(toLabel)
         }
         
-        arrCity.text = "Istanbul"
         arrCity.textAlignment = .center
         arrCity.font = .systemFont(ofSize: 15, weight: .regular)
         infoView.addSubview(arrCity)
@@ -152,7 +147,6 @@ class MiniDetailPage: UIView {
             make.width.height.equalTo(30)
         }
         
-        departureTime.text = "11:45 PM"
         departureTime.font = .systemFont(ofSize: 15, weight: .bold)
         departureTime.textAlignment = .center
         departureTime.numberOfLines = 0
@@ -162,7 +156,6 @@ class MiniDetailPage: UIView {
             make.left.equalTo(departureImage).offset(-15)
         }
         
-        flightDuration.text = "6 HRS 12 MINS"
         flightDuration.font = .systemFont(ofSize: 15, weight: .bold)
         flightDuration.textAlignment = .center
         flightDuration.numberOfLines = 0
@@ -172,7 +165,6 @@ class MiniDetailPage: UIView {
             make.centerX.equalTo(clockImage)
         }
         
-        arrivalTime.text = "09:00 AM"
         arrivalTime.font = .systemFont(ofSize: 15, weight: .bold)
         arrivalTime.textAlignment = .center
         arrivalTime.numberOfLines = 0

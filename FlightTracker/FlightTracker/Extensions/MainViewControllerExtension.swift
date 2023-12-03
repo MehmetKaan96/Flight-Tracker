@@ -73,10 +73,10 @@ extension MainViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
         guard let flightAnnotation = annotation as? FlightAnnotation else { return }
         
-        let detailViewController = FlightDetailViewController(viewModel: FlightDetailsViewModel(service: APIManager()), selectedIATA: flightAnnotation.flightIATA, dep_iata: flightAnnotation.depIATA, arr_iata: flightAnnotation.arrIATA)
+        let detailViewController = MiniDetailPageViewController(viewModel: FlightDetailsViewModel(service: APIManager()), selectedIATA: flightAnnotation.flightIATA, dep_iata: flightAnnotation.depIATA, arr_iata: flightAnnotation.arrIATA)
         
         if let sheet = detailViewController.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
             
             self.present(detailViewController, animated: true)

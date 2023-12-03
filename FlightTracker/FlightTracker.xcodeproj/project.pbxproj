@@ -11,6 +11,8 @@
 		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
 		D32A2BFF2B1BA57A00AC323F /* MiniDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */; };
 		D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */; };
+		D32A2C052B1CC78000AC323F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C042B1CC78000AC323F /* StringExtension.swift */; };
+		D32A2C072B1CC9B600AC323F /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C062B1CC9B600AC323F /* IntExtension.swift */; };
 		D37484A72B0B72150005FC8F /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = D37484A62B0B72150005FC8F /* Hero */; };
 		D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */; };
 		D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AD2B0B84CD0005FC8F /* DetailPage.swift */; };
@@ -72,6 +74,8 @@
 		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
 		D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPage.swift; sourceTree = "<group>"; };
 		D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewController.swift; sourceTree = "<group>"; };
+		D32A2C042B1CC78000AC323F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D32A2C062B1CC9B600AC323F /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
 		D37484AD2B0B84CD0005FC8F /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		D384E72D2B0781830013789A /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,6 +332,8 @@
 				D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */,
 				D39C4E422B0A890A00DD998E /* UIViewExtension.swift */,
 				D39C4E442B0A916400DD998E /* MainListViewCExtension.swift */,
+				D32A2C042B1CC78000AC323F /* StringExtension.swift */,
+				D32A2C062B1CC9B600AC323F /* IntExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -486,8 +492,10 @@
 			files = (
 				D3C222CA2B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift in Sources */,
 				D384E7352B0781830013789A /* MainViewController.swift in Sources */,
+				D32A2C052B1CC78000AC323F /* StringExtension.swift in Sources */,
 				D384E77C2B078DD00013789A /* NetworkError.swift in Sources */,
 				D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */,
+				D32A2C072B1CC9B600AC323F /* IntExtension.swift in Sources */,
 				D384E7702B0782700013789A /* OnboardingModel.swift in Sources */,
 				D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */,
 				D39C4E452B0A916400DD998E /* MainListViewCExtension.swift in Sources */,
@@ -701,7 +709,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -729,7 +737,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
