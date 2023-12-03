@@ -79,26 +79,30 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     func fetchDepartureAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
             if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng {
-                    let departureLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                let annotation = MKPointAnnotation(__coordinate: departureLocation)
-                    self?.page.mapView.addAnnotation(annotation)
+                self?.departureLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = self?.departureLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                annotation.title = "Departure"
+                self?.page.mapView.addAnnotation(annotation)
                 self?.showAnnotationsOnMap()
-                } else {
-                    print("Error: Latitude or longitude is nil.")
-                }
+            } else {
+                print("Error: Latitude or longitude is nil.")
+            }
         }
     }
-    
+
     func fetchArrivalAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
             if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng {
-                    let arrivalLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                let annotation = MKPointAnnotation(__coordinate: arrivalLocation)
-                    self?.page.mapView.addAnnotation(annotation)
+                self?.arrivalLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = self?.arrivalLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                annotation.title = "Arrival"
+                self?.page.mapView.addAnnotation(annotation)
                 self?.showAnnotationsOnMap()
-                } else {
-                    print("Error: Latitude or longitude is nil.")
-                }
+            } else {
+                print("Error: Latitude or longitude is nil.")
+            }
         }
     }
     
