@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomTabBarController: UITabBarController {
 
@@ -14,8 +15,13 @@ class CustomTabBarController: UITabBarController {
         setupTabs()
     }
     
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        adjustTabBarLayout()
+//    }
+    
     private func setupTabs() {
-        self.tabBar.backgroundColor = .gradientTop.withAlphaComponent(0.4)
+        self.tabBar.backgroundColor = .gradientTop
         
         let service: FlightDataService = APIManager()
         let mapViewModel = RealtimeFlightsViewModel(flightsService: service)
@@ -23,9 +29,9 @@ class CustomTabBarController: UITabBarController {
         
         let mainVC = self.createNav(with: "Map View", image: UIImage(systemName: "globe"), vc: MainViewController(viewModel: mapViewModel))
         let listVC = self.createNav(with: "List View", image: UIImage(systemName: "tablecells"), vc: MainListViewController(viewModel: listViewModel))
+        let delayVC = self.createNav(with: "Delayed Flight", image: UIImage(systemName: "clock.badge.questionmark"), vc: DelayedFlightsViewController())
         
-        
-        setViewControllers([mainVC, listVC], animated: true)
+        setViewControllers([mainVC, listVC, delayVC], animated: true)
     }
     
     private func createNav(with title: String, image: UIImage?, vc: UIViewController) -> UINavigationController {
@@ -34,4 +40,10 @@ class CustomTabBarController: UITabBarController {
         nav.tabBarItem.image = image
        return nav
     }
+//    
+//    private func adjustTabBarLayout() {
+//            // Adjust the tab bar layout here
+//            self.tabBar.frame.size.height = 60
+//            self.tabBar.frame.origin.y = self.view.frame.height - 60
+//    }
 }

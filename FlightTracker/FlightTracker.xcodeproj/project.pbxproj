@@ -13,6 +13,8 @@
 		D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */; };
 		D32A2C052B1CC78000AC323F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C042B1CC78000AC323F /* StringExtension.swift */; };
 		D32A2C072B1CC9B600AC323F /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C062B1CC9B600AC323F /* IntExtension.swift */; };
+		D32A2C092B1CE0ED00AC323F /* DelayedFlightPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */; };
+		D32A2C0C2B1D15D500AC323F /* DelayedFlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */; };
 		D37484A72B0B72150005FC8F /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = D37484A62B0B72150005FC8F /* Hero */; };
 		D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */; };
 		D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AD2B0B84CD0005FC8F /* DetailPage.swift */; };
@@ -76,6 +78,8 @@
 		D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewController.swift; sourceTree = "<group>"; };
 		D32A2C042B1CC78000AC323F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D32A2C062B1CC9B600AC323F /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightPage.swift; sourceTree = "<group>"; };
+		D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsViewController.swift; sourceTree = "<group>"; };
 		D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
 		D37484AD2B0B84CD0005FC8F /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		D384E72D2B0781830013789A /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D32A2C0A2B1D15C100AC323F /* DelayedFlightsPage */ = {
+			isa = PBXGroup;
+			children = (
+				D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */,
+			);
+			path = DelayedFlightsPage;
+			sourceTree = "<group>";
+		};
 		D37484A82B0B733B0005FC8F /* RealTimeFlights */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +277,7 @@
 				D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */,
 				D3AA31282B123EA9003E07D4 /* CustomTabBarController.swift */,
 				D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */,
+				D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -272,6 +285,7 @@
 		D384E76A2B0782680013789A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D32A2C0A2B1D15C100AC323F /* DelayedFlightsPage */,
 				D37484AA2B0B73740005FC8F /* DetailPage */,
 				D384E7772B0785870013789A /* MainPage */,
 				D384E76B2B0782680013789A /* Onboarding */,
@@ -495,6 +509,7 @@
 				D32A2C052B1CC78000AC323F /* StringExtension.swift in Sources */,
 				D384E77C2B078DD00013789A /* NetworkError.swift in Sources */,
 				D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */,
+				D32A2C092B1CE0ED00AC323F /* DelayedFlightPage.swift in Sources */,
 				D32A2C072B1CC9B600AC323F /* IntExtension.swift in Sources */,
 				D384E7702B0782700013789A /* OnboardingModel.swift in Sources */,
 				D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */,
@@ -513,6 +528,7 @@
 				D3AA312F2B12523C003E07D4 /* FlightDetailsViewModel.swift in Sources */,
 				D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */,
 				D3AA31312B1289E5003E07D4 /* Airport.swift in Sources */,
+				D32A2C0C2B1D15D500AC323F /* DelayedFlightsViewController.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
 				D3C222C82B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift in Sources */,
 				D3AA312D2B1251F7003E07D4 /* FlightDetailsViewModelDelegate.swift in Sources */,
@@ -709,7 +725,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -737,7 +753,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

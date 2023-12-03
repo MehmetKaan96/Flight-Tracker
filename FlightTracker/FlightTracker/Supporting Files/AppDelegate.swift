@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let customTabBarController = CustomTabBarController()
         window?.rootViewController = customTabBarController
 //        window?.rootViewController = MiniDetailPageViewController()
+//        window?.rootViewController = DelayedFlightsViewController()
         window?.makeKeyAndVisible()
     }
     
