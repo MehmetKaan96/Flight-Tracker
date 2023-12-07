@@ -30,6 +30,7 @@ struct Info: Codable {
 //    let status: String?
     let duration: Int?
     let lat, lng: Double?
+    let dir: Double?
 //    let alt, dir, speed: Int?
     let depName, depCity, depCountry: String?
     let arrName, arrCity, arrCountry, airlineName: String?
@@ -72,6 +73,7 @@ struct Info: Codable {
 //        case statu
         case duration
         case lat, lng
+        case dir
 //        case alt, dir, speed
         case depName = "dep_name"
         case depCity = "dep_city"

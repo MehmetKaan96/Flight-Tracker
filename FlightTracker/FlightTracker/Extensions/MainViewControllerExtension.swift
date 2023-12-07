@@ -77,6 +77,7 @@ extension MainViewController: MKMapViewDelegate {
         if let sheet = detailViewController.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.prefersGrabberVisible = true
+            sheet.sourceView?.layer.borderWidth = 1
             
             self.present(detailViewController, animated: true)
         }

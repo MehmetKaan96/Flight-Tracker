@@ -11,7 +11,7 @@ import MapKit
 
 class MiniDetailPage: UIView {
     let flightIATALabel = UILabel()
-    lazy var mapView = MKMapView()
+    var mapView = MKMapView()
     let depCode = UILabel()
     let depCity = UILabel()
     let arrCode = UILabel()
