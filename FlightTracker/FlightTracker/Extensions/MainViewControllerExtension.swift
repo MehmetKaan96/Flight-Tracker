@@ -54,7 +54,7 @@ extension MainViewController: RealtimeFlightsViewModelDelegate {
 
 
 extension MainViewController: MKMapViewDelegate {
-
+    
     //Change pins to airplanes
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let flightAnnotation = annotation as? FlightAnnotation else { return nil }
@@ -64,7 +64,6 @@ extension MainViewController: MKMapViewDelegate {
         annotationView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         
         let radians = flightAnnotation.direction * .pi / 180.0
-        
         annotationView.transform = CGAffineTransform(rotationAngle: CGFloat(radians))
         
         return annotationView

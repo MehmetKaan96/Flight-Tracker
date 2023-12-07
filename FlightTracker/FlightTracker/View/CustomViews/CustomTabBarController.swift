@@ -22,6 +22,7 @@ class CustomTabBarController: UITabBarController {
     
     private func setupTabs() {
         self.tabBar.backgroundColor = .gradientTop
+        self.tabBar.unselectedItemTintColor = .black
         
         let service: FlightDataService = APIManager()
         let mapViewModel = RealtimeFlightsViewModel(flightsService: service)

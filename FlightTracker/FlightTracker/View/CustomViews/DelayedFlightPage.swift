@@ -42,6 +42,7 @@ class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, U
         
         let typeLabel = UILabel()
         typeLabel.text = "Flight Type"
+        typeLabel.textColor = .black
         typeLabel.textAlignment = .center
         typeLabel.numberOfLines = 0
         typeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
@@ -53,6 +54,7 @@ class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, U
         
         let delayTimeLabel = UILabel()
         delayTimeLabel.text = "Delay Time"
+        delayTimeLabel.textColor = .black
         delayTimeLabel.textAlignment = .center
         delayTimeLabel.numberOfLines = 0
         delayTimeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
@@ -74,12 +76,14 @@ class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, U
         
         typeTextField.inputView = typePicker
         typeTextField.delegate = self
+        typeTextField.textColor = .black
         typeTextField.placeholder = "Flight Type"
         typeTextField.textAlignment = .center
         selectionStack.addArrangedSubview(typeTextField)
         
         timeTextField.delegate = self
         timeTextField.inputView = delayTimePicker
+        timeTextField.textColor = .black
         timeTextField.placeholder = "Select a time"
         timeTextField.textAlignment = .center
         selectionStack.addArrangedSubview(timeTextField)
@@ -112,9 +116,11 @@ class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, U
         if pickerView == typePicker {
             let selectedRow = typePicker.selectedRow(inComponent: 0)
             typeTextField.text = type[selectedRow]
+            typeTextField.resignFirstResponder()
         } else if pickerView == delayTimePicker {
             let selectedRow = delayTimePicker.selectedRow(inComponent: 0)
             timeTextField.text = "\(duration[selectedRow]) min"
+            timeTextField.resignFirstResponder()
         }
     }
 }
