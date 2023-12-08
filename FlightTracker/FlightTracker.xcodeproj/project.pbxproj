@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D311C8712B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */; };
 		D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */; };
 		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
 		D32A2BFF2B1BA57A00AC323F /* MiniDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewControllerExtension.swift; sourceTree = "<group>"; };
 		D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAircraftInfoView.swift; sourceTree = "<group>"; };
 		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
 		D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPage.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				D39C4E442B0A916400DD998E /* MainListViewCExtension.swift */,
 				D32A2C042B1CC78000AC323F /* StringExtension.swift */,
 				D32A2C062B1CC9B600AC323F /* IntExtension.swift */,
+				D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */,
 				D3AA312F2B12523C003E07D4 /* FlightDetailsViewModel.swift in Sources */,
 				D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */,
+				D311C8712B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift in Sources */,
 				D3AA31312B1289E5003E07D4 /* Airport.swift in Sources */,
 				D32A2C0C2B1D15D500AC323F /* DelayedFlightsViewController.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
