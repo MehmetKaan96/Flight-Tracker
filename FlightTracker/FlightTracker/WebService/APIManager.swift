@@ -84,4 +84,31 @@ class APIManager: FlightDataService {
         }).resume()
     }
     
+    func fetchDelayedFlights(with type: String, and minutes: String, completion: @escaping(Result<DelayInfo, NetworkError>) -> Void) {
+        guard let url = URL(string: Constants.baseURL + Constants.delay + "\(minutes)&type=\(type)&api_key=" + Constants.API_KEY) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+            if let _ = error {
+                completion(.failure(.requestFailed))
+            }
+            
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(DelayInfo.self, from: data)
+                print(decodedData)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(.decodeError))
+            }
+            
+        }).resume()
+    }
+    
 }

@@ -12,5 +12,6 @@ class Constants {
     static let allFlights = "flights?api_key="
     static let flightInfo = "flight?flight_iata="
     static let airports = "airports?iata_code="
+    static let delay = "delays?delay="
     static let API_KEY = "YOUR_API_KEY"
 }

@@ -11,6 +11,10 @@
 		D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */; };
 		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
 		D328CDF62B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */; };
+		D328CDFF2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CDFE2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift */; };
+		D328CE022B2DDA1400A96594 /* DelayedFlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CE012B2DDA1400A96594 /* DelayedFlightViewModel.swift */; };
+		D328CE042B2DDA3700A96594 /* DelayedFlightViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CE032B2DDA3700A96594 /* DelayedFlightViewModelDelegate.swift */; };
+		D328CE062B2DDBAD00A96594 /* DelayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CE052B2DDBAD00A96594 /* DelayInfo.swift */; };
 		D32A2BFF2B1BA57A00AC323F /* MiniDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */; };
 		D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */; };
 		D32A2C052B1CC78000AC323F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C042B1CC78000AC323F /* StringExtension.swift */; };
@@ -78,6 +82,10 @@
 		D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAircraftInfoView.swift; sourceTree = "<group>"; };
 		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
 		D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsViewControllerExtension.swift; sourceTree = "<group>"; };
+		D328CDFE2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsTableViewCell.swift; sourceTree = "<group>"; };
+		D328CE012B2DDA1400A96594 /* DelayedFlightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightViewModel.swift; sourceTree = "<group>"; };
+		D328CE032B2DDA3700A96594 /* DelayedFlightViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightViewModelDelegate.swift; sourceTree = "<group>"; };
+		D328CE052B2DDBAD00A96594 /* DelayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayInfo.swift; sourceTree = "<group>"; };
 		D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPage.swift; sourceTree = "<group>"; };
 		D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewController.swift; sourceTree = "<group>"; };
 		D32A2C042B1CC78000AC323F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -152,10 +160,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D32A2C0A2B1D15C100AC323F /* DelayedFlightsPage */ = {
+		D328CDF72B2DB89C00A96594 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				D328CDF82B2DB8AF00A96594 /* Controller */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		D328CDF82B2DB8AF00A96594 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D384E7342B0781830013789A /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D328CDF92B2DB8BB00A96594 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				D328CDFB2B2DB8CE00A96594 /* Cell */,
+				D328CDFA2B2DB8C500A96594 /* Controller */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		D328CDFA2B2DB8C500A96594 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D39C4E3F2B0A7F2900DD998E /* MainListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D328CDFB2B2DB8CE00A96594 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D328CDFC2B2DB94B00A96594 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D328CDFD2B2DB95600A96594 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D328CDFE2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D328CE002B2DD9F700A96594 /* DelayedFlights */ = {
+			isa = PBXGroup;
+			children = (
+				D328CE012B2DDA1400A96594 /* DelayedFlightViewModel.swift */,
+				D328CE032B2DDA3700A96594 /* DelayedFlightViewModelDelegate.swift */,
+			);
+			path = DelayedFlights;
+			sourceTree = "<group>";
+		};
+		D32A2C0A2B1D15C100AC323F /* DelayedFlightsPage */ = {
+			isa = PBXGroup;
+			children = (
+				D328CDFD2B2DB95600A96594 /* Cell */,
+				D328CDFC2B2DB94B00A96594 /* Controller */,
 			);
 			path = DelayedFlightsPage;
 			sourceTree = "<group>";
@@ -211,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				D39C4E412B0A88FE00DD998E /* Extensions */,
-				D3C222CF2B09130C00C3EF61 /* Cells */,
 				D384E7812B078EB40013789A /* Constants */,
 				D384E77A2B078D850013789A /* WebService */,
 				D384E76E2B0782700013789A /* Model */,
@@ -258,6 +332,7 @@
 		D384E7672B0782600013789A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D328CE002B2DD9F700A96594 /* DelayedFlights */,
 				D37484A92B0B734C0005FC8F /* FlightDetails */,
 				D37484A82B0B733B0005FC8F /* RealTimeFlights */,
 			);
@@ -313,6 +388,7 @@
 				D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */,
 				D3AA312A2B124ABD003E07D4 /* FlightInfo.swift */,
 				D3AA31302B1289E5003E07D4 /* Airport.swift */,
+				D328CE052B2DDBAD00A96594 /* DelayInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -320,8 +396,8 @@
 		D384E7772B0785870013789A /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				D384E7342B0781830013789A /* MainViewController.swift */,
-				D39C4E3F2B0A7F2900DD998E /* MainListViewController.swift */,
+				D328CDF92B2DB8BB00A96594 /* ListView */,
+				D328CDF72B2DB89C00A96594 /* MapView */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -356,14 +432,6 @@
 				D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		D3C222CF2B09130C00C3EF61 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,6 +586,8 @@
 				D32A2C092B1CE0ED00AC323F /* DelayedFlightPage.swift in Sources */,
 				D32A2C072B1CC9B600AC323F /* IntExtension.swift in Sources */,
 				D384E7702B0782700013789A /* OnboardingModel.swift in Sources */,
+				D328CE022B2DDA1400A96594 /* DelayedFlightViewModel.swift in Sources */,
+				D328CDFF2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift in Sources */,
 				D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */,
 				D39C4E452B0A916400DD998E /* MainListViewCExtension.swift in Sources */,
 				D384E7802B078E8B0013789A /* APIManager.swift in Sources */,
@@ -526,8 +596,10 @@
 				D39C4E432B0A890A00DD998E /* UIViewExtension.swift in Sources */,
 				D3AA31292B123EA9003E07D4 /* CustomTabBarController.swift in Sources */,
 				D32A2BFF2B1BA57A00AC323F /* MiniDetailPage.swift in Sources */,
+				D328CE062B2DDBAD00A96594 /* DelayInfo.swift in Sources */,
 				D384E7832B078EBE0013789A /* Constants.swift in Sources */,
 				D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */,
+				D328CE042B2DDA3700A96594 /* DelayedFlightViewModelDelegate.swift in Sources */,
 				D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */,
 				D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */,
 				D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */,

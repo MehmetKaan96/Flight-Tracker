@@ -21,16 +21,17 @@ class CustomTabBarController: UITabBarController {
 //    }
     
     private func setupTabs() {
-        self.tabBar.backgroundColor = .gradientTop
+        self.tabBar.setGradientBackground()
         self.tabBar.unselectedItemTintColor = .black
         
         let service: FlightDataService = APIManager()
         let mapViewModel = RealtimeFlightsViewModel(flightsService: service)
         let listViewModel = RealtimeFlightsViewModel(flightsService: service)
+        let delayViewModel = DelayedFlightViewModel(flightService: service)
         
         let mainVC = self.createNav(with: "Map View", image: UIImage(systemName: "globe"), vc: MainViewController(viewModel: mapViewModel))
         let listVC = self.createNav(with: "List View", image: UIImage(systemName: "tablecells"), vc: MainListViewController(viewModel: listViewModel))
-        let delayVC = self.createNav(with: "Delayed Flight", image: UIImage(systemName: "clock.badge.questionmark"), vc: DelayedFlightsViewController())
+        let delayVC = self.createNav(with: "Delayed Flight", image: UIImage(systemName: "clock.badge.questionmark"), vc: DelayedFlightsViewController(viewModel: delayViewModel))
         
         setViewControllers([mainVC, listVC, delayVC], animated: true)
     }

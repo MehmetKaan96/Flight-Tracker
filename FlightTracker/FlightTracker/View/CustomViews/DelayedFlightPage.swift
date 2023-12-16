@@ -7,16 +7,27 @@
 
 import UIKit
 
-class DelayedFlightPage: UIView,  UITextFieldDelegate {
+class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DelayedFlightsTableViewCell.identifier, for: indexPath) as! DelayedFlightsTableViewCell
+        
+        return cell
+    }
+    
+    let filterButton = UIButton()
     let selectionStack = UIStackView()
     lazy var typePicker = UIPickerView()
     lazy var delayTimePicker = UIPickerView()
     lazy var typeTextField = UITextField()
     lazy var timeTextField = UITextField()
     let searchBar = UISearchBar()
+    let delayedTableView = UITableView()
     
-    let type: [String] = ["arrival", "departure"]
+    let type: [String] = ["arrivals", "departures"]
     let duration: [Int] = Array(30...180)
     
     override init(frame: CGRect) {
@@ -34,52 +45,51 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate {
     }
     
     private func createUI() {
+        let selectionStack = UIStackView()
+        selectionStack.axis = .horizontal
+        selectionStack.spacing = 100
+        addSubview(selectionStack)
+        selectionStack.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(20)
+            make.centerX.equalToSuperview()
+        }
         
+        
+        let typeStack = UIStackView()
+        typeStack.axis = .vertical
+        selectionStack.addArrangedSubview(typeStack)
+
         let typeLabel = UILabel()
         typeLabel.text = "Flight Type"
         typeLabel.textColor = .black
         typeLabel.textAlignment = .center
         typeLabel.numberOfLines = 0
         typeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
-        addSubview(typeLabel)
-        typeLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(20)
-            make.left.equalToSuperview().offset(50)
-        }
+        typeStack.addArrangedSubview(typeLabel)
         
+        typeTextField.inputView = typePicker
+        typeTextField.textColor = .black
+        typeTextField.placeholder = "Flight Type"
+        typeTextField.textAlignment = .center
+        typeStack.addArrangedSubview(typeTextField)
+
+        let timeStack = UIStackView()
+        timeStack.axis = .vertical
+        selectionStack.addArrangedSubview(timeStack)
+
         let delayTimeLabel = UILabel()
         delayTimeLabel.text = "Delay Time"
         delayTimeLabel.textColor = .black
         delayTimeLabel.textAlignment = .center
         delayTimeLabel.numberOfLines = 0
         delayTimeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
-        addSubview(delayTimeLabel)
-        delayTimeLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(20)
-            make.right.equalToSuperview().inset(50)
-        }
-        
-        selectionStack.axis = .horizontal
-        selectionStack.distribution = .fillEqually
-        selectionStack.alignment = .fill
-        addSubview(selectionStack)
-        selectionStack.snp.makeConstraints { make in
-            make.top.equalTo(typeLabel.snp.bottom).offset(5)
-            make.left.equalTo(snp.left)
-            make.right.equalTo(snp.right)
-        }
-        
-        typeTextField.inputView = typePicker
-        typeTextField.textColor = .black
-        typeTextField.placeholder = "Flight Type"
-        typeTextField.textAlignment = .center
-        selectionStack.addArrangedSubview(typeTextField)
+        timeStack.addArrangedSubview(delayTimeLabel)
         
         timeTextField.inputView = delayTimePicker
         timeTextField.textColor = .black
         timeTextField.placeholder = "Select a time"
         timeTextField.textAlignment = .center
-        selectionStack.addArrangedSubview(timeTextField)
+        timeStack.addArrangedSubview(timeTextField)
         
         searchBar.placeholder = "Search Flight"
         searchBar.barTintColor = .clear
@@ -91,13 +101,29 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate {
         searchBar.backgroundColor = .clear
         addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(timeTextField.snp.bottom).offset(20)
+            make.top.equalTo(selectionStack.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(10)
         }
+        
+        filterButton.setImage(UIImage(named: "filter"), for: .normal)
+        searchBar.addSubview(filterButton)
+        filterButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalTo(searchBar.snp.right).inset(20)
+        }
+        
+        delayedTableView.backgroundColor = .clear
+        delayedTableView.register(DelayedFlightsTableViewCell.self, forCellReuseIdentifier: DelayedFlightsTableViewCell.identifier)
+        delayedTableView.dataSource = self
+        delayedTableView.delegate = self
+        addSubview(delayedTableView)
+        delayedTableView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom)
+            make.left.equalTo(snp.left)
+            make.right.equalTo(snp.right)
+            make.bottom.equalTo(snp.bottom)
+        }
+        
     }
     
-}
-
-#Preview() {
-    DelayedFlightPage()
 }
