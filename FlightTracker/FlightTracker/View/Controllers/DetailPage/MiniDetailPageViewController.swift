@@ -10,7 +10,6 @@ import CoreLocation
 import MapKit
 
 class MiniDetailPageViewController: UIViewController {
-    
     let viewModel: FlightDetailsViewModel
     var selectedIATA: String?
     var depIATA: String?

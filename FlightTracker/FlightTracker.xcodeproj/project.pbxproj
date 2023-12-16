@@ -10,6 +10,7 @@
 		D311C8712B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */; };
 		D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */; };
 		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
+		D328CDF62B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */; };
 		D32A2BFF2B1BA57A00AC323F /* MiniDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */; };
 		D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */; };
 		D32A2C052B1CC78000AC323F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C042B1CC78000AC323F /* StringExtension.swift */; };
@@ -76,6 +77,7 @@
 		D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewControllerExtension.swift; sourceTree = "<group>"; };
 		D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAircraftInfoView.swift; sourceTree = "<group>"; };
 		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
+		D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsViewControllerExtension.swift; sourceTree = "<group>"; };
 		D32A2BFE2B1BA57A00AC323F /* MiniDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPage.swift; sourceTree = "<group>"; };
 		D32A2C002B1BB0C100AC323F /* MiniDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewController.swift; sourceTree = "<group>"; };
 		D32A2C042B1CC78000AC323F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				D32A2C042B1CC78000AC323F /* StringExtension.swift */,
 				D32A2C062B1CC9B600AC323F /* IntExtension.swift */,
 				D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */,
+				D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				D3AA31312B1289E5003E07D4 /* Airport.swift in Sources */,
 				D32A2C0C2B1D15D500AC323F /* DelayedFlightsViewController.swift in Sources */,
 				D384E7792B078D4F0013789A /* RealTimeFlightData.swift in Sources */,
+				D328CDF62B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift in Sources */,
 				D3C222C82B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift in Sources */,
 				D3AA312D2B1251F7003E07D4 /* FlightDetailsViewModelDelegate.swift in Sources */,
 				D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */,
@@ -728,7 +732,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,7 +759,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

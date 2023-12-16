@@ -7,13 +7,14 @@
 
 import UIKit
 
-class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class DelayedFlightPage: UIView,  UITextFieldDelegate {
     
     let selectionStack = UIStackView()
     lazy var typePicker = UIPickerView()
     lazy var delayTimePicker = UIPickerView()
     lazy var typeTextField = UITextField()
     lazy var timeTextField = UITextField()
+    let searchBar = UISearchBar()
     
     let type: [String] = ["arrival", "departure"]
     let duration: [Int] = Array(30...180)
@@ -33,12 +34,6 @@ class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, U
     }
     
     private func createUI() {
-        
-        typePicker.delegate = self
-        typePicker.dataSource = self
-        
-        delayTimePicker.delegate = self
-        delayTimePicker.dataSource = self
         
         let typeLabel = UILabel()
         typeLabel.text = "Flight Type"
@@ -75,52 +70,34 @@ class DelayedFlightPage: UIView, UIPickerViewDelegate, UIPickerViewDataSource, U
         }
         
         typeTextField.inputView = typePicker
-        typeTextField.delegate = self
         typeTextField.textColor = .black
         typeTextField.placeholder = "Flight Type"
         typeTextField.textAlignment = .center
         selectionStack.addArrangedSubview(typeTextField)
         
-        timeTextField.delegate = self
         timeTextField.inputView = delayTimePicker
         timeTextField.textColor = .black
         timeTextField.placeholder = "Select a time"
         timeTextField.textAlignment = .center
         selectionStack.addArrangedSubview(timeTextField)
+        
+        searchBar.placeholder = "Search Flight"
+        searchBar.barTintColor = .clear
+        searchBar.backgroundImage = UIImage()
+        searchBar.searchTextField.backgroundColor = .clear
+        searchBar.searchTextField.borderStyle = .roundedRect
+        searchBar.searchTextField.layer.borderWidth = 0.5
+        searchBar.searchTextField.layer.cornerRadius = 10
+        searchBar.backgroundColor = .clear
+        addSubview(searchBar)
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(timeTextField.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(10)
+        }
     }
     
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+}
 
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == typePicker {
-            return type.count
-        } else if pickerView == delayTimePicker {
-            return duration.count
-        }
-        return 0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == typePicker {
-                return type[row]
-            } else if pickerView == delayTimePicker {
-                return "\(duration[row]) min"
-            }
-        return nil
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == typePicker {
-            let selectedRow = typePicker.selectedRow(inComponent: 0)
-            typeTextField.text = type[selectedRow]
-            typeTextField.resignFirstResponder()
-        } else if pickerView == delayTimePicker {
-            let selectedRow = delayTimePicker.selectedRow(inComponent: 0)
-            timeTextField.text = "\(duration[selectedRow]) min"
-            timeTextField.resignFirstResponder()
-        }
-    }
+#Preview() {
+    DelayedFlightPage()
 }

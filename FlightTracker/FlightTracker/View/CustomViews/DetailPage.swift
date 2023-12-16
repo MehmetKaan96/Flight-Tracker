@@ -57,7 +57,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(scrollView.snp.left).offset(15)
         }
         
-        dateAndIataLabel.text = "lksjfkjafkjshgks"
         dateAndIataLabel.textColor = .systemGray
         dateAndIataLabel.font = .systemFont(ofSize: 13, weight: .regular)
         dateAndIataLabel.textAlignment = .center
@@ -68,7 +67,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(backButton.snp.left).offset(30)
         }
         
-        depAndArrCountry.text = "şsflksjlkdjfglsdg"
         depAndArrCountry.textAlignment = .center
         depAndArrCountry.textColor = .black
         depAndArrCountry.numberOfLines = 0
