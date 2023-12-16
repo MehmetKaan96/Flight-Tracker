@@ -22,7 +22,7 @@ class AirportDetailView: UIView {
         super.init(frame: frame)
         createUI()
     }
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.borderWidth = 1
@@ -35,7 +35,6 @@ class AirportDetailView: UIView {
     }
     
     private func createUI() {
-        
         airportInfoLabel.textColor = .black
         airportInfoLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         airportInfoLabel.numberOfLines = 0
@@ -49,22 +48,24 @@ class AirportDetailView: UIView {
         
         let nameStack = UIStackView()
         nameStack.axis = .horizontal
-        nameStack.spacing = 10
         nameStack.distribution = .fillEqually
         
         let airportNameLabel = UILabel()
         airportNameLabel.text = "Airport Name:"
         airportNameLabel.textColor = .systemGray
         airportNameLabel.font = .systemFont(ofSize: 18, weight: .medium)
+        airportName.text = "Los Angeles International Airport"
         airportName.numberOfLines = 0
         airportName.font = .systemFont(ofSize: 16, weight: .regular)
         airportName.textColor = .black
         nameStack.addArrangedSubview(airportNameLabel)
         nameStack.addArrangedSubview(airportName)
+        nameStack.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         
         let timeStack = UIStackView()
         timeStack.axis = .horizontal
-        timeStack.spacing = 10
         timeStack.distribution = .fillEqually
         
         let flightTime = UILabel()
@@ -76,10 +77,12 @@ class AirportDetailView: UIView {
         flightTimeText.textColor = .black
         timeStack.addArrangedSubview(flightTime)
         timeStack.addArrangedSubview(flightTimeText)
+        timeStack.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         
         let terminalStack = UIStackView()
         terminalStack.axis = .horizontal
-        terminalStack.spacing = 10
         terminalStack.distribution = .fillEqually
         
         let terminalLabel = UILabel()
@@ -91,10 +94,12 @@ class AirportDetailView: UIView {
         terminalText.textColor = .black
         terminalStack.addArrangedSubview(terminalLabel)
         terminalStack.addArrangedSubview(terminalText)
+        terminalStack.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         
         let gateStack = UIStackView()
         gateStack.axis = .horizontal
-        gateStack.spacing = 10
         gateStack.distribution = .fillEqually
         
         let gateLabel = UILabel()
@@ -106,12 +111,13 @@ class AirportDetailView: UIView {
         gateText.textColor = .black
         gateStack.addArrangedSubview(gateLabel)
         gateStack.addArrangedSubview(gateText)
-        
+        gateStack.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         
         let fullInfoStack = UIStackView()
         fullInfoStack.axis = .vertical
         addSubview(fullInfoStack)
-        fullInfoStack.distribution = .fillProportionally
         fullInfoStack.addArrangedSubview(nameStack)
         fullInfoStack.addArrangedSubview(timeStack)
         fullInfoStack.addArrangedSubview(terminalStack)
@@ -120,33 +126,32 @@ class AirportDetailView: UIView {
             make.top.equalTo(airportInfoLabel.snp.bottom).offset(10)
             make.left.equalTo(snp.left).offset(20)
             make.right.equalTo(snp.right).inset(20)
-            make.bottom.equalTo(snp.bottom).inset(10)
         }
         
     }
     
-    func setAirportName(using name: String) {
-        airportName.text = name
+    func setAirportName(using name: String?) {
+        airportName.text = name ?? "N/A"
     }
     
-    func setDepartTime(with time: String) {
-        flightTimeText.text = time
+    func setDepartTime(with time: String?) {
+        flightTimeText.text = time ?? "N/A"
     }
     
-    func setTerminal(with terminal: String) {
-        terminalText.text = terminal
+    func setTerminal(with terminal: String?) {
+        terminalText.text = terminal ?? "N/A"
     }
     
-    func setGate(with gate: String) {
-        gateText.text = gate
+    func setGate(with gate: String?) {
+        gateText.text = gate ?? "N/A"
     }
     
-    func setAirport(with text: String) {
-        airportInfoLabel.text = text
+    func setAirport(with text: String?) {
+        airportInfoLabel.text = text ?? "N/A"
     }
     
-    func setArrivalTime(with text: String) {
-        flightTimeText.text = text
+    func setArrivalTime(with text: String?) {
+        flightTimeText.text = text ?? "N/A"
     }
     
 }

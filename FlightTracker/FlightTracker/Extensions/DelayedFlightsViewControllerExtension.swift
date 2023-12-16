@@ -12,7 +12,7 @@ extension DelayedFlightsViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == page.typePicker {
             return page.type.count
@@ -27,7 +27,7 @@ extension DelayedFlightsViewController: UIPickerViewDelegate, UIPickerViewDataSo
             return page.type[row]
         } else if pickerView == page.delayTimePicker {
             return "\(page.duration[row]) min"
-            }
+        }
         return nil
     }
     
@@ -93,5 +93,14 @@ extension DelayedFlightsViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let service: FlightDataService = APIManager()
+        let viewModel = FlightDetailsViewModel(service: service)
+        
+        let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: delayedFlightArray[indexPath.row].flightIata, dep_iata: delayedFlightArray[indexPath.row].depIata, arr_iata: delayedFlightArray[indexPath.row].arrIata)
+        present(vc, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }

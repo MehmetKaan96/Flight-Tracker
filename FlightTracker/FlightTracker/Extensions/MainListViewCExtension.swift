@@ -24,8 +24,8 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-        
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let service: FlightDataService = APIManager()
         let viewModel = FlightDetailsViewModel(service: service)
         
@@ -38,7 +38,7 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: filteredArray[indexPath.row].flight_iata, dep_iata: filteredArray[indexPath.row].dep_iata, arr_iata: filteredArray[indexPath.row].arr_iata)
             vc.hero.isEnabled = true
-            vc.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
+            vc.heroModalAnimationType = .selectBy(presenting: .pageIn(direction: .right), dismissing: .pageOut(direction: .left))
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         }
@@ -54,15 +54,23 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MainListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredArray = flightsArray.filter({ flights in
-            guard let status = flights.status else { return false}
-            return status.lowercased().contains(searchText.lowercased())
-        })
+        filteredArray = flightsArray.filter { flights in
+            let searchableFields = [
+                flights.status,
+                flights.flight_iata,
+                flights.dep_iata,
+                flights.arr_iata
+            ]
+            
+            let matches = searchableFields.compactMap { $0?.lowercased().contains(searchText.lowercased()) }
+            return matches.contains(true)
+        }
+        
         if searchText.isEmpty {
             filteredArray.removeAll(keepingCapacity: false)
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }
 
@@ -71,9 +79,9 @@ extension MainListViewController: UISearchBarDelegate {
 extension MainListViewController: RealtimeFlightsViewModelDelegate {
     func fetchFlights(_ flights: [Flights]) {
         DispatchQueue.main.async {
-//            flightsArray = flights
+            //            flightsArray = flights
             self.tableView.reloadData()
-//            print("List VC\(flightsArray.count)")
+            //            print("List VC\(flightsArray.count)")
         }
     }
 }

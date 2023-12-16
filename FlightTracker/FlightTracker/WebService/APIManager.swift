@@ -102,7 +102,6 @@ class APIManager: FlightDataService {
             
             do {
                 let decodedData = try JSONDecoder().decode(DelayInfo.self, from: data)
-                print(decodedData)
                 completion(.success(decodedData))
             } catch {
                 completion(.failure(.decodeError))

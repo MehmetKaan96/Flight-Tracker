@@ -22,6 +22,7 @@ class DetailPage: UIView, UIScrollViewDelegate {
     let departureDetail = AirportDetailView()
     let arrivalDetail = AirportDetailView()
     let backButton = UIButton()
+    let scrollView = UIScrollView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +40,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
     
     private func createUI() {
         
-        let scrollView = UIScrollView()
         scrollView.isPagingEnabled = false
         scrollView.delegate = self
         scrollView.backgroundColor = .clear
@@ -51,7 +51,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
         
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         scrollView.addSubview(backButton)
-//        backButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)
         backButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top).offset(20)
             make.left.equalTo(scrollView.snp.left).offset(15)
@@ -83,7 +82,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
         aircraftDetailView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width).inset(10)
                 make.centerX.equalTo(scrollView)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.55)
                 make.top.equalTo(depAndArrCountry).offset(30)
         }
         
@@ -93,7 +91,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
         departureDetailView.snp.makeConstraints { make in
             make.top.equalTo(aircraftDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.5)
             make.centerX.equalTo(scrollView)
         }
         
@@ -104,7 +101,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
         arrivalDetailView.snp.makeConstraints { make in
             make.top.equalTo(departureDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
-            make.height.equalTo(scrollView.snp.height).multipliedBy(0.5)
             make.bottom.equalTo(scrollView.snp.bottom).inset(20)
             make.centerX.equalTo(scrollView)
         }
@@ -166,4 +162,8 @@ class DetailPage: UIView, UIScrollViewDelegate {
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 7
     }
+}
+
+#Preview() {
+    DetailPage()
 }

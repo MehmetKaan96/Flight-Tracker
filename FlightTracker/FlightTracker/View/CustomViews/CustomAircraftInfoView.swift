@@ -107,15 +107,15 @@ class CustomAircraftInfoView: UIView {
         self.infoText3.text = text3
     }
     
-    func setInfoDetail1(with text: String) {
-        self.info1Detail.text = text
+    func setInfoDetail1(with text: String?) {
+        self.info1Detail.text = text ?? "N/A"
     }
     
-    func setInfoDetail2(with text: String) {
-        self.info2Detail.text = text
+    func setInfoDetail2(with text: String?) {
+        self.info2Detail.text = text ?? "N/A"
     }
     
-    func setInfoDetail3(with text: String) {
-        self.info3Detail.text = text
+    func setInfoDetail3(with text: String?) {
+        self.info3Detail.text = text ?? "N/A"
     }
 }

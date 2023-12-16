@@ -34,10 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func showMainScreen() {
         window = UIWindow()
+        let navController = UINavigationController()
         let customTabBarController = CustomTabBarController()
-        window?.rootViewController = customTabBarController
-//        window?.rootViewController = MiniDetailPageViewController()
-//        window?.rootViewController = DelayedFlightsViewController()
+        navController.viewControllers = [customTabBarController]
+        
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
     

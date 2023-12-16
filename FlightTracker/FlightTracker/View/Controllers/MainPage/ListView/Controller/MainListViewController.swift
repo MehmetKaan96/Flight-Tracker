@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainListViewController: UIViewController  {
+class MainListViewController: UIViewController {
     let searchBar = UISearchBar()
     let viewModel: RealtimeFlightsViewModel
     
@@ -26,23 +26,13 @@ class MainListViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createUI()
+        setupUI()
+        layoutUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchFlights()
-        tableView.reloadData()
-        
-        searchBar.snp.remakeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.left.right.equalToSuperview().inset(10)
-        }
-        
-        tableView.snp.remakeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(5)
-            make.left.right.bottom.equalToSuperview()
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,7 +40,9 @@ class MainListViewController: UIViewController  {
         view.setGradientBackground()
     }
     
-    private func createUI() {
+    private func setupUI() {
+        navigationItem.title = "Real-Time Flights"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         searchBar.placeholder = "Search Flight"
         searchBar.barTintColor = .clear
@@ -60,24 +52,31 @@ class MainListViewController: UIViewController  {
         searchBar.searchTextField.layer.borderWidth = 0.5
         searchBar.searchTextField.layer.cornerRadius = 10
         searchBar.delegate = self
-        searchBar.backgroundColor = .clear
-        view.addSubview(searchBar)
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.left.right.equalToSuperview().inset(10)
-        }
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.cornerRadius = 15
         tableView.backgroundColor = .clear
         tableView.register(FlightsTableViewCell.self, forCellReuseIdentifier: FlightsTableViewCell.identifier)
+        
+        view.addSubview(searchBar)
         view.addSubview(tableView)
+    }
+    
+    private func layoutUI() {
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.left.right.equalToSuperview().inset(10)
+        }
+        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(5)
             make.left.right.bottom.equalToSuperview()
         }
-        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
 }

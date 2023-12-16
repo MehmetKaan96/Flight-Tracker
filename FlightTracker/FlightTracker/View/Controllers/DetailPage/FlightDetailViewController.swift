@@ -57,43 +57,49 @@ class FlightDetailViewController: UIViewController {
 extension FlightDetailViewController: FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfo) {
         DispatchQueue.main.async { [self] in
-            page.planeModel.text = flight.response.model
-            
-            page.aircraftDetail1.setInfoDetail1(with: flight.response.manufacturer ?? "Not Yet Available")
-            page.aircraftDetail1.setInfoDetail2(with: flight.response.type ?? "Not Yet Available")
-            page.aircraftDetail1.setInfoDetail3(with: flight.response.engine ?? "Not Yet Available")
-//
-            
-            guard let built = flight.response.built, let age = flight.response.age else { return }
+            setupAircraftDetails(flight.response)
+            setupAirportDetails(page.departureDetail, flight.response.depGate, "Departure Airport Info", flight.response.depTerminal, flight.response.depActual)
+            setupAirportDetails(page.arrivalDetail, flight.response.arrGate, "Arrival Airport Info", flight.response.arrTerminal, flight.response.arrTime)
+            page.depAndArrCountry.text = "\(flight.response.depCity ?? "N/A") to \(flight.response.arrCity ?? "N/A")"
+        }
+    }
+    
+    private func setupAircraftDetails(_ response: Info) {
+        page.planeModel.text = response.model
+
+        page.aircraftDetail1.setInfoDetail1(with: response.manufacturer)
+        page.aircraftDetail1.setInfoDetail2(with: response.type)
+        page.aircraftDetail1.setInfoDetail3(with: response.engine)
+
+        if let built = response.built, let age = response.age {
             page.aircraftDetail2.setInfoDetail1(with: "\(built)")
             page.aircraftDetail2.setInfoDetail2(with: "\(age)")
-            page.aircraftDetail2.setInfoDetail3(with: flight.response.engineCount ?? "Not Yet Available")
-//
-            page.dateAndIataLabel.text = ((flight.response.depTime ?? "Not Yet Available") + " " + (flight.response.flightIata ?? "Not Yet Available"))
-            page.departureDetail.setGate(with: flight.response.depGate ?? "Not Yet Available")
-            page.departureDetail.setAirport(with: "Departure Airport Info")
-            page.departureDetail.setTerminal(with: flight.response.depTerminal ?? "Not Yet Available")
-            page.departureDetail.setDepartTime(with: flight.response.depActual ?? "Not Yet Available")
-            
-
-            page.arrivalDetail.setGate(with: flight.response.arrGate ?? "Not Yet Available")
-            page.arrivalDetail.setAirport(with: "Arrival Airport Info")
-            page.arrivalDetail.setTerminal(with: flight.response.arrTerminal ?? "Not Yet Available")
-            page.arrivalDetail.setArrivalTime(with: flight.response.arrTime ?? "Not Yet Available")
-            
-            page.depAndArrCountry.text = ((flight.response.depCity ?? "Not Yet Available") + " to " + (flight.response.arrCity ?? "Not Yet Available"))
+            page.aircraftDetail2.setInfoDetail3(with: response.engineCount)
+        } else {
+            page.aircraftDetail2.setInfoDetail1(with: "N/A")
+            page.aircraftDetail2.setInfoDetail2(with: "N/A")
+            page.aircraftDetail2.setInfoDetail3(with: "N/A")
         }
+
+        page.dateAndIataLabel.text = "\(response.depTime ?? "N/A") \(response.flightIata ?? "N/A")"
+    }
+
+    private func setupAirportDetails(_ airportDetail: AirportDetailView, _ gate: String?, _ info: String, _ terminal: String?, _ time: String?) {
+        airportDetail.setGate(with: gate)
+        airportDetail.setAirport(with: info)
+        airportDetail.setTerminal(with: terminal)
+        airportDetail.setArrivalTime(with: time)
     }
     
     func fetchDepartureAirport(_ airport: Airport) {
         DispatchQueue.main.async { [self] in
-            page.departureDetail.setAirportName(using: airport.response.first?.name ?? "Not Yet Available")
+            page.departureDetail.setAirportName(using: airport.response.first?.name ?? "N/A")
         }
     }
     
     func fetchArrivalAirport(_ airport: Airport) {
         DispatchQueue.main.async { [self] in
-            page.arrivalDetail.setAirportName(using: airport.response.first?.name ?? "Not Yet Available")
+            page.arrivalDetail.setAirportName(using: airport.response.first?.name ?? "N/A")
         }
     }
 }
