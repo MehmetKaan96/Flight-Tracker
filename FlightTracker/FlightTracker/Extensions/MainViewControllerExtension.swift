@@ -64,7 +64,9 @@ extension MainViewController: MKMapViewDelegate {
         annotationView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         
         let radians = flightAnnotation.direction * .pi / 180.0
-        annotationView.transform = CGAffineTransform(rotationAngle: CGFloat(radians))
+
+        let adjustedRadians = radians - (.pi / 2)
+        annotationView.transform = CGAffineTransform(rotationAngle: CGFloat(adjustedRadians))
         
         return annotationView
     }

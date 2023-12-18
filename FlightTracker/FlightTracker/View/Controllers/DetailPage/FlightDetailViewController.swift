@@ -34,7 +34,7 @@ class FlightDetailViewController: UIViewController {
         createUI()
     }
     
-    private func createUI() {
+    private func createUI() {        
         guard let iata = selectedIATA, let depiata = depIATA, let arriata = arrIATA else { return }
         viewModel.fetchFlightInfo(with: iata)
         viewModel.fetchDepartureAirport(with: depiata)
@@ -42,7 +42,8 @@ class FlightDetailViewController: UIViewController {
         self.isHeroEnabled = true
         view.addSubview(page)
         page.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.snp.top)
+            make.left.right.bottom.equalToSuperview()
         }
         
         page.backButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)

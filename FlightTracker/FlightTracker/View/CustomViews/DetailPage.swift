@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 import Hero
+import MapKit
 
 class DetailPage: UIView, UIScrollViewDelegate {
     let dateAndIataLabel = UILabel()
@@ -23,6 +24,7 @@ class DetailPage: UIView, UIScrollViewDelegate {
     let arrivalDetail = AirportDetailView()
     let backButton = UIButton()
     let scrollView = UIScrollView()
+    let mapView = MKMapView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,13 +78,24 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(dateAndIataLabel.snp.left)
         }
         
+        mapView.isScrollEnabled = true
+        mapView.mapType = .standard
+        mapView.layer.cornerRadius = 20
+        scrollView.addSubview(mapView)
+        mapView.snp.makeConstraints { make in
+            make.top.equalTo(depAndArrCountry.snp.bottom).offset(20)
+            make.width.equalTo(scrollView.snp.width).inset(10)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(scrollView.snp.height).multipliedBy(0.4)
+        }
+        
         aircraftDetailView.backgroundColor = .white
         aircraftDetailView.layer.cornerRadius = 15
         scrollView.addSubview(aircraftDetailView)
         aircraftDetailView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width).inset(10)
                 make.centerX.equalTo(scrollView)
-                make.top.equalTo(depAndArrCountry).offset(30)
+            make.top.equalTo(mapView.snp.bottom).offset(30)
         }
         
         departureDetailView.backgroundColor = .white
@@ -153,6 +166,8 @@ class DetailPage: UIView, UIScrollViewDelegate {
         arrivalDetail.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+                
+        self.layoutIfNeeded()
         
     }
     
@@ -162,8 +177,4 @@ class DetailPage: UIView, UIScrollViewDelegate {
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowRadius = 7
     }
-}
-
-#Preview() {
-    DetailPage()
 }

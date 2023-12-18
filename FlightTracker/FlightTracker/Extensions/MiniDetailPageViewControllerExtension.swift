@@ -164,18 +164,11 @@ extension MiniDetailPageViewController: MKMapViewDelegate {
         annotationView?.image = UIImage(named: "airplane")
         annotationView?.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
 
-        if let departureLocation = departureLocation, let arrivalLocation = arrivalLocation {
-            let angle = calculateAngleBetweenPoints(departureLocation, arrivalLocation)
-            annotationView?.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
-        }
+        let radians = flightAnnotation.direction * .pi / 180.0
+        let adjustedRadians = radians - (.pi / 2)
+
+        annotationView!.transform = CGAffineTransform(rotationAngle: CGFloat(adjustedRadians))
 
         return annotationView
-    }
-
-    func calculateAngleBetweenPoints(_ point1: CLLocationCoordinate2D, _ point2: CLLocationCoordinate2D) -> Double {
-        let deltaY = point2.latitude - point1.latitude
-        let deltaX = point2.longitude - point1.longitude
-        let angle = atan2(deltaY, deltaX)
-        return angle
     }
 }

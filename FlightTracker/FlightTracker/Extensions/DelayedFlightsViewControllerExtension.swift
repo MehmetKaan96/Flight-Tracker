@@ -54,7 +54,24 @@ extension DelayedFlightsViewController: UITextFieldDelegate {
 
 extension DelayedFlightsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //TODO: Write search action
+        filteredDelayArray = delayedFlightArray.filter { flights in
+            let searchableFields = [
+                flights.status,
+                flights.flightIata,
+                flights.depIata,
+                flights.arrIata
+            ]
+            
+            let matches = searchableFields.compactMap { $0?.lowercased().contains(searchText.lowercased()) }
+            return matches.contains(true)
+        }
+        
+        if searchText.isEmpty {
+            filteredDelayArray.removeAll(keepingCapacity: false)
+            searchBar.resignFirstResponder()
+        }
+        
+        self.page.delayedTableView.reloadData()
     }
 }
 
@@ -82,13 +99,17 @@ extension DelayedFlightsViewController: DelayedFlightViewModelDelegate {
 
 extension DelayedFlightsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        delayedFlightArray.count
+        return filteredDelayArray.isEmpty ? delayedFlightArray.count : filteredDelayArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DelayedFlightsTableViewCell.identifier, for: indexPath) as! DelayedFlightsTableViewCell
         
-        cell.configure(flight: delayedFlightArray[indexPath.row])
+        if filteredDelayArray.isEmpty {
+            cell.configure(flight: delayedFlightArray[indexPath.row])
+        } else {
+            cell.configure(flight: filteredDelayArray[indexPath.row])
+        }
         
         return cell
     }

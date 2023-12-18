@@ -68,6 +68,7 @@ extension MainListViewController: UISearchBarDelegate {
         
         if searchText.isEmpty {
             filteredArray.removeAll(keepingCapacity: false)
+            searchBar.resignFirstResponder()
         }
         
         tableView.reloadData()

@@ -8,14 +8,15 @@
 import Foundation
 
 enum NetworkError: Error {
-    case requestFailed
+    case requestFailed(String)
     case invalidData
     case decodeError
     case invalidURL
+    
     var localizedDescription: String {
         switch self {
-        case .requestFailed:
-            return "Request Failed"
+        case .requestFailed(let message):
+            return "Request Failed: \(message)"
         case .invalidData:
             return "Invalid Data"
         case .decodeError:

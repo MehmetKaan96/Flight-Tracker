@@ -15,7 +15,7 @@ class APIManager: FlightDataService {
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             if let _ = error {
-                completion(.failure(.requestFailed))
+                completion(.failure(.requestFailed(error!.localizedDescription)))
             }
             
             guard let data = data else {
@@ -41,7 +41,7 @@ class APIManager: FlightDataService {
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             if let _ = error {
-                completion(.failure(.requestFailed))
+                completion(.failure(.requestFailed(error!.localizedDescription)))
             }
             
             guard let data = data else {
@@ -66,7 +66,7 @@ class APIManager: FlightDataService {
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             if let _ = error {
-                completion(.failure(.requestFailed))
+                completion(.failure(.requestFailed(error!.localizedDescription)))
             }
             
             guard let data = data else {
@@ -92,7 +92,7 @@ class APIManager: FlightDataService {
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             if let _ = error {
-                completion(.failure(.requestFailed))
+                completion(.failure(.requestFailed(error!.localizedDescription)))
             }
             
             guard let data = data else {

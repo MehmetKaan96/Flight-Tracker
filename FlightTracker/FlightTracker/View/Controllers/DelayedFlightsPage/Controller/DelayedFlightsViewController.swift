@@ -30,7 +30,8 @@ class DelayedFlightsViewController: UIViewController {
     }
         
     private func createUI() {
-        
+        navigationItem.title = "Delayed Flights"
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(page)
         page.snp.makeConstraints { make in
             make.edges.equalToSuperview()
