@@ -44,19 +44,6 @@ class MainViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        filterButton.setImage(UIImage(named: "filter"), for: .normal)
-        if #available(iOS 15.0, *) {
-            filterButton.configuration = .plain()
-        } else {
-            // Fallback on earlier versions
-        }
-        filterButton.backgroundColor = .clear
-        filterButton.imageView?.clipsToBounds = true
-        view.addSubview(filterButton)
-        filterButton.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top).offset(view.frame.size.height / 15)
-            make.right.equalTo(view.snp.right).inset(20)
-        }
     }
 }
 

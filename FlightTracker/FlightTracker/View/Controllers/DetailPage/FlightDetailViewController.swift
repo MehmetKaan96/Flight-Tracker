@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class FlightDetailViewController: UIViewController {
 
@@ -14,6 +15,10 @@ class FlightDetailViewController: UIViewController {
     var selectedIATA: String?
     var depIATA: String?
     var arrIATA: String?
+    var departureLocation: CLLocationCoordinate2D?
+    var arrivalLocation: CLLocationCoordinate2D?
+    var planeLocation: CLLocationCoordinate2D?
+    var direction: Double?
     
     init(viewModel: FlightDetailsViewModel, selectedIATA: String?, dep_iata: String?, arr_iata: String?) {
         self.viewModel = viewModel
@@ -46,6 +51,8 @@ class FlightDetailViewController: UIViewController {
             make.left.right.bottom.equalToSuperview()
         }
         
+        page.mapView.delegate = self
+        page.mapView.showsUserLocation = true
         page.backButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)
     }
     
@@ -53,54 +60,4 @@ class FlightDetailViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-}
-
-extension FlightDetailViewController: FlightDetailsViewModelDelegate {
-    func fetchFlightData(_ flight: FlightInfo) {
-        DispatchQueue.main.async { [self] in
-            setupAircraftDetails(flight.response)
-            setupAirportDetails(page.departureDetail, flight.response.depGate, "Departure Airport Info", flight.response.depTerminal, flight.response.depActual)
-            setupAirportDetails(page.arrivalDetail, flight.response.arrGate, "Arrival Airport Info", flight.response.arrTerminal, flight.response.arrTime)
-            page.depAndArrCountry.text = "\(flight.response.depCity ?? "N/A") to \(flight.response.arrCity ?? "N/A")"
-        }
-    }
-    
-    private func setupAircraftDetails(_ response: Info) {
-        page.planeModel.text = response.model
-
-        page.aircraftDetail1.setInfoDetail1(with: response.manufacturer)
-        page.aircraftDetail1.setInfoDetail2(with: response.type)
-        page.aircraftDetail1.setInfoDetail3(with: response.engine)
-
-        if let built = response.built, let age = response.age {
-            page.aircraftDetail2.setInfoDetail1(with: "\(built)")
-            page.aircraftDetail2.setInfoDetail2(with: "\(age)")
-            page.aircraftDetail2.setInfoDetail3(with: response.engineCount)
-        } else {
-            page.aircraftDetail2.setInfoDetail1(with: "N/A")
-            page.aircraftDetail2.setInfoDetail2(with: "N/A")
-            page.aircraftDetail2.setInfoDetail3(with: "N/A")
-        }
-
-        page.dateAndIataLabel.text = "\(response.depTime ?? "N/A") \(response.flightIata ?? "N/A")"
-    }
-
-    private func setupAirportDetails(_ airportDetail: AirportDetailView, _ gate: String?, _ info: String, _ terminal: String?, _ time: String?) {
-        airportDetail.setGate(with: gate)
-        airportDetail.setAirport(with: info)
-        airportDetail.setTerminal(with: terminal)
-        airportDetail.setArrivalTime(with: time)
-    }
-    
-    func fetchDepartureAirport(_ airport: Airport) {
-        DispatchQueue.main.async { [self] in
-            page.departureDetail.setAirportName(using: airport.response.first?.name ?? "N/A")
-        }
-    }
-    
-    func fetchArrivalAirport(_ airport: Airport) {
-        DispatchQueue.main.async { [self] in
-            page.arrivalDetail.setAirportName(using: airport.response.first?.name ?? "N/A")
-        }
-    }
 }

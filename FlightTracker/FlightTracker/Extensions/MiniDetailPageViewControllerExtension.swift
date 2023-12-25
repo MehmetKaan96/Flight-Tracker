@@ -97,7 +97,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
         self.page.mapView.setRegion(region, animated: true)
     }
     
-    func regionForAnnotations(_ annotations: [MKAnnotation]) -> MKCoordinateRegion {
+    func regionForAnnotations(_ annotations: [MKAnnotation], focusOnPlane: Bool = false) -> MKCoordinateRegion {
         var region: MKCoordinateRegion = MKCoordinateRegion()
         
         if annotations.count > 0 {
@@ -112,10 +112,14 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
                 bottomRightCoord.longitude = max(bottomRightCoord.longitude, annotation.coordinate.longitude)
             }
             
-            let center = CLLocationCoordinate2D(
+            var center = CLLocationCoordinate2D(
                 latitude: topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5,
                 longitude: topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
             )
+            
+            if focusOnPlane, let planeLocation = annotations.first?.coordinate {
+                center = planeLocation
+            }
             
             let extraSpace = 1.1
             let span = MKCoordinateSpan(

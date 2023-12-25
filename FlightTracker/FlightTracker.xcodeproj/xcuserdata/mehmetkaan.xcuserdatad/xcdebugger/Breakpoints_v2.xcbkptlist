@@ -3,4 +3,132 @@
    uuid = "6BFB5CD1-8802-4408-9EF0-51EBB073AF05"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3B2148E-64D1-4420-B88E-014B7A50B547"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "regionForAnnotations(_:focusOnPlane:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C3B2148E-64D1-4420-B88E-014B7A50B547 - 60783640afc5f01f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlightTracker.FlightDetailViewController.regionForAnnotations(_: Swift.Array&lt;__C.MKAnnotation&gt;, focusOnPlane: Swift.Bool) -&gt; __C.MKCoordinateRegion"
+                  moduleName = "FlightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehmetkaan/Desktop/Flight-Tracker/FlightTracker/FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
+                  offsetFromSymbolStart = "988">
+               </Location>
+               <Location
+                  uuid = "C3B2148E-64D1-4420-B88E-014B7A50B547 - 60783640afc5f01f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlightTracker.FlightDetailViewController.regionForAnnotations(_: Swift.Array&lt;__C.MKAnnotation&gt;, focusOnPlane: Swift.Bool) -&gt; __C.MKCoordinateRegion"
+                  moduleName = "FlightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehmetkaan/Desktop/Flight-Tracker/FlightTracker/FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "200"
+                  endingLineNumber = "200"
+                  offsetFromSymbolStart = "1252">
+               </Location>
+               <Location
+                  uuid = "C3B2148E-64D1-4420-B88E-014B7A50B547 - 60783640afc5f0b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlightTracker.FlightDetailViewController.regionForAnnotations(_: Swift.Array&lt;__C.MKAnnotation&gt;, focusOnPlane: Swift.Bool) -&gt; __C.MKCoordinateRegion"
+                  moduleName = "FlightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehmetkaan/Desktop/Flight-Tracker/FlightTracker/FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "988">
+               </Location>
+               <Location
+                  uuid = "C3B2148E-64D1-4420-B88E-014B7A50B547 - 60783640afc5f0b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlightTracker.FlightDetailViewController.regionForAnnotations(_: Swift.Array&lt;__C.MKAnnotation&gt;, focusOnPlane: Swift.Bool) -&gt; __C.MKCoordinateRegion"
+                  moduleName = "FlightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehmetkaan/Desktop/Flight-Tracker/FlightTracker/FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "1252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85048AF7-E82E-470A-9ED3-FFA9877D92BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "regionForAnnotations(_:focusOnPlane:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "85048AF7-E82E-470A-9ED3-FFA9877D92BE - 60783640afc5f03e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlightTracker.FlightDetailViewController.regionForAnnotations(_: Swift.Array&lt;__C.MKAnnotation&gt;, focusOnPlane: Swift.Bool) -&gt; __C.MKCoordinateRegion"
+                  moduleName = "FlightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehmetkaan/Desktop/Flight-Tracker/FlightTracker/FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "1264">
+               </Location>
+               <Location
+                  uuid = "85048AF7-E82E-470A-9ED3-FFA9877D92BE - 60783640afc5f05d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlightTracker.FlightDetailViewController.regionForAnnotations(_: Swift.Array&lt;__C.MKAnnotation&gt;, focusOnPlane: Swift.Bool) -&gt; __C.MKCoordinateRegion"
+                  moduleName = "FlightTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mehmetkaan/Desktop/Flight-Tracker/FlightTracker/FlightTracker/Extensions/FlightDetailViewcontrollerExtension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "1264">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
