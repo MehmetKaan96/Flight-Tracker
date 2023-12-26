@@ -27,7 +27,7 @@ struct Info: Codable {
     let arrBaggage, arrTime, arrEstimated: String?
     let arrTimeUTC, arrEstimatedUTC: String?
     let arrTimeTs, arrEstimatedTs: Int?
-//    let status: String?
+    let status: String?
     let duration: Int?
     let lat, lng: Double?
     let dir: Double?
@@ -70,7 +70,7 @@ struct Info: Codable {
         case arrEstimatedUTC = "arr_estimated_utc"
         case arrTimeTs = "arr_time_ts"
         case arrEstimatedTs = "arr_estimated_ts"
-//        case statu
+        case status
         case duration
         case lat, lng
         case dir

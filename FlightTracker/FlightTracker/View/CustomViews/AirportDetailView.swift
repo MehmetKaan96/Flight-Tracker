@@ -35,7 +35,7 @@ class AirportDetailView: UIView {
     }
     
     private func createUI() {
-        airportInfoLabel.textColor = .black
+        airportInfoLabel.textColor = .dynamicText
         airportInfoLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         airportInfoLabel.numberOfLines = 0
         addSubview(airportInfoLabel)
@@ -57,7 +57,7 @@ class AirportDetailView: UIView {
         airportName.text = "Los Angeles International Airport"
         airportName.numberOfLines = 0
         airportName.font = .systemFont(ofSize: 16, weight: .regular)
-        airportName.textColor = .black
+        airportName.textColor = .dynamicText
         nameStack.addArrangedSubview(airportNameLabel)
         nameStack.addArrangedSubview(airportName)
         nameStack.snp.makeConstraints { make in
@@ -74,7 +74,7 @@ class AirportDetailView: UIView {
         flightTime.font = .systemFont(ofSize: 18, weight: .medium)
         flightTimeText.font = .systemFont(ofSize: 16, weight: .regular)
         flightTimeText.numberOfLines = 0
-        flightTimeText.textColor = .black
+        flightTimeText.textColor = .dynamicText
         timeStack.addArrangedSubview(flightTime)
         timeStack.addArrangedSubview(flightTimeText)
         timeStack.snp.makeConstraints { make in
@@ -91,7 +91,7 @@ class AirportDetailView: UIView {
         terminalLabel.textColor = .systemGray
         terminalText.font = .systemFont(ofSize: 16, weight: .regular)
         terminalText.numberOfLines = 0
-        terminalText.textColor = .black
+        terminalText.textColor = .dynamicText
         terminalStack.addArrangedSubview(terminalLabel)
         terminalStack.addArrangedSubview(terminalText)
         terminalStack.snp.makeConstraints { make in
@@ -108,7 +108,7 @@ class AirportDetailView: UIView {
         gateLabel.font = .systemFont(ofSize: 18, weight: .medium)
         gateText.font = .systemFont(ofSize: 16, weight: .regular)
         gateText.numberOfLines = 0
-        gateText.textColor = .black
+        gateText.textColor = .dynamicText
         gateStack.addArrangedSubview(gateLabel)
         gateStack.addArrangedSubview(gateText)
         gateStack.snp.makeConstraints { make in

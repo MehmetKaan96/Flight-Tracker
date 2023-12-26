@@ -25,6 +25,11 @@ class DetailPage: UIView, UIScrollViewDelegate {
     let backButton = UIButton()
     let scrollView = UIScrollView()
     let mapView = MKMapView()
+    var favouriteButton: UIButton = UIButton() {
+        didSet {
+            favouriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +63,7 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(scrollView.snp.left).offset(15)
         }
         
+        dateAndIataLabel.text = "lkajdlasdjaldjald"
         dateAndIataLabel.textColor = .systemGray
         dateAndIataLabel.font = .systemFont(ofSize: 13, weight: .regular)
         dateAndIataLabel.textAlignment = .center
@@ -68,8 +74,9 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(backButton.snp.left).offset(30)
         }
         
+        depAndArrCountry.text = "lkajdlkajdlakjd"
         depAndArrCountry.textAlignment = .center
-        depAndArrCountry.textColor = .black
+        depAndArrCountry.textColor = .dynamicText
         depAndArrCountry.numberOfLines = 0
         depAndArrCountry.font = .systemFont(ofSize: 15, weight: .semibold)
         scrollView.addSubview(depAndArrCountry)
@@ -118,9 +125,9 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.centerX.equalTo(scrollView)
         }
         
-        
+        planeModel.text = "lakjdalkdjaldkj"
         planeModel.textAlignment = .left
-        planeModel.textColor = .black
+        planeModel.textColor = .dynamicText
         planeModel.numberOfLines = 0
         planeModel.font = .systemFont(ofSize: 18, weight: .semibold)
         aircraftDetailView.addSubview(planeModel)
@@ -165,6 +172,13 @@ class DetailPage: UIView, UIScrollViewDelegate {
         arrivalDetailView.addSubview(arrivalDetail)
         arrivalDetail.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
+        scrollView.addSubview(favouriteButton)
+        favouriteButton.snp.makeConstraints { make in
+            make.bottom.equalTo(mapView.snp.top).offset(-20)
+            make.right.equalTo(mapView.snp.right).inset(30)
         }
                 
         self.layoutIfNeeded()

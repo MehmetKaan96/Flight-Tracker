@@ -13,8 +13,6 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfo) {
         DispatchQueue.main.async { [self] in
             page.flightIATALabel.text = flight.response.flightIata ?? "N/A"
-            page.arrCity.text = flight.response.arrCity ?? "N/A"
-            page.depCity.text = flight.response.depCity ?? "N/A"
             page.arrCode.text = flight.response.arrIata ?? "N/A"
             page.depCode.text = flight.response.depIata ?? "N/A"
             
@@ -31,36 +29,50 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             
             guard let planeLat = flight.response.lat, let planeLng = flight.response.lng else { return }
             planeLocation = CLLocationCoordinate2D(latitude: planeLat, longitude: planeLng)
+            
+            flightDataFetched = true
+            checkAndShowAnnotations()
         }
     }
     
     func fetchDepartureAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
+            self?.page.depAirport.text = airport.response.first?.name ?? "N/A"
             if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng {
                 self?.departureLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = self?.departureLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                 annotation.title = "Departure"
                 self?.page.mapView.addAnnotation(annotation)
-                self?.showAnnotationsOnMap()
             } else {
                 print("Error: Latitude or longitude is nil.")
             }
+            self?.departureAirportFetched = true
+            self?.checkAndShowAnnotations()
         }
     }
     
     func fetchArrivalAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
+            self?.page.arrAirport.text = airport.response.first?.name ?? "N/A"
             if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng {
                 self?.arrivalLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = self?.arrivalLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                 annotation.title = "Arrival"
                 self?.page.mapView.addAnnotation(annotation)
-                self?.showAnnotationsOnMap()
             } else {
                 print("Error: Latitude or longitude is nil.")
             }
+            self?.arrivalAirportFetched = true
+            self?.checkAndShowAnnotations()
+        }
+    }
+    
+    func checkAndShowAnnotations() {
+        if allDataFetched() {
+            showAnnotationsOnMap()
+            resetFetchFlags()
         }
     }
     
@@ -80,7 +92,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             
             let airplane = FlightAnnotation(coordinate: planeLocation, title: "Airplane", subtitle: nil, direction: direction, flight_iata: "", dep_iata: "", arr_iata: "")
             self.page.mapView.addAnnotation(airplane)
-        
+            
             let departureToAirplaneCoordinates = [departureLocation, planeLocation]
             let departureToAirplanePolyline = MKPolyline(coordinates: departureToAirplaneCoordinates, count: departureToAirplaneCoordinates.count)
             departureToAirplanePolyline.title = "departureToAirplane"
@@ -153,26 +165,26 @@ extension MiniDetailPageViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let flightAnnotation = annotation as? FlightAnnotation else { return nil }
-
+        
         let reuseIdentifier = "flightAnnotationReuseIdentifier"
-
+        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-
+        
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             annotationView?.canShowCallout = true
         } else {
             annotationView?.annotation = annotation
         }
-
+        
         annotationView?.image = UIImage(named: "airplane")
         annotationView?.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-
+        
         let radians = flightAnnotation.direction * .pi / 180.0
         let adjustedRadians = radians - (.pi / 2)
-
+        
         annotationView!.transform = CGAffineTransform(rotationAngle: CGFloat(adjustedRadians))
-
+        
         return annotationView
     }
 }

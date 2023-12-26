@@ -12,6 +12,6 @@ extension Int {
         let hour = self / 60
         let minute = self % 60
         
-        return "\(hour)H:\(minute)M"
+        return "Total \(hour)h \(minute)m flight hour"
     }
 }

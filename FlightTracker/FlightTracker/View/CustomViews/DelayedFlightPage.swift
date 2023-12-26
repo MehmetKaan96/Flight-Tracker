@@ -61,14 +61,14 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UI
 
         let typeLabel = UILabel()
         typeLabel.text = "Flight Type"
-        typeLabel.textColor = .black
+        typeLabel.textColor = .dynamicText
         typeLabel.textAlignment = .center
         typeLabel.numberOfLines = 0
         typeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         typeStack.addArrangedSubview(typeLabel)
         
         typeTextField.inputView = typePicker
-        typeTextField.textColor = .black
+        typeTextField.textColor = .dynamicText
         typeTextField.placeholder = "Flight Type"
         typeTextField.textAlignment = .center
         typeStack.addArrangedSubview(typeTextField)
@@ -79,14 +79,14 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UI
 
         let delayTimeLabel = UILabel()
         delayTimeLabel.text = "Delay Time"
-        delayTimeLabel.textColor = .black
+        delayTimeLabel.textColor = .dynamicText
         delayTimeLabel.textAlignment = .center
         delayTimeLabel.numberOfLines = 0
         delayTimeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         timeStack.addArrangedSubview(delayTimeLabel)
         
         timeTextField.inputView = delayTimePicker
-        timeTextField.textColor = .black
+        timeTextField.textColor = .dynamicText
         timeTextField.placeholder = "Select a time"
         timeTextField.textAlignment = .center
         timeStack.addArrangedSubview(timeTextField)

@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
         viewModel.fetchFlights()
         mapView.mapType = .standard
         mapView.delegate = self
+        mapView.isUserInteractionEnabled = true
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
         view.addSubview(mapView)

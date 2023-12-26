@@ -37,7 +37,7 @@ class OnboardingViewController: UIViewController {
         
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .black
+        titleLabel.textColor = .dynamicText
         titleLabel.font = .boldSystemFont(ofSize: 25)
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -49,7 +49,7 @@ class OnboardingViewController: UIViewController {
         
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
-        descriptionLabel.textColor = .black
+        descriptionLabel.textColor = .dynamicText
         view.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
