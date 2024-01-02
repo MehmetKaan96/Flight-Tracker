@@ -28,7 +28,7 @@ class MiniDetailPage: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setGradientBackground()
+//        setGradientBackground()
     }
     
     required init?(coder: NSCoder) {
@@ -57,8 +57,8 @@ class MiniDetailPage: UIView {
         }
         
         let infoView = UIView()
-        infoView.backgroundColor = .white
         infoView.layer.borderWidth = 1
+        infoView.backgroundColor = .label
         infoView.layer.borderColor = UIColor.black.cgColor
         infoView.layer.cornerRadius = 10
         addSubview(infoView)

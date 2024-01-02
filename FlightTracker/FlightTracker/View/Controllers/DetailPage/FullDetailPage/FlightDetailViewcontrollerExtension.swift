@@ -11,12 +11,15 @@ import MapKit
 extension FlightDetailViewController: FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfo) {
         DispatchQueue.main.async { [self] in
-            setupAircraftDetails(flight.response)
-            setupAirportDetails(page.departureDetail, flight.response.depGate, "Departure Airport Info", flight.response.depTerminal, flight.response.depActual)
-            setupAirportDetails(page.arrivalDetail, flight.response.arrGate, "Arrival Airport Info", flight.response.arrTerminal, flight.response.arrTime)
-            page.depAndArrCountry.text = "\(flight.response.depCity ?? "N/A") to \(flight.response.arrCity ?? "N/A")"
             
-            guard let dir = flight.response.dir, let lat = flight.response.lat, let lng = flight.response.lng else {
+            let flight = flight.response
+            
+            setupAircraftDetails(flight)
+            setupAirportDetails(page.departureDetail, flight.depGate, "Departure Airport Info", flight.depTerminal, flight.depActual)
+            setupAirportDetails(page.arrivalDetail, flight.arrGate, "Arrival Airport Info", flight.arrTerminal, flight.arrTime)
+            page.depAndArrCountry.text = "\(flight.depCity ?? "N/A") to \(flight.arrCity ?? "N/A")"
+            
+            guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else {
                 print("Error: Direction, Latitude, or Longitude is nil")
                 return
             }
@@ -27,10 +30,28 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
             let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: "", dep_iata: "", arr_iata: "")
+            
+            
+            addFlightToRealm(flight: flight)
+            
             page.mapView.addAnnotation(flightAnnotation)
             
             flightDataFetched = true
             checkAndShowAnnotations()
+        }
+        
+        func addFlightToRealm(flight: Info) {
+            flightInfo = RealmFlightInfo()
+            flightInfo.arrCity = flight.arrCity
+            flightInfo.arrEstimated = flight.arrEstimated
+            flightInfo.arrIata = flight.arrIata
+            flightInfo.arrTime = flight.arrTime
+            flightInfo.depCity = flight.depCity
+            flightInfo.depEstimated = flight.depEstimated
+            flightInfo.depIata = flight.depIata
+            flightInfo.depTime = flight.depTime
+            flightInfo.flightIata = flight.flightIata
+            flightInfo.status = flight.status
         }
     }
     

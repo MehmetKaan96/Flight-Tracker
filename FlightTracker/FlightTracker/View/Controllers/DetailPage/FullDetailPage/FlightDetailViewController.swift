@@ -19,6 +19,7 @@ class FlightDetailViewController: UIViewController {
     var arrivalLocation: CLLocationCoordinate2D?
     var planeLocation: CLLocationCoordinate2D?
     var direction: Double?
+    var flightInfo: RealmFlightInfo!
     
     internal var flightDataFetched = false
     internal var departureAirportFetched = false
@@ -65,8 +66,15 @@ class FlightDetailViewController: UIViewController {
     @objc private func favouriteButtonTapped() {
         if page.favouriteButton.isSelected {
             page.favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
+
         } else {
             page.favouriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+            print(flightInfo.status)
+            print(flightInfo.arrCity)
+            print(flightInfo.depCity)
+            print(flightInfo.flightIata)
+            print(flightInfo.arrTime)
+            print(flightInfo.depTime)
         }
         page.favouriteButton.isSelected.toggle()
     }
