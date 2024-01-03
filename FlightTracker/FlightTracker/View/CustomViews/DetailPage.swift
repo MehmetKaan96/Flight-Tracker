@@ -25,9 +25,9 @@ class DetailPage: UIView, UIScrollViewDelegate {
     let backButton = UIButton()
     let scrollView = UIScrollView()
     let mapView = MKMapView()
-    var favouriteButton: UIButton = UIButton() {
+    var favoriteButton: UIButton = UIButton() {
         didSet {
-            favouriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
         }
     }
     
@@ -38,7 +38,8 @@ class DetailPage: UIView, UIScrollViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setGradientBackground()
+//        setGradientBackground()
+        backgroundColor = .dynamicBG
     }
     
     required init?(coder: NSCoder) {
@@ -63,7 +64,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(scrollView.snp.left).offset(15)
         }
         
-        dateAndIataLabel.text = "lkajdlasdjaldjald"
         dateAndIataLabel.textColor = .systemGray
         dateAndIataLabel.font = .systemFont(ofSize: 13, weight: .regular)
         dateAndIataLabel.textAlignment = .center
@@ -74,7 +74,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.left.equalTo(backButton.snp.left).offset(30)
         }
         
-        depAndArrCountry.text = "lkajdlkajdlakjd"
         depAndArrCountry.textAlignment = .center
         depAndArrCountry.textColor = .dynamicText
         depAndArrCountry.numberOfLines = 0
@@ -96,7 +95,7 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.height.equalTo(scrollView.snp.height).multipliedBy(0.4)
         }
         
-        aircraftDetailView.backgroundColor = .white
+        aircraftDetailView.backgroundColor = .dynamicBG
         aircraftDetailView.layer.cornerRadius = 15
         scrollView.addSubview(aircraftDetailView)
         aircraftDetailView.snp.makeConstraints { make in
@@ -105,7 +104,7 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.top.equalTo(mapView.snp.bottom).offset(30)
         }
         
-        departureDetailView.backgroundColor = .white
+        departureDetailView.backgroundColor = .dynamicBG
         departureDetailView.layer.cornerRadius = 15
         scrollView.addSubview(departureDetailView)
         departureDetailView.snp.makeConstraints { make in
@@ -115,7 +114,7 @@ class DetailPage: UIView, UIScrollViewDelegate {
         }
         
         
-        arrivalDetailView.backgroundColor = .white
+        arrivalDetailView.backgroundColor = .dynamicBG
         arrivalDetailView.layer.cornerRadius = 15
         scrollView.addSubview(arrivalDetailView)
         arrivalDetailView.snp.makeConstraints { make in
@@ -125,7 +124,6 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.centerX.equalTo(scrollView)
         }
         
-        planeModel.text = "lakjdalkdjaldkj"
         planeModel.textAlignment = .left
         planeModel.textColor = .dynamicText
         planeModel.numberOfLines = 0
@@ -174,9 +172,9 @@ class DetailPage: UIView, UIScrollViewDelegate {
             make.edges.equalToSuperview()
         }
         
-        favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
-        scrollView.addSubview(favouriteButton)
-        favouriteButton.snp.makeConstraints { make in
+        favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
+        scrollView.addSubview(favoriteButton)
+        favoriteButton.snp.makeConstraints { make in
             make.bottom.equalTo(mapView.snp.top).offset(-20)
             make.right.equalTo(mapView.snp.right).inset(30)
         }

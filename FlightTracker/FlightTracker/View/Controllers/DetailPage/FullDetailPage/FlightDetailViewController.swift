@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import RealmSwift
 
 class FlightDetailViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class FlightDetailViewController: UIViewController {
     var planeLocation: CLLocationCoordinate2D?
     var direction: Double?
     var flightInfo: RealmFlightInfo!
+    var info: Info!
     
     internal var flightDataFetched = false
     internal var departureAirportFetched = false
@@ -60,23 +62,19 @@ class FlightDetailViewController: UIViewController {
         page.mapView.showsUserLocation = true
         page.backButton.addTarget(self, action: #selector(previousPage), for: .touchUpInside)
         
-        page.favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
+        page.favoriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
     }
     
     @objc private func favouriteButtonTapped() {
-        if page.favouriteButton.isSelected {
-            page.favouriteButton.setImage(UIImage(named: "heart"), for: .normal)
+        if page.favoriteButton.isSelected {
+            page.favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
+            deleteFlightFromRealm(flight: info)
 
         } else {
-            page.favouriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
-            print(flightInfo.status)
-            print(flightInfo.arrCity)
-            print(flightInfo.depCity)
-            print(flightInfo.flightIata)
-            print(flightInfo.arrTime)
-            print(flightInfo.depTime)
+            page.favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+            addFlightToRealm(flight: info)
         }
-        page.favouriteButton.isSelected.toggle()
+        page.favoriteButton.isSelected.toggle()
     }
     
     @objc func previousPage() {
@@ -91,6 +89,35 @@ class FlightDetailViewController: UIViewController {
         flightDataFetched = false
         departureAirportFetched = false
         arrivalAirportFetched = false
+    }
+    
+    func addFlightToRealm(flight: Info) {
+        flightInfo = RealmFlightInfo()
+        flightInfo.arrCity = flight.arrCity
+        flightInfo.arrEstimated = flight.arrEstimated
+        flightInfo.arrIata = flight.arrIata
+        flightInfo.arrTime = flight.arrTime
+        flightInfo.depCity = flight.depCity
+        flightInfo.depEstimated = flight.depEstimated
+        flightInfo.depIata = flight.depIata
+        flightInfo.depTime = flight.depTime
+        flightInfo.flightIata = flight.flightIata
+        flightInfo.status = flight.status
+        
+        let realm = try! Realm()
+        
+        try! realm.write({
+            realm.add(flightInfo)
+        })
+    }
+    
+    func deleteFlightFromRealm(flight: Info) {
+        let realm = try! Realm()
+        
+        let selectedFlights = realm.objects(RealmFlightInfo.self)
+        for flights in selectedFlights {
+            print(flight.arrCity)
+        }
     }
     
 }

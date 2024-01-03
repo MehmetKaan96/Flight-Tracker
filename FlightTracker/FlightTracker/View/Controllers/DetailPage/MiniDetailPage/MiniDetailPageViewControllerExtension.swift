@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import MapKit
 
+
 extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfo) {
         DispatchQueue.main.async { [self] in
@@ -29,7 +30,6 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             
             guard let planeLat = flight.response.lat, let planeLng = flight.response.lng else { return }
             planeLocation = CLLocationCoordinate2D(latitude: planeLat, longitude: planeLng)
-            
             flightDataFetched = true
             checkAndShowAnnotations()
         }
@@ -37,42 +37,45 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     
     func fetchDepartureAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
-            self?.page.depAirport.text = airport.response.first?.name ?? "N/A"
-            if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng {
-                self?.departureLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            guard let self = self else { return }
+            if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng, let airportName = airport.response.first?.name {
+                departureLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                departureAirportFetched = true
+                checkAndShowAnnotations()
+                self.page.depAirport.text = airportName
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = self?.departureLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                annotation.coordinate = self.departureLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                 annotation.title = "Departure"
-                self?.page.mapView.addAnnotation(annotation)
+                self.page.mapView.addAnnotation(annotation)
+//                self.showAnnotationsOnMap()
             } else {
                 print("Error: Latitude or longitude is nil.")
             }
-            self?.departureAirportFetched = true
-            self?.checkAndShowAnnotations()
         }
     }
     
     func fetchArrivalAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
-            self?.page.arrAirport.text = airport.response.first?.name ?? "N/A"
-            if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng {
-                self?.arrivalLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            guard let self = self else { return }
+            if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng, let airportName = airport.response.first?.name {
+                arrivalLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                arrivalAirportFetched = true
+                checkAndShowAnnotations()
+                self.page.arrAirport.text = airportName
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = self?.arrivalLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                annotation.coordinate = self.arrivalLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                 annotation.title = "Arrival"
-                self?.page.mapView.addAnnotation(annotation)
+                self.page.mapView.addAnnotation(annotation)
+//                self.showAnnotationsOnMap()
             } else {
                 print("Error: Latitude or longitude is nil.")
             }
-            self?.arrivalAirportFetched = true
-            self?.checkAndShowAnnotations()
         }
     }
     
     func checkAndShowAnnotations() {
-        if allDataFetched() {
+        if flightDataFetched && departureAirportFetched && arrivalAirportFetched {
             showAnnotationsOnMap()
-            resetFetchFlags()
         }
     }
     
@@ -109,7 +112,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
         self.page.mapView.setRegion(region, animated: true)
     }
     
-    func regionForAnnotations(_ annotations: [MKAnnotation], focusOnPlane: Bool = false) -> MKCoordinateRegion {
+    func regionForAnnotations(_ annotations: [MKAnnotation]) -> MKCoordinateRegion {
         var region: MKCoordinateRegion = MKCoordinateRegion()
         
         if annotations.count > 0 {
@@ -124,14 +127,10 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
                 bottomRightCoord.longitude = max(bottomRightCoord.longitude, annotation.coordinate.longitude)
             }
             
-            var center = CLLocationCoordinate2D(
+            let center = CLLocationCoordinate2D(
                 latitude: topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5,
                 longitude: topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
             )
-            
-            if focusOnPlane, let planeLocation = annotations.first?.coordinate {
-                center = planeLocation
-            }
             
             let extraSpace = 1.1
             let span = MKCoordinateSpan(
@@ -187,4 +186,5 @@ extension MiniDetailPageViewController: MKMapViewDelegate {
         
         return annotationView
     }
+    
 }

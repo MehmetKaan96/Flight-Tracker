@@ -22,6 +22,7 @@
 		D32A2C092B1CE0ED00AC323F /* DelayedFlightPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */; };
 		D32A2C0C2B1D15D500AC323F /* DelayedFlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */; };
 		D36EB3A82B3C283E00831500 /* RealmFlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36EB3A72B3C283E00831500 /* RealmFlightInfo.swift */; };
+		D36EB3B92B44846600831500 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36EB3B82B44846600831500 /* FavoriteViewController.swift */; };
 		D37484A72B0B72150005FC8F /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = D37484A62B0B72150005FC8F /* Hero */; };
 		D37484AC2B0B84B50005FC8F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */; };
 		D37484AE2B0B84CD0005FC8F /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37484AD2B0B84CD0005FC8F /* DetailPage.swift */; };
@@ -97,6 +98,7 @@
 		D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightPage.swift; sourceTree = "<group>"; };
 		D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsViewController.swift; sourceTree = "<group>"; };
 		D36EB3A72B3C283E00831500 /* RealmFlightInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFlightInfo.swift; sourceTree = "<group>"; };
+		D36EB3B82B44846600831500 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewController.swift; sourceTree = "<group>"; };
 		D37484AD2B0B84CD0005FC8F /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
 		D384E72D2B0781830013789A /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,14 @@
 			path = DelayedFlightsPage;
 			sourceTree = "<group>";
 		};
+		D36EB3B72B44843200831500 /* FavoriteFlights */ = {
+			isa = PBXGroup;
+			children = (
+				D36EB3B82B44846600831500 /* FavoriteViewController.swift */,
+			);
+			path = FavoriteFlights;
+			sourceTree = "<group>";
+		};
 		D37484A82B0B733B0005FC8F /* RealTimeFlights */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +403,7 @@
 		D384E76A2B0782680013789A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D36EB3B72B44843200831500 /* FavoriteFlights */,
 				D32A2C0A2B1D15C100AC323F /* DelayedFlightsPage */,
 				D37484AA2B0B73740005FC8F /* DetailPage */,
 				D384E7772B0785870013789A /* MainPage */,
@@ -647,6 +658,7 @@
 				D384E7312B0781830013789A /* AppDelegate.swift in Sources */,
 				D3AA312B2B124ABD003E07D4 /* FlightInfo.swift in Sources */,
 				D384E7332B0781830013789A /* SceneDelegate.swift in Sources */,
+				D36EB3B92B44846600831500 /* FavoriteViewController.swift in Sources */,
 				D384E76D2B0782680013789A /* OnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,8 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.setGradientBackground()
+//        view.setGradientBackground()
+        view.backgroundColor = .dynamicBG
     }
     
     private func setupUI() {

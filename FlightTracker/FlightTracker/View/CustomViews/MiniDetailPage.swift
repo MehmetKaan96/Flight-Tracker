@@ -29,6 +29,7 @@ class MiniDetailPage: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 //        setGradientBackground()
+        backgroundColor = .dynamicBG
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +46,6 @@ class MiniDetailPage: UIView {
             make.height.equalTo(snp.height).dividedBy(2.5)
         }
         
-        flightIATALabel.text = "lkajalsda"
         flightIATALabel.textColor = .dynamicText
         flightIATALabel.textAlignment = .center
         flightIATALabel.numberOfLines = 0
@@ -58,7 +58,7 @@ class MiniDetailPage: UIView {
         
         let infoView = UIView()
         infoView.layer.borderWidth = 1
-        infoView.backgroundColor = .label
+//        infoView.backgroundColor =  .dynamicBG
         infoView.layer.borderColor = UIColor.black.cgColor
         infoView.layer.cornerRadius = 10
         addSubview(infoView)
@@ -79,7 +79,6 @@ class MiniDetailPage: UIView {
             make.left.equalToSuperview().offset(50)
         }
         
-        depCode.text = "IST"
         depCode.textColor = .dynamicText
         depCode.textAlignment = .center
         depCode.font = .systemFont(ofSize: 40, weight: .semibold)
@@ -89,7 +88,6 @@ class MiniDetailPage: UIView {
             make.left.equalTo(fromLabel)
         }
         
-        depAirport.text = "Terminal N - Gate D43"
         depAirport.textColor = .dynamicText
         depAirport.font = .systemFont(ofSize: 15, weight: .regular)
         infoView.addSubview(depAirport)
@@ -138,7 +136,6 @@ class MiniDetailPage: UIView {
             make.left.equalTo(arrivalImage.snp.right).offset(10)
         }
         
-        arrCode.text = "LAX"
         arrCode.textAlignment = .center
         arrCode.textColor = .dynamicText
         arrCode.font = .systemFont(ofSize: 40, weight: .semibold)
@@ -148,7 +145,6 @@ class MiniDetailPage: UIView {
             make.top.equalTo(toLabel.snp.bottom).offset(10)
         }
         
-        arrAirport.text = "Los Angeles"
         arrAirport.textAlignment = .center
         arrAirport.textColor = .dynamicText
         arrAirport.font = .systemFont(ofSize: 15, weight: .regular)
@@ -158,7 +154,6 @@ class MiniDetailPage: UIView {
             make.left.equalTo(arrCode)
         }
                 
-        departureTime.text = "slşdfkslkfj"
         departureTime.textColor = .dynamicText
         departureTime.font = .systemFont(ofSize: 25, weight: .semibold)
         departureTime.textAlignment = .center
@@ -169,7 +164,6 @@ class MiniDetailPage: UIView {
             make.centerY.equalTo(depCode)
         }
         
-        flightDuration.text = "Total 6h 2m flight"
         flightDuration.font = .systemFont(ofSize: 15, weight: .regular)
         flightDuration.textAlignment = .center
         flightDuration.textColor = .dynamicText
@@ -181,7 +175,6 @@ class MiniDetailPage: UIView {
             make.centerY.equalTo(horizonralLineView)
         }
         
-        arrivalTime.text = "slşdfkslkfj"
         arrivalTime.font = .systemFont(ofSize: 25, weight: .semibold)
         arrivalTime.textAlignment = .center
         arrivalTime.textColor = .dynamicText

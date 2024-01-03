@@ -37,7 +37,8 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UI
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setGradientBackground()
+//        setGradientBackground()
+        backgroundColor = .dynamicBG
     }
     
     required init?(coder: NSCoder) {

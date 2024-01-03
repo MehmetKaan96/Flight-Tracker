@@ -37,7 +37,7 @@ class MainListViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.setGradientBackground()
+        view.backgroundColor = .dynamicBG
     }
     
     private func setupUI() {

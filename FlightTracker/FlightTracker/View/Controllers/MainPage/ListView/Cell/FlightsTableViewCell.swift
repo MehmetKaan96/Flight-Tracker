@@ -42,7 +42,7 @@ class FlightsTableViewCell: UITableViewCell {
     
     private func createUI() {
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .dynamicBG
         
         let backgroundImage = UIImageView()
         backgroundImage.image = UIImage(named: "ticketbg")

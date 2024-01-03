@@ -38,7 +38,7 @@ class DelayedFlightsTableViewCell: UITableViewCell {
     
     private func createUI() {
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .dynamicBG
         
         let backgroundImage = UIImageView()
         backgroundImage.image = UIImage(named: "ticketbg")
@@ -49,7 +49,6 @@ class DelayedFlightsTableViewCell: UITableViewCell {
             make.top.bottom.left.right.equalToSuperview().inset(10)
         }
         
-        depIATA.text = "aşdlkşaldk"
         depIATA.numberOfLines = 0
         depIATA.textAlignment = .center
         depIATA.textColor = .dynamicText
@@ -60,7 +59,6 @@ class DelayedFlightsTableViewCell: UITableViewCell {
             make.left.equalTo(backgroundImage.snp.left).inset(20)
         }
         
-        arrIATA.text = "lkamlakdflsf"
         arrIATA.numberOfLines = 0
         arrIATA.textAlignment = .center
         arrIATA.textColor = .dynamicText
@@ -71,7 +69,6 @@ class DelayedFlightsTableViewCell: UITableViewCell {
             make.right.equalToSuperview().inset(20)
         }
         
-        statusLabel.text = "alşsdkşakdaş"
         statusLabel.numberOfLines = 0
         statusLabel.textAlignment = .center
         statusLabel.textColor = .dynamicText

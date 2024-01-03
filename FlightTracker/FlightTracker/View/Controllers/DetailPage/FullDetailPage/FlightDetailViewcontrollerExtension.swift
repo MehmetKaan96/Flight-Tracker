@@ -11,9 +11,7 @@ import MapKit
 extension FlightDetailViewController: FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfo) {
         DispatchQueue.main.async { [self] in
-            
             let flight = flight.response
-            
             setupAircraftDetails(flight)
             setupAirportDetails(page.departureDetail, flight.depGate, "Departure Airport Info", flight.depTerminal, flight.depActual)
             setupAirportDetails(page.arrivalDetail, flight.arrGate, "Arrival Airport Info", flight.arrTerminal, flight.arrTime)
@@ -30,28 +28,10 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
             let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: "", dep_iata: "", arr_iata: "")
-            
-            
-            addFlightToRealm(flight: flight)
-            
             page.mapView.addAnnotation(flightAnnotation)
-            
-            flightDataFetched = true
-            checkAndShowAnnotations()
-        }
-        
-        func addFlightToRealm(flight: Info) {
-            flightInfo = RealmFlightInfo()
-            flightInfo.arrCity = flight.arrCity
-            flightInfo.arrEstimated = flight.arrEstimated
-            flightInfo.arrIata = flight.arrIata
-            flightInfo.arrTime = flight.arrTime
-            flightInfo.depCity = flight.depCity
-            flightInfo.depEstimated = flight.depEstimated
-            flightInfo.depIata = flight.depIata
-            flightInfo.depTime = flight.depTime
-            flightInfo.flightIata = flight.flightIata
-            flightInfo.status = flight.status
+            info = flight
+            addFlightToRealm(flight: info)
+            showAnnotationsOnMap()
         }
     }
     
@@ -94,8 +74,7 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
             } else {
                 print("Error: Latitude or Longitude is nil for departure")
             }
-            departureAirportFetched = true
-            checkAndShowAnnotations()
+            showAnnotationsOnMap()
         }
     }
     
@@ -111,15 +90,7 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
             } else {
                 print("Error: Latitude or Longitude is nil for arrival")
             }
-            arrivalAirportFetched = true
-            checkAndShowAnnotations()
-        }
-    }
-    
-    func checkAndShowAnnotations() {
-        if allDataFetched() {
             showAnnotationsOnMap()
-            resetFetchFlags()
         }
     }
 }
