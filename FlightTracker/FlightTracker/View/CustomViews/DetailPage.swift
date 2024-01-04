@@ -96,6 +96,8 @@ class DetailPage: UIView, UIScrollViewDelegate {
         }
         
         aircraftDetailView.backgroundColor = .dynamicBG
+        aircraftDetailView.layer.borderWidth = 1
+        aircraftDetailView.layer.borderColor = UIColor.theme.cgColor
         aircraftDetailView.layer.cornerRadius = 15
         scrollView.addSubview(aircraftDetailView)
         aircraftDetailView.snp.makeConstraints { make in

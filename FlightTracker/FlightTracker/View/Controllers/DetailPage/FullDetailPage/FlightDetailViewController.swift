@@ -52,6 +52,7 @@ class FlightDetailViewController: UIViewController {
         viewModel.fetchDepartureAirport(with: depiata)
         viewModel.fetchArrivalAirport(with: arriata)
         self.isHeroEnabled = true
+        
         view.addSubview(page)
         page.snp.makeConstraints { make in
             make.top.equalTo(view.snp.top)
