@@ -9,19 +9,20 @@ import UIKit
 import SnapKit
 
 class CustomTabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        adjustTabBarLayout()
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustTabBarLayout()
+        self.tabBar.layer.cornerRadius = 10
+    }
     
     private func setupTabs() {
-//        self.tabBar.setGradientBackground()
+        //        self.tabBar.setGradientBackground()
         self.tabBar.backgroundColor = .dynamicBG
         self.tabBar.unselectedItemTintColor = .dynamicText
         
@@ -42,12 +43,12 @@ class CustomTabBarController: UITabBarController {
         let nav = UINavigationController(rootViewController: vc)
         nav.tabBarItem.title = title
         nav.tabBarItem.image = image
-       return nav
+        return nav
     }
-//    
-//    private func adjustTabBarLayout() {
-//            // Adjust the tab bar layout here
-//            self.tabBar.frame.size.height = 60
-//            self.tabBar.frame.origin.y = self.view.frame.height - 60
-//    }
+    
+    private func adjustTabBarLayout() {
+        // Adjust the tab bar layout here
+        self.tabBar.frame.size.height = 60
+        self.tabBar.frame.origin.y = self.view.frame.height - 60
+    }
 }
