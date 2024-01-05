@@ -110,6 +110,7 @@ extension FlightDetailViewController: MKMapViewDelegate {
             arrivalAnnotation.title = "Arrival"
             annotations.append(arrivalAnnotation)
             
+            
             let airplane = FlightAnnotation(coordinate: planeLocation, title: "Airplane", subtitle: nil, direction: direction, flight_iata: "", dep_iata: "", arr_iata: "")
             self.page.mapView.addAnnotation(airplane)
             
@@ -123,9 +124,9 @@ extension FlightDetailViewController: MKMapViewDelegate {
             airplaneToArrivalPolyline.title = "airplaneToArrival"
             self.page.mapView.addOverlay(airplaneToArrivalPolyline)
             
-            let region = regionForAnnotations(annotations, focusOnPlane: true)
-            self.page.mapView.setRegion(region, animated: true)
         }
+        let region = regionForAnnotations(annotations)
+        self.page.mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -176,7 +177,7 @@ extension FlightDetailViewController: MKMapViewDelegate {
         page.mapView.addOverlay(polyline)
     }
     
-    func regionForAnnotations(_ annotations: [MKAnnotation], focusOnPlane: Bool = false) -> MKCoordinateRegion {
+    func regionForAnnotations(_ annotations: [MKAnnotation]) -> MKCoordinateRegion {
         var region: MKCoordinateRegion = MKCoordinateRegion()
         
         if annotations.count > 0 {
@@ -191,14 +192,10 @@ extension FlightDetailViewController: MKMapViewDelegate {
                 bottomRightCoord.longitude = max(bottomRightCoord.longitude, annotation.coordinate.longitude)
             }
             
-            var center = CLLocationCoordinate2D(
+            let center = CLLocationCoordinate2D(
                 latitude: topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5,
                 longitude: topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5
             )
-            
-            if focusOnPlane, let planeLocation = annotations.first?.coordinate {
-                center = planeLocation
-            }
             
             let extraSpace = 1.1
             let span = MKCoordinateSpan(
@@ -206,11 +203,7 @@ extension FlightDetailViewController: MKMapViewDelegate {
                 longitudeDelta: abs(bottomRightCoord.longitude - topLeftCoord.longitude) * extraSpace
             )
             
-            // Ensure that the span is not too large
-            let maxSpan: CLLocationDegrees = 180.0
-            let adjustedSpan = min(span.latitudeDelta, maxSpan) // Adjusted for both latitude and longitude
-            
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: adjustedSpan, longitudeDelta: adjustedSpan))
+            region = MKCoordinateRegion(center: center, span: span)
         }
         
         return region

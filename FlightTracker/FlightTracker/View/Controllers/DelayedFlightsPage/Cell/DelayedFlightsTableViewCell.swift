@@ -41,7 +41,11 @@ class DelayedFlightsTableViewCell: UITableViewCell {
         self.backgroundColor = .dynamicBG
         
         let backgroundImage = UIImageView()
-        backgroundImage.image = UIImage(named: "ticketbg")
+        backgroundImage.image = UIImage(named: "ticketbg")?.withTintColor(.dynamicBG)
+        backgroundImage.layer.shadowColor = UIColor.dynamicText.cgColor
+        backgroundImage.layer.shadowOpacity = 0.7
+        backgroundImage.layer.shadowRadius = 0.9
+        backgroundImage.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
         backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.clipsToBounds = true
         contentView.addSubview(backgroundImage)

@@ -74,7 +74,7 @@ extension MainViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
         guard let flightAnnotation = annotation as? FlightAnnotation else { return }
         
-        let detailViewController = MiniDetailPageViewController(viewModel: FlightDetailsViewModel(service: APIManager()), selectedIATA: flightAnnotation.flightIATA, dep_iata: flightAnnotation.depIATA, arr_iata: flightAnnotation.arrIATA)
+        let detailViewController = MiniDetailPageViewController(viewModel: FlightDetailsViewModel(service: APIManager()), selectedIATA: flightAnnotation.flight_iata, dep_iata: flightAnnotation.dep_iata, arr_iata: flightAnnotation.arr_iata)
         
         if let sheet = detailViewController.sheetPresentationController {
             sheet.detents = [.medium(), .large()]

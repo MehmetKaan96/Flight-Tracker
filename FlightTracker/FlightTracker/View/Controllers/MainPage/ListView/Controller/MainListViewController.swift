@@ -47,7 +47,7 @@ class MainListViewController: UIViewController {
         searchBar.placeholder = "Search Flight"
         searchBar.barTintColor = .clear
         searchBar.backgroundImage = UIImage()
-        searchBar.searchTextField.backgroundColor = .clear
+        searchBar.searchTextField.backgroundColor = .systemGray5
         searchBar.searchTextField.borderStyle = .roundedRect
         searchBar.searchTextField.layer.borderWidth = 0.5
         searchBar.searchTextField.layer.cornerRadius = 10

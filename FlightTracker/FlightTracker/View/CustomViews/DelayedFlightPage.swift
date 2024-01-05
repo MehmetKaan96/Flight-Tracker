@@ -8,15 +8,6 @@
 import UIKit
 
 class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DelayedFlightsTableViewCell.identifier, for: indexPath) as! DelayedFlightsTableViewCell
-        
-        return cell
-    }
     
     let filterButton = UIButton()
     let selectionStack = UIStackView()
@@ -95,7 +86,7 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UI
         searchBar.placeholder = "Search Flight"
         searchBar.barTintColor = .clear
         searchBar.backgroundImage = UIImage()
-        searchBar.searchTextField.backgroundColor = .clear
+        searchBar.searchTextField.backgroundColor = .systemGray5
         searchBar.searchTextField.borderStyle = .roundedRect
         searchBar.searchTextField.layer.borderWidth = 0.5
         searchBar.searchTextField.layer.cornerRadius = 10
@@ -105,14 +96,7 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UI
             make.top.equalTo(selectionStack.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(10)
         }
-        
-        filterButton.setImage(UIImage(named: "filter"), for: .normal)
-        searchBar.addSubview(filterButton)
-        filterButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalTo(searchBar.snp.right).inset(20)
-        }
-        
+                
         delayedTableView.backgroundColor = .clear
         delayedTableView.register(DelayedFlightsTableViewCell.self, forCellReuseIdentifier: DelayedFlightsTableViewCell.identifier)
         delayedTableView.dataSource = self
@@ -125,6 +109,16 @@ class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UI
             make.bottom.equalTo(snp.bottom)
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DelayedFlightsTableViewCell.identifier, for: indexPath) as! DelayedFlightsTableViewCell
+        
+        return cell
     }
     
 }
