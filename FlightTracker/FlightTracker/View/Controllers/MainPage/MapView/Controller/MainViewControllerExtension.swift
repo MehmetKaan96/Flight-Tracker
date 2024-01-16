@@ -42,8 +42,8 @@ extension MainViewController: RealtimeFlightsViewModelDelegate {
         for flight in flightsArray {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                guard let dir = flight.dir else { return }
-                let coordinate = CLLocationCoordinate2D(latitude: flight.lat, longitude: flight.lng)
+                guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { return }
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { return }
                 let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: iata, dep_iata: dep, arr_iata: arr)
                 self.mapView.addAnnotation(flightAnnotation)
@@ -84,5 +84,31 @@ extension MainViewController: MKMapViewDelegate {
             self.present(detailViewController, animated: true)
         }
         
+    }
+    
+    internal func filterFlightsAndShowOnMap() {
+        let filteredFlights = flightsArray.filter { flight in
+            
+            if filterView.scheduledButton.isSelected && flight.status == "scheduled" {
+                return true
+            } else if filterView.enRouteButton.isSelected && flight.status == "en-route" {
+                return true
+            } else if filterView.landedButton.isSelected && flight.status == "landed" {
+                return true
+            }
+            return false
+        }
+        mapView.removeAnnotations(mapView.annotations)
+
+        for flight in filteredFlights {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { return }
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { return }
+                let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: iata, dep_iata: dep, arr_iata: arr)
+                self.mapView.addAnnotation(flightAnnotation)
+            }
+        }
     }
 }

@@ -14,8 +14,8 @@ struct FlightsResponse: Codable {
 struct Flights: Codable {
     let reg_number: String?
     let flag: String?
-    let lat: Double
-    let lng: Double
+    let lat: Double?
+    let lng: Double?
     let alt: Int?
     let dir: Double?
     let speed: Int?
