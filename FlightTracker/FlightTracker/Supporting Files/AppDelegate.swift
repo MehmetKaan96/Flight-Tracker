@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController.viewControllers = [customTabBarController]
         
         window?.rootViewController = navController
+//        window?.rootViewController = FavoriteViewController()
         window?.makeKeyAndVisible()
     }
     

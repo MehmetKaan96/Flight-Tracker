@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
         filterButton.addTarget(self, action: #selector(openFilterMenu), for: .touchUpInside)
         
         
-        filterView.backgroundColor = .white
+        filterView.backgroundColor = .white.withAlphaComponent(0.4)
         filterView.layer.cornerRadius = 12
         filterView.alpha = 0
         view.addSubview(filterView)

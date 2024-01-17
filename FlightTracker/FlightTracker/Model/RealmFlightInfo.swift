@@ -20,3 +20,5 @@ class RealmFlightInfo: Object {
     @Persisted var depCity: String?
     @Persisted var arrCity: String?
 }
+
+var favFlights: [RealmFlightInfo] = []
