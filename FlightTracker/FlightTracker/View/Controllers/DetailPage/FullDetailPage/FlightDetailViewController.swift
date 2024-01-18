@@ -70,7 +70,6 @@ class FlightDetailViewController: UIViewController {
         if page.favoriteButton.isSelected {
             page.favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
             deleteFlightFromRealm(flight: info)
-
         } else {
             page.favoriteButton.setImage(UIImage(named: "heart.fill"), for: .normal)
             addFlightToRealm(flight: info)
@@ -119,6 +118,6 @@ class FlightDetailViewController: UIViewController {
         for flights in selectedFlights {
             print(flight.arrCity)
         }
+        
     }
-    
 }

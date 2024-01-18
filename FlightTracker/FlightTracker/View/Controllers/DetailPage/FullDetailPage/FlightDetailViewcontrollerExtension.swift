@@ -30,7 +30,7 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
             let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: "", dep_iata: "", arr_iata: "")
             page.mapView.addAnnotation(flightAnnotation)
             info = flight
-            addFlightToRealm(flight: info)
+//            addFlightToRealm(flight: info)
             showAnnotationsOnMap()
         }
     }

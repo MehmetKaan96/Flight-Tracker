@@ -7,15 +7,19 @@
 
 import UIKit
 import RealmSwift
+import BackgroundTasks
 
 class FavoriteViewController: UIViewController {
     
     let favoritesTableView = UITableView()
+    private var updateTimer: Timer?
+    var currentStatus = "en-route"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         createUI()
+        fetchFavFlights()
     }
     
     private func createUI() {
@@ -31,21 +35,29 @@ class FavoriteViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        fetchFavFlights()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTableview), for: .valueChanged)
+        favoritesTableView.refreshControl = refreshControl
     }
     
     private func fetchFavFlights() {
-        let realm = try! Realm()
-        try! realm.write {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let realm = try! Realm()
             let flights = realm.objects(RealmFlightInfo.self)
             favFlights.removeAll()
             
             for flight in flights {
                 favFlights.append(flight)
             }
+            self.favoritesTableView.reloadData()
         }
+    }
+    
+    @objc func refreshTableview(refreshController: UIRefreshControl) {
+        fetchFavFlights()
         
-        favoritesTableView.reloadData()
+        refreshController.endRefreshing()
     }
 }
 
@@ -61,15 +73,16 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        130
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
-            
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, completionHandler in
+            guard let self = self else { return }
             let flight = favFlights[indexPath.row]
-            
-            self.swipeDeleteAction(flight: flight, indexPath: indexPath)
+            favFlights.remove(at: indexPath.row)
+            self.favoritesTableView.deleteRows(at: [indexPath], with: .fade)
+            self.swipeDeleteAction(flight: flight)
             
             completionHandler(true)
         }
@@ -80,8 +93,15 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         return swipeConfiguration
     }
     
-    fileprivate func swipeDeleteAction(flight: RealmFlightInfo, indexPath: IndexPath) {
-        
+    fileprivate func swipeDeleteAction(flight: RealmFlightInfo) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(flight)
+            }
+        } catch {
+            print("Realm error: \(error)")
+        }
     }
     
 }

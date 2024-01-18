@@ -7,6 +7,7 @@
 
 import UIKit
 import Hero
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController.viewControllers = [customTabBarController]
         
         window?.rootViewController = navController
-//        window?.rootViewController = FavoriteViewController()
+        //        window?.rootViewController = FavoriteViewController()
         window?.makeKeyAndVisible()
     }
     
