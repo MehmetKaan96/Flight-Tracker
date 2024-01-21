@@ -9,7 +9,7 @@ import UIKit
 
 final class MainListViewController: UIViewController {
     private let searchBar = UISearchBar()
-    private let viewModel: RealtimeFlightsViewModel
+    let viewModel: RealtimeFlightsViewModel
     
     let tableView = UITableView()
     

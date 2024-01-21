@@ -12,7 +12,7 @@ import CoreLocation
 
 final class MainViewController: UIViewController {
     
-    private let viewModel: RealtimeFlightsViewModel
+    let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
     private let filterButton = UIButton()
     let filterView = FilterView()
