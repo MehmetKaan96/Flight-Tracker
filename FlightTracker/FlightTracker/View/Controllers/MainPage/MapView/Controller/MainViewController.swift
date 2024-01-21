@@ -10,11 +10,11 @@ import SnapKit
 import MapKit
 import CoreLocation
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
-    let viewModel: RealtimeFlightsViewModel
+    private let viewModel: RealtimeFlightsViewModel
     lazy var mapView = MKMapView()
-    let filterButton = UIButton()
+    private let filterButton = UIButton()
     let filterView = FilterView()
     
     init(viewModel: RealtimeFlightsViewModel) {

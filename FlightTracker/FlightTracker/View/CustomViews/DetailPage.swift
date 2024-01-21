@@ -11,7 +11,7 @@ import SnapKit
 import Hero
 import MapKit
 
-class DetailPage: UIView, UIScrollViewDelegate {
+final class DetailPage: UIView, UIScrollViewDelegate {
     let dateAndIataLabel = UILabel()
     let depAndArrCountry = UILabel()
     let arrivalDetailView = UIView()

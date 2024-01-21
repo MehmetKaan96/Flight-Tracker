@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 import SnapKit
 
-class CustomAircraftInfoView: UIView {
-    let infoText1 = UILabel()
-    let infoText2 = UILabel()
-    let infoText3 = UILabel()
+final class CustomAircraftInfoView: UIView {
+    private let infoText1 = UILabel()
+    private let infoText2 = UILabel()
+    private let infoText3 = UILabel()
     
-    let info1Detail = UILabel()
-    let info2Detail = UILabel()
-    let info3Detail = UILabel()
+    private let info1Detail = UILabel()
+    private let info2Detail = UILabel()
+    private let info3Detail = UILabel()
     
     init(info1: String, info2: String, info3: String) {
         self.infoText1.text = info1
@@ -69,7 +69,7 @@ class CustomAircraftInfoView: UIView {
         infoText3.textColor = .systemGray
         infoText3.font = .systemFont(ofSize: 17, weight: .medium)
         labelStack.addArrangedSubview(infoText3)
-
+        
         
         
         let detailStack = UIStackView()

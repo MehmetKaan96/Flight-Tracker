@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 import SnapKit
 
-class AirportDetailView: UIView {
+final class AirportDetailView: UIView {
     
-    let airportName = UILabel()
-    let flightTimeText = UILabel()
-    let terminalText = UILabel()
-    let gateText = UILabel()
-    let airportInfoLabel = UILabel()
-    let arrivalTime = UILabel()
+   private let airportName = UILabel()
+   private let flightTimeText = UILabel()
+   private let terminalText = UILabel()
+   private let gateText = UILabel()
+   private let airportInfoLabel = UILabel()
+   private let arrivalTime = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

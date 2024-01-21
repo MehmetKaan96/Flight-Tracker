@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import MapKit
 
-class MiniDetailPage: UIView {
+final class MiniDetailPage: UIView {
     let flightIATALabel = UILabel()
     var mapView = MKMapView()
     let depCode = UILabel()

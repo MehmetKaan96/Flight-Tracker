@@ -11,16 +11,16 @@ final class FavoritesTableViewCell: UITableViewCell {
     
     static let identifier = "FavoritesTableViewCell"
     
-    var statusImageView = UIImageView()
-    var statusLabel = UILabel()
-    var flightIata = UILabel()
-    var depIata = UILabel()
-    var arrIata = UILabel()
-    var flightCity = UILabel()
-    var depTime = UILabel()
-    var arrTime = UILabel()
-    var estimatedDepTime = UILabel()
-    var estimatedArrTime = UILabel()
+   private var statusImageView = UIImageView()
+   private var statusLabel = UILabel()
+   private var flightIata = UILabel()
+   private var depIata = UILabel()
+   private var arrIata = UILabel()
+   private var flightCity = UILabel()
+   private var depTime = UILabel()
+   private var arrTime = UILabel()
+   private var estimatedDepTime = UILabel()
+   private var estimatedArrTime = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -142,7 +142,7 @@ final class FavoritesTableViewCell: UITableViewCell {
         
     }
     
-    internal func configure(with info: RealmFlightInfo) {
+    func configure(with info: RealmFlightInfo) {
         guard let arrIata = info.arrIata, let arrTime = info.arrTime, let depIata = info.depIata, let depTime = info.depTime, let arrEstimated = info.arrEstimated, let depEstimated = info.depEstimated, let depCity = info.depCity, let arrCity = info.arrCity, let flightIata = info.flightIata, let status = info.status else { return }
         self.arrIata.text = arrIata
         self.arrTime.text = arrTime.formatDateTimeToTime()

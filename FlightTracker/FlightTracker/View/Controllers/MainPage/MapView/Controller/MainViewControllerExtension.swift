@@ -86,7 +86,7 @@ extension MainViewController: MKMapViewDelegate {
         
     }
     
-    internal func filterFlightsAndShowOnMap() {
+    func filterFlightsAndShowOnMap() {
         let filteredFlights = flightsArray.filter { flight in
             
             if filterView.scheduledButton.isSelected && flight.status == "scheduled" {

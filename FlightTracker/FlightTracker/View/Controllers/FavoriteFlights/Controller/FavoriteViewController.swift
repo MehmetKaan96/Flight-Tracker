@@ -8,11 +8,11 @@
 import UIKit
 import RealmSwift
 
-class FavoriteViewController: UIViewController {
+final class FavoriteViewController: UIViewController {
     
-    let favoritesTableView = UITableView()
+    private let favoritesTableView = UITableView()
     private var updateTimer: Timer?
-    var currentStatus = "en-route"
+    private var currentStatus = "en-route"
     
     override func viewDidLoad() {
         super.viewDidLoad()

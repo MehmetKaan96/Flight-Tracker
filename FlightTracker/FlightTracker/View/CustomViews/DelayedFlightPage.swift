@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let filterButton = UIButton()
     let selectionStack = UIStackView()

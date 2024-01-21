@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DelayedFlightsViewController: UIViewController {
-    let viewModel: DelayedFlightViewModel
+final class DelayedFlightsViewController: UIViewController {
     
+    let viewModel: DelayedFlightViewModel
     let page = DelayedFlightPage()
-    let animatedView = UIView()
+    private let animatedView = UIView()
     
     init(viewModel: DelayedFlightViewModel) {
         self.viewModel = viewModel

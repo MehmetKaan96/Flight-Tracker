@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 final class FilterView: UIView {
-    let scheduledButton = UIButton()
-    let enRouteButton = UIButton()
-    let landedButton = UIButton()
+   let scheduledButton = UIButton()
+   let enRouteButton = UIButton()
+   let landedButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

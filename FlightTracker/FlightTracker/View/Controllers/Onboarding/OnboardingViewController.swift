@@ -9,13 +9,13 @@ import UIKit
 import Lottie
 import SnapKit
 
-class OnboardingViewController: UIViewController {
-    let titleLabel = UILabel()
-    var onboardingAnimation =  LottieAnimationView()
-    let descriptionLabel = UILabel()
-    let pageControl = UIPageControl()
-    let nextButton = UIButton()
-    var currentPage = 0
+final class OnboardingViewController: UIViewController {
+    private let titleLabel = UILabel()
+    private let onboardingAnimation =  LottieAnimationView()
+    private let descriptionLabel = UILabel()
+    private let pageControl = UIPageControl()
+    private let nextButton = UIButton()
+    private var currentPage = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

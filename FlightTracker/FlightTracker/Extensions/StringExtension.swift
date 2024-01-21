@@ -9,18 +9,21 @@ import Foundation
 
 extension String {
     func formatDateTimeToTime() -> String? {
+        let inputDateFormat = "yyyy-MM-dd HH:mm"
+        let outputDateFormat = "h:mm a"
+        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-
+        dateFormatter.dateFormat = inputDateFormat
+        
         if let date = dateFormatter.date(from: self) {
-            let userCalendar = Calendar.current
-            dateFormatter.dateFormat = "h:mm a"
-            dateFormatter.timeZone = TimeZone.current
-
-            let formattedTime = dateFormatter.string(from: date)
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = outputDateFormat
+            outputFormatter.timeZone = TimeZone.current
+            
+            let formattedTime = outputFormatter.string(from: date)
             return formattedTime
         }
-
+        
         return nil
     }
 }

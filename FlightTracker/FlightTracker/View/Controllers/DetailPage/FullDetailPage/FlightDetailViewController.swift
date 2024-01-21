@@ -9,23 +9,23 @@ import UIKit
 import MapKit
 import RealmSwift
 
-class FlightDetailViewController: UIViewController {
+final class FlightDetailViewController: UIViewController {
     
-    let viewModel: FlightDetailsViewModel
+    private let viewModel: FlightDetailsViewModel
     let page = DetailPage()
-    var selectedIATA: String?
-    var depIATA: String?
-    var arrIATA: String?
+    private var selectedIATA: String?
+    private var depIATA: String?
+    private var arrIATA: String?
     var departureLocation: CLLocationCoordinate2D?
     var arrivalLocation: CLLocationCoordinate2D?
     var planeLocation: CLLocationCoordinate2D?
     var direction: Double?
-    var flightInfo: RealmFlightInfo!
+    private var flightInfo: RealmFlightInfo!
     var info: Info!
     
-    internal var flightDataFetched = false
-    internal var departureAirportFetched = false
-    internal var arrivalAirportFetched = false
+    private var flightDataFetched = false
+    private var departureAirportFetched = false
+    private var arrivalAirportFetched = false
     
     init(viewModel: FlightDetailsViewModel, selectedIATA: String?, dep_iata: String?, arr_iata: String?) {
         self.viewModel = viewModel

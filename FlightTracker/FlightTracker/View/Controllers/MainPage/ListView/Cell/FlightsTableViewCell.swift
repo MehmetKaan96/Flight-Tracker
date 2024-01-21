@@ -9,14 +9,14 @@ import UIKit
 import SnapKit
 import Hero
 
-class FlightsTableViewCell: UITableViewCell {
+final class FlightsTableViewCell: UITableViewCell {
     
     static let identifier = "FlightsTableViewCell"
-    var depIATA = UILabel()
-    var arrIATA = UILabel()
-    var aircraftICAO = UILabel()
-    var flightIATA = UILabel()
-    var statusLabel = UILabel()
+    private let depIATA = UILabel()
+    private let arrIATA = UILabel()
+    private let aircraftICAO = UILabel()
+    private let flightIATA = UILabel()
+    private let statusLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

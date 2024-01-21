@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FlightDetailsViewModel {
+final class FlightDetailsViewModel {
     private let flightService: FlightDataService
     
     var delegate: FlightDetailsViewModelDelegate?

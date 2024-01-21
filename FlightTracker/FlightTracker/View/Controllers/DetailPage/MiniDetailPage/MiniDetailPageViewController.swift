@@ -9,20 +9,20 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class MiniDetailPageViewController: UIViewController {
-    let viewModel: FlightDetailsViewModel
-    var selectedIATA: String?
-    var depIATA: String?
-    var arrIATA: String?
+final class MiniDetailPageViewController: UIViewController {
+    private let viewModel: FlightDetailsViewModel
+    private var selectedIATA: String?
+    private var depIATA: String?
+    private var arrIATA: String?
     var departureLocation: CLLocationCoordinate2D?
     var arrivalLocation: CLLocationCoordinate2D?
     let page = MiniDetailPage()
     var planeLocation: CLLocationCoordinate2D?
     var direction: Double?
     
-    internal var flightDataFetched = false
-    internal var departureAirportFetched = false
-    internal var arrivalAirportFetched = false
+    var flightDataFetched = false
+    var departureAirportFetched = false
+    var arrivalAirportFetched = false
     
     init(viewModel: FlightDetailsViewModel, selectedIATA: String?, dep_iata: String?, arr_iata: String?) {
         self.viewModel = viewModel
