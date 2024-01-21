@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 // MARK: - DelayInfo
 struct DelayInfo: Codable {
     let response: [DelayResponse]
@@ -34,5 +32,3 @@ struct DelayResponse: Codable {
     }
 }
 
-var delayedFlightArray: [DelayResponse] = []
-var filteredDelayArray: [DelayResponse] = []

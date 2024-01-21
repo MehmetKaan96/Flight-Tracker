@@ -12,15 +12,21 @@ final class DelayedFlightViewModel {
     
     var delegate: DelayedFlightViewModelDelegate?
     
+    var delayedFlightArray: [DelayResponse] = []
+    var filteredDelayArray: [DelayResponse] = []
+    
     init(flightService: FlightDataService) {
         self.flightService = flightService
     }
     
     func getDelayedFlights(with type: String, and minutes: String) {
-        flightService.fetchDelayedFlights(with: type, and: minutes) { result in
+        flightService.fetchDelayedFlights(with: type, and: minutes) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let delayedInfo):
-                self.delegate?.getDelayedFlights(delayedInfo.response)
+                self.delayedFlightArray = delayedInfo.response
+                self.delegate?.getDelayedFlights(self.delayedFlightArray)
             case .failure(let error):
                 print(error.localizedDescription)
             }

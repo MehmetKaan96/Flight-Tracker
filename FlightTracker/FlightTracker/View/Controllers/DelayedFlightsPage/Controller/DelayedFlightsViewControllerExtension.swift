@@ -54,7 +54,7 @@ extension DelayedFlightsViewController: UITextFieldDelegate {
 
 extension DelayedFlightsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredDelayArray = delayedFlightArray.filter { flights in
+        viewModel.filteredDelayArray = viewModel.delayedFlightArray.filter { flights in
             let searchableFields = [
                 flights.status,
                 flights.flightIata,
@@ -67,7 +67,7 @@ extension DelayedFlightsViewController: UISearchBarDelegate {
         }
         
         if searchText.isEmpty {
-            filteredDelayArray.removeAll(keepingCapacity: false)
+            viewModel.filteredDelayArray.removeAll(keepingCapacity: false)
             searchBar.resignFirstResponder()
         }
         
@@ -78,7 +78,7 @@ extension DelayedFlightsViewController: UISearchBarDelegate {
 extension DelayedFlightsViewController: DelayedFlightViewModelDelegate {
     func getDelayedFlights(_ flights: [DelayResponse]) {
         DispatchQueue.main.async { [self] in
-            delayedFlightArray = flights.compactMap { flight in
+            viewModel.delayedFlightArray = flights.compactMap { flight in
                 guard flight.aircraftIcao != nil,
                       flight.airlineIata != nil,
                       flight.arrDelayed != nil,
@@ -99,16 +99,16 @@ extension DelayedFlightsViewController: DelayedFlightViewModelDelegate {
 
 extension DelayedFlightsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredDelayArray.isEmpty ? delayedFlightArray.count : filteredDelayArray.count
+        return viewModel.filteredDelayArray.isEmpty ? viewModel.delayedFlightArray.count : viewModel.filteredDelayArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DelayedFlightsTableViewCell.identifier, for: indexPath) as! DelayedFlightsTableViewCell
         
-        if filteredDelayArray.isEmpty {
-            cell.configure(flight: delayedFlightArray[indexPath.row])
+        if viewModel.filteredDelayArray.isEmpty {
+            cell.configure(flight: viewModel.delayedFlightArray[indexPath.row])
         } else {
-            cell.configure(flight: filteredDelayArray[indexPath.row])
+            cell.configure(flight: viewModel.filteredDelayArray[indexPath.row])
         }
         
         return cell
@@ -118,7 +118,7 @@ extension DelayedFlightsViewController: UITableViewDelegate, UITableViewDataSour
         let service: FlightDataService = APIManager()
         let viewModel = FlightDetailsViewModel(service: service)
         
-        let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: delayedFlightArray[indexPath.row].flightIata, dep_iata: delayedFlightArray[indexPath.row].depIata, arr_iata: delayedFlightArray[indexPath.row].arrIata)
+        let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: self.viewModel.delayedFlightArray[indexPath.row].flightIata, dep_iata: self.viewModel.delayedFlightArray[indexPath.row].depIata, arr_iata: self.viewModel.delayedFlightArray[indexPath.row].arrIata)
         present(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)

@@ -10,8 +10,9 @@ import MapKit
 
 extension MainViewController: RealtimeFlightsViewModelDelegate {
     func fetchFlights(_ flights: [Flights]) {
-        DispatchQueue.main.async {
-            flightsArray = flights.compactMap { flight in
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            viewModel.flightsArray = flights.compactMap { flight in
                 guard flight.aircraft_icao != nil,
                       flight.dir != nil,
                       flight.arr_iata != nil,
@@ -39,7 +40,7 @@ extension MainViewController: RealtimeFlightsViewModelDelegate {
     }
     
     func showFlightsOnMap() {
-        for flight in flightsArray {
+        for flight in viewModel.flightsArray {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { return }
@@ -87,7 +88,7 @@ extension MainViewController: MKMapViewDelegate {
     }
     
     func filterFlightsAndShowOnMap() {
-        let filteredFlights = flightsArray.filter { flight in
+        let filteredFlights = viewModel.flightsArray.filter { flight in
             
             if filterView.scheduledButton.isSelected && flight.status == "scheduled" {
                 return true

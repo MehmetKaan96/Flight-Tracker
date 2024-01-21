@@ -33,5 +33,3 @@ struct Flights: Codable {
     let status: String?
 }
 
-var flightsArray: [Flights] = []
-var filteredArray: [Flights] = []

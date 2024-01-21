@@ -12,15 +12,15 @@ import UIKit
 //MARK: - TableView Protocols
 extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredArray.isEmpty ? flightsArray.count : filteredArray.count
+        return viewModel.filteredArray.isEmpty ? viewModel.flightsArray.count : viewModel.filteredArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FlightsTableViewCell.identifier, for: indexPath) as! FlightsTableViewCell
-        if filteredArray.isEmpty {
-            cell.configure(flight: flightsArray[indexPath.row])
+        if viewModel.filteredArray.isEmpty {
+            cell.configure(flight: viewModel.flightsArray[indexPath.row])
         } else {
-            cell.configure(flight: filteredArray[indexPath.row])
+            cell.configure(flight: viewModel.filteredArray[indexPath.row])
         }
         return cell
     }
@@ -29,14 +29,14 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         let service: FlightDataService = APIManager()
         let viewModel = FlightDetailsViewModel(service: service)
         
-        if filteredArray.isEmpty {
-            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: flightsArray[indexPath.row].flight_iata, dep_iata: flightsArray[indexPath.row].dep_iata, arr_iata: flightsArray[indexPath.row].arr_iata)
+        if self.viewModel.filteredArray.isEmpty {
+            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: self.viewModel.flightsArray[indexPath.row].flight_iata, dep_iata: self.viewModel.flightsArray[indexPath.row].dep_iata, arr_iata: self.viewModel.flightsArray[indexPath.row].arr_iata)
             vc.hero.isEnabled = true
             vc.heroModalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         } else {
-            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: filteredArray[indexPath.row].flight_iata, dep_iata: filteredArray[indexPath.row].dep_iata, arr_iata: filteredArray[indexPath.row].arr_iata)
+            let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: self.viewModel.filteredArray[indexPath.row].flight_iata, dep_iata: self.viewModel.filteredArray[indexPath.row].dep_iata, arr_iata: self.viewModel.filteredArray[indexPath.row].arr_iata)
             vc.hero.isEnabled = true
             vc.heroModalAnimationType = .selectBy(presenting: .pageIn(direction: .right), dismissing: .pageOut(direction: .left))
             vc.modalPresentationStyle = .fullScreen
@@ -54,7 +54,7 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MainListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredArray = flightsArray.filter { flights in
+        viewModel.filteredArray = viewModel.flightsArray.filter { flights in
             let searchableFields = [
                 flights.status,
                 flights.flight_iata,
@@ -67,7 +67,7 @@ extension MainListViewController: UISearchBarDelegate {
         }
         
         if searchText.isEmpty {
-            filteredArray.removeAll(keepingCapacity: false)
+            viewModel.filteredArray.removeAll(keepingCapacity: false)
             searchBar.resignFirstResponder()
         }
         

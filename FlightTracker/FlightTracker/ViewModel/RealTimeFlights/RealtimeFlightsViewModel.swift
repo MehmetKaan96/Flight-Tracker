@@ -11,6 +11,8 @@ final class RealtimeFlightsViewModel {
     private let flightsService: FlightDataService
     
     var delegate: RealtimeFlightsViewModelDelegate?
+    var flightsArray: [Flights] = []
+    var filteredArray: [Flights] = []
     
     init(flightsService: FlightDataService) {
         self.flightsService = flightsService
@@ -20,7 +22,8 @@ final class RealtimeFlightsViewModel {
         flightsService.fetchFlights { result in
             switch result {
             case .success(let result):
-                self.delegate?.fetchFlights(result)
+                self.flightsArray = result
+                self.delegate?.fetchFlights(self.flightsArray)
             case .failure(let error):
                 print(error.localizedDescription)
             }
