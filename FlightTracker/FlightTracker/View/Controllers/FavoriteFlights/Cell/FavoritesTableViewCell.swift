@@ -100,6 +100,7 @@ final class FavoritesTableViewCell: UITableViewCell {
             make.left.equalTo(depImage.snp.right).offset(3)
         }
         
+        depTime.textColor = .dynamicText
         depTime.textAlignment = .center
         depTime.numberOfLines = 0
         depTime.font = .systemFont(ofSize: 12, weight: .regular)
@@ -129,6 +130,7 @@ final class FavoritesTableViewCell: UITableViewCell {
             make.left.equalTo(arrImage.snp.right).offset(3)
         }
         
+        arrTime.textColor = .dynamicText
         arrTime.textAlignment = .center
         arrTime.numberOfLines = 0
         arrTime.font = .systemFont(ofSize: 12, weight: .regular)

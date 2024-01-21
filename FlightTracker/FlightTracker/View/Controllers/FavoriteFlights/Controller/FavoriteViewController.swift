@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import BackgroundTasks
 
 class FavoriteViewController: UIViewController {
     
@@ -20,7 +19,13 @@ class FavoriteViewController: UIViewController {
         // Do any additional setup after loading the view.
         createUI()
         fetchFavFlights()
+        
+        startUpdateTimer()
     }
+    
+    func startUpdateTimer() {
+            updateTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(fetchFlightStatusInBackground), userInfo: nil, repeats: true)
+        }
     
     private func createUI() {
         navigationItem.title = "Favorites"
@@ -36,7 +41,7 @@ class FavoriteViewController: UIViewController {
         }
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshTableview), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         favoritesTableView.refreshControl = refreshControl
     }
     
@@ -54,11 +59,29 @@ class FavoriteViewController: UIViewController {
         }
     }
     
-    @objc func refreshTableview(refreshController: UIRefreshControl) {
+    @objc func refreshTableView(refreshControl: UIRefreshControl) {
         fetchFavFlights()
-        
-        refreshController.endRefreshing()
+        refreshControl.endRefreshing()
     }
+    
+    @objc private func fetchFlightStatusInBackground() {
+            let config = URLSessionConfiguration.background(withIdentifier: "com.example.myApp.background")
+            let backgroundSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+
+            for flight in favFlights {
+                guard let url = URL(string: "https://airlabs.co/api/v9/flight?flight_iata=\(flight.flightIata!)&api_key=\(Constants.API_KEY)") else {
+                    print("Invalid URL")
+                    return
+                }
+
+                // URLRequest oluştur
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+
+                let task = backgroundSession.dataTask(with: request)
+                task.resume()
+            }
+        }
 }
 
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
@@ -103,5 +126,37 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
             print("Realm error: \(error)")
         }
     }
+}
+
+extension FavoriteViewController: URLSessionDelegate, URLSessionDataDelegate {
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+            do {
+                let flightInfo = try JSONDecoder().decode(FlightInfo.self, from: data)
+                handleFlightInfo(flightInfo)
+            } catch {
+                print("Error decoding data: \(error.localizedDescription)")
+            }
+        }
+
+        func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+            if let error = error {
+                print("Error fetching data: \(error.localizedDescription)")
+            }
+        }
     
+    func handleFlightInfo(_ flightInfo: FlightInfo) {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+
+                if let status = flightInfo.response.status {
+                    if self.currentStatus == status {
+                        NotificationCenter.default.post(name: NSNotification.Name("statusChanged"), object: flightInfo)
+                    } else {
+                        NotificationCenter.default.post(name: NSNotification.Name("statusChanged"), object: flightInfo)
+                    }
+                }
+
+                // Diğer işlemleri buraya ekleyebilirsiniz
+            }
+        }
 }

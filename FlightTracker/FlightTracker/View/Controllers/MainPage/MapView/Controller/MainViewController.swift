@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
+        navigationController?.isNavigationBarHidden = true
         viewModel.fetchFlights()
         mapView.mapType = .standard
         mapView.delegate = self

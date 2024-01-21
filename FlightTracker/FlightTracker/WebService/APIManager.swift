@@ -58,6 +58,8 @@ class APIManager: FlightDataService {
         }).resume()
     }
     
+    
+    
     func getAirport(with code: String, completion: @escaping (Result<Airport, NetworkError>) -> Void) {
         guard let url = URL(string: Constants.baseURL + Constants.airports + "\(code)&api_key=" + Constants.API_KEY) else {
             completion(.failure(.invalidURL))
