@@ -4,11 +4,11 @@ In this project I focused on a Flight Tracker App using Airlabs API.
 ##Features
 1. Real-time Flight Data
 2. Search option
+3. Delayed Flights
+4. Favourite Flights
 
 ## Features Will Be Added
-1. Delayed Flights
-2. Favourite Flights
-3. Notification
+1. Notification
 
 ## App Contains
 1. Protocol Oriented Programming
@@ -23,8 +23,8 @@ In this project I focused on a Flight Tracker App using Airlabs API.
 1. Snapkit
 2. Hero
 3. Lottie
-4. Realm(Planned for save data)
-5. Alamofire (planned for using instead URLSession)
+4. Realm
+
 
 | Map View | List View | Serch Screen | Detail Screen | Detail Screen 2|
 | -------- | --------- | ------------ | ------------- | ---------------|
