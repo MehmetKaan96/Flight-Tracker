@@ -7,12 +7,10 @@
 
 import Foundation
 
-// MARK: - FlightInfo
 struct FlightInfo: Codable {
     let response: Info
 }
 
-// MARK: - Response
 struct Info: Codable {
     let aircraftIcao: String?
     let age, built: Int?

@@ -19,13 +19,8 @@ final class FavoriteViewController: UIViewController {
         // Do any additional setup after loading the view.
         createUI()
         fetchFavFlights()
-        
-        startUpdateTimer()
+        addNotificationCenter()
     }
-    
-    func startUpdateTimer() {
-            updateTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(fetchFlightStatusInBackground), userInfo: nil, repeats: true)
-        }
     
     private func createUI() {
         navigationItem.title = "Favorites"
@@ -45,6 +40,10 @@ final class FavoriteViewController: UIViewController {
         favoritesTableView.refreshControl = refreshControl
     }
     
+    private func addNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name("appEnterBackground"), object: nil)
+    }
+    
     private func fetchFavFlights() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -59,29 +58,26 @@ final class FavoriteViewController: UIViewController {
         }
     }
     
-    @objc func refreshTableView(refreshControl: UIRefreshControl) {
+    @objc private func fetchData() {
+        for flight in favFlights {
+            guard let iata = flight.flightIata else { return }
+            
+            APIManager().fetchFlightInfo(with: iata) { result in
+                switch result {
+                case .success(let flight):
+                    print(flight.response.status)
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    @objc private func refreshTableView(refreshControl: UIRefreshControl) {
         fetchFavFlights()
         refreshControl.endRefreshing()
     }
     
-    @objc private func fetchFlightStatusInBackground() {
-            let config = URLSessionConfiguration.background(withIdentifier: "com.example.myApp.background")
-            let backgroundSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-
-            for flight in favFlights {
-                guard let url = URL(string: "https://airlabs.co/api/v9/flight?flight_iata=\(flight.flightIata!)&api_key=\(Constants.API_KEY)") else {
-                    print("Invalid URL")
-                    return
-                }
-
-                // URLRequest oluştur
-                var request = URLRequest(url: url)
-                request.httpMethod = "GET"
-
-                let task = backgroundSession.dataTask(with: request)
-                task.resume()
-            }
-        }
 }
 
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
@@ -128,35 +124,3 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension FavoriteViewController: URLSessionDelegate, URLSessionDataDelegate {
-    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-            do {
-                let flightInfo = try JSONDecoder().decode(FlightInfo.self, from: data)
-                handleFlightInfo(flightInfo)
-            } catch {
-                print("Error decoding data: \(error.localizedDescription)")
-            }
-        }
-
-        func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-            if let error = error {
-                print("Error fetching data: \(error.localizedDescription)")
-            }
-        }
-    
-    func handleFlightInfo(_ flightInfo: FlightInfo) {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-
-                if let status = flightInfo.response.status {
-                    if self.currentStatus == status {
-                        NotificationCenter.default.post(name: NSNotification.Name("statusChanged"), object: flightInfo)
-                    } else {
-                        NotificationCenter.default.post(name: NSNotification.Name("statusChanged"), object: flightInfo)
-                    }
-                }
-
-                // Diğer işlemleri buraya ekleyebilirsiniz
-            }
-        }
-}

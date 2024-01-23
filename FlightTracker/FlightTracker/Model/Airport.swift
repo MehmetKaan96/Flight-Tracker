@@ -7,12 +7,10 @@
 
 import Foundation
 
-// MARK: - Airport
 struct Airport: Codable {
     let response: [Response]
 }
 
-// MARK: - Response
 struct Response: Codable {
     let name, iataCode, icaoCode: String
     let lat, lng: Double

@@ -7,21 +7,38 @@
 
 import UIKit
 import Hero
+import BackgroundTasks
 import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
+    static let bgAppTaskId = "com.mehmetkaan.FlightTracker"
     var settings: UNNotificationSettings?
     private let center = UNUserNotificationCenter.current()
+    var bgTask: BGAppRefreshTask?
+    lazy var bgExpirationHandler = {{
+        if let task = self.bgTask {
+            task.setTaskCompleted(success: true)
+        }
+    }}()
+    
+    private var timer: Timer?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showNotification), name: NSNotification.Name("statusChanged"), object: nil)
+        BGTaskScheduler.shared.register(
+                    forTaskWithIdentifier: AppDelegate.bgAppTaskId,
+                    using: DispatchQueue.global()
+                ) { task in
+                    self.handleAppRefresh(task: task as! BGAppRefreshTask)
+                }
         
+        self.scheduleAppRefresh()
+
         if !hasSeenOnboarding {
             showOnboarding()
         } else {
@@ -41,12 +58,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-            if let favoriteViewController = window?.rootViewController as? FavoriteViewController {
-                favoriteViewController.startUpdateTimer()
-            }
+    func scheduleAppRefresh() {
+        do {
+            let request = BGAppRefreshTaskRequest(identifier: AppDelegate.bgAppTaskId)
+            request.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 1)
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Unable to schedule app refresh: \(error)")
         }
+    }
     
+    func handleAppRefresh(task: BGAppRefreshTask) {
+            scheduleAppRefresh() // Schedule the next refresh task
+
+            // Fetch data in the background
+            fetchDataInBackground()
+
+            // Mark the task as completed
+            task.setTaskCompleted(success: true)
+        }
+
+        func fetchDataInBackground() {
+            NotificationCenter.default.post(name: NSNotification.Name("appEnterBackground"), object: nil)
+        }
+        
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
@@ -54,28 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         (UNNotificationPresentationOptions) -> Void
     ) {
         print("Received local notification \(notification)")
-    }
-    
-    @objc private func showNotification(notification: Notification) {
-        if let flight = notification.object as? FlightInfo {
-            self.showLocalNotification(flight: flight)
-        }
-    }
-    
-    private func showLocalNotification(flight: FlightInfo) {
-        let content = UNMutableNotificationContent()
-        guard let iata = flight.response.flightIata, let status = flight.response.status else { return }
-        content.title = "Your flight's status changed!"
-        content.body = "Your flight \(iata)'s status has changed to \(status)"
-        content.sound = UNNotificationSound.default
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 10,
-            repeats: false)
-        let request = UNNotificationRequest(
-            identifier: "MyNotification",
-            content: content,
-            trigger: trigger)
-        center.add(request)
     }
     
     func showOnboarding() {
@@ -92,9 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         navController.viewControllers = [customTabBarController]
         
         window?.rootViewController = navController
-        //        window?.rootViewController = FavoriteViewController()
         window?.makeKeyAndVisible()
     }
-    
 }
 

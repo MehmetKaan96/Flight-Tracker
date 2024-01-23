@@ -113,6 +113,7 @@ final class DetailPage: UIView, UIScrollViewDelegate {
             make.top.equalTo(aircraftDetailView.snp.bottom).offset(20)
             make.width.equalTo(scrollView.snp.width).inset(10)
             make.centerX.equalTo(scrollView)
+            make.height.equalTo(scrollView.snp.height).dividedBy(2)
         }
         
         
@@ -124,6 +125,7 @@ final class DetailPage: UIView, UIScrollViewDelegate {
             make.width.equalTo(scrollView.snp.width).inset(10)
             make.bottom.equalTo(scrollView.snp.bottom).inset(20)
             make.centerX.equalTo(scrollView)
+            make.height.equalTo(scrollView.snp.height).dividedBy(2)
         }
         
         planeModel.textAlignment = .left
@@ -135,13 +137,14 @@ final class DetailPage: UIView, UIScrollViewDelegate {
             make.top.equalTo(aircraftDetailView.snp.top)
             make.left.equalTo(aircraftDetailView.snp.left).offset(15)
             make.right.equalTo(aircraftDetailView.snp.right)
+            make.height.equalTo(snp.height).dividedBy(10)
         }
         
         let planeImage = UIImageView()
         planeImage.isHeroEnabled = true
         planeImage.heroID = "plane"
         planeImage.image = UIImage(named: "plane")
-        planeImage.contentMode = .scaleAspectFill
+        planeImage.contentMode = .scaleAspectFit
         planeImage.clipsToBounds = true
         aircraftDetailView.addSubview(planeImage)
         planeImage.snp.makeConstraints { make in

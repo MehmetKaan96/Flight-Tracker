@@ -35,14 +35,34 @@ final class AirportDetailView: UIView {
     }
     
     private func createUI() {
+        
+        let airportLabel = UILabel()
+        airportLabel.textColor = .dynamicText
+        airportLabel.font = .systemFont(ofSize: 23, weight: .bold)
+        airportLabel.text = "Detailed Info"
+        addSubview(airportLabel)
+        airportLabel.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview().offset(10)
+            make.height.equalTo(snp.height).dividedBy(10)
+        }
+        
+        let airportSubLabel = UILabel()
+        airportSubLabel.text = "Name, Time, Terminal, Gate"
+        airportSubLabel.textColor = .systemGray2
+        addSubview(airportSubLabel)
+        airportSubLabel.snp.makeConstraints { make in
+            make.top.equalTo(airportLabel.snp.bottom).offset(5)
+            make.left.right.equalToSuperview().offset(10)
+            make.height.equalTo(snp.height).dividedBy(10)
+        }
+        
         airportInfoLabel.textColor = .dynamicText
         airportInfoLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         airportInfoLabel.numberOfLines = 0
         addSubview(airportInfoLabel)
         airportInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(snp.right).offset(-100)
+            make.top.equalTo(airportSubLabel.snp.bottom).offset(10)
+            make.left.right.equalToSuperview().inset(10)
             make.height.equalTo(snp.height).dividedBy(10)
         }
         
@@ -54,7 +74,6 @@ final class AirportDetailView: UIView {
         airportNameLabel.text = "Airport Name:"
         airportNameLabel.textColor = .systemGray
         airportNameLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        airportName.text = "Los Angeles International Airport"
         airportName.numberOfLines = 0
         airportName.font = .systemFont(ofSize: 16, weight: .regular)
         airportName.textColor = .dynamicText
@@ -117,6 +136,7 @@ final class AirportDetailView: UIView {
         
         let fullInfoStack = UIStackView()
         fullInfoStack.axis = .vertical
+        fullInfoStack.spacing = 15
         addSubview(fullInfoStack)
         fullInfoStack.addArrangedSubview(nameStack)
         fullInfoStack.addArrangedSubview(timeStack)
@@ -124,8 +144,7 @@ final class AirportDetailView: UIView {
         fullInfoStack.addArrangedSubview(gateStack)
         fullInfoStack.snp.makeConstraints { make in
             make.top.equalTo(airportInfoLabel.snp.bottom).offset(10)
-            make.left.equalTo(snp.left).offset(20)
-            make.right.equalTo(snp.right).inset(20)
+            make.left.right.bottom.equalToSuperview().inset(10)
         }
         
     }
@@ -135,7 +154,7 @@ final class AirportDetailView: UIView {
     }
     
     func setDepartTime(with time: String?) {
-        flightTimeText.text = time ?? "N/A"
+        flightTimeText.text = time?.formatDateTimeToTime() ?? "N/A"
     }
     
     func setTerminal(with terminal: String?) {

@@ -7,11 +7,10 @@
 
 import Foundation
 
-// MARK: - DelayInfo
 struct DelayInfo: Codable {
     let response: [DelayResponse]
 }
-// MARK: - Response
+
 struct DelayResponse: Codable {
     let airlineIata, flightIata: String?
     let depIata: String?
