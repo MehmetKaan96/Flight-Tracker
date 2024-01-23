@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct FlightInfo: Codable {
-    let response: Info
+struct FlightInfoResponse: Codable {
+    let response: FlightInfo
 }
 
-struct Info: Codable {
+struct FlightInfo: Codable {
     let aircraftIcao: String?
     let age, built: Int?
     let engine, engineCount, model, manufacturer: String?

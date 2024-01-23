@@ -34,7 +34,7 @@ class APIManager: FlightDataService {
     }
     
     
-    func fetchFlightInfo(with flightCode: String, completion: @escaping (Result<FlightInfo, NetworkError>) -> Void) {
+    func fetchFlightInfo(with flightCode: String, completion: @escaping (Result<FlightInfoResponse, NetworkError>) -> Void) {
         guard let url = URL(string: Constants.baseURL + Constants.flightInfo + "\(flightCode)&api_key=" + Constants.API_KEY ) else { completion(.failure(.invalidURL))
         return
         }
@@ -50,7 +50,7 @@ class APIManager: FlightDataService {
             }
             
             do {
-                let decodedData = try JSONDecoder().decode(FlightInfo.self, from: data)
+                let decodedData = try JSONDecoder().decode(FlightInfoResponse.self, from: data)
                 completion(.success(decodedData))
             } catch {
                 completion(.failure(.decodeError))

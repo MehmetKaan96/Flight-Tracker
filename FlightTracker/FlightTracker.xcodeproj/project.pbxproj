@@ -53,7 +53,7 @@
 		D39C4E432B0A890A00DD998E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39C4E422B0A890A00DD998E /* UIViewExtension.swift */; };
 		D39C4E452B0A916400DD998E /* MainListViewCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39C4E442B0A916400DD998E /* MainListViewCExtension.swift */; };
 		D3AA31292B123EA9003E07D4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA31282B123EA9003E07D4 /* CustomTabBarController.swift */; };
-		D3AA312B2B124ABD003E07D4 /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA312A2B124ABD003E07D4 /* FlightInfo.swift */; };
+		D3AA312B2B124ABD003E07D4 /* FlightInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA312A2B124ABD003E07D4 /* FlightInfoResponse.swift */; };
 		D3AA312D2B1251F7003E07D4 /* FlightDetailsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA312C2B1251F7003E07D4 /* FlightDetailsViewModelDelegate.swift */; };
 		D3AA312F2B12523C003E07D4 /* FlightDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA312E2B12523C003E07D4 /* FlightDetailsViewModel.swift */; };
 		D3AA31312B1289E5003E07D4 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AA31302B1289E5003E07D4 /* Airport.swift */; };
@@ -132,7 +132,7 @@
 		D39C4E422B0A890A00DD998E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D39C4E442B0A916400DD998E /* MainListViewCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewCExtension.swift; sourceTree = "<group>"; };
 		D3AA31282B123EA9003E07D4 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		D3AA312A2B124ABD003E07D4 /* FlightInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
+		D3AA312A2B124ABD003E07D4 /* FlightInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightInfoResponse.swift; sourceTree = "<group>"; };
 		D3AA312C2B1251F7003E07D4 /* FlightDetailsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewModelDelegate.swift; sourceTree = "<group>"; };
 		D3AA312E2B12523C003E07D4 /* FlightDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewModel.swift; sourceTree = "<group>"; };
 		D3AA31302B1289E5003E07D4 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 				D384E76F2B0782700013789A /* OnboardingModel.swift */,
 				D384E7782B078D4F0013789A /* RealTimeFlightData.swift */,
 				D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */,
-				D3AA312A2B124ABD003E07D4 /* FlightInfo.swift */,
+				D3AA312A2B124ABD003E07D4 /* FlightInfoResponse.swift */,
 				D3AA31302B1289E5003E07D4 /* Airport.swift */,
 				D328CE052B2DDBAD00A96594 /* DelayInfo.swift */,
 				D36EB3A72B3C283E00831500 /* RealmFlightInfo.swift */,
@@ -680,7 +680,7 @@
 				D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */,
 				D34493612B566E0F009D3940 /* FilterView.swift in Sources */,
 				D384E7312B0781830013789A /* AppDelegate.swift in Sources */,
-				D3AA312B2B124ABD003E07D4 /* FlightInfo.swift in Sources */,
+				D3AA312B2B124ABD003E07D4 /* FlightInfoResponse.swift in Sources */,
 				D384E7332B0781830013789A /* SceneDelegate.swift in Sources */,
 				D36EB3B92B44846600831500 /* FavoriteViewController.swift in Sources */,
 				D384E76D2B0782680013789A /* OnboardingViewController.swift in Sources */,

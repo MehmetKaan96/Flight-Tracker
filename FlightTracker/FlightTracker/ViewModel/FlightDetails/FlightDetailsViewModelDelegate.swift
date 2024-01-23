@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FlightDetailsViewModelDelegate {
-    func fetchFlightData(_ flight: FlightInfo)
+    func fetchFlightData(_ flight: FlightInfoResponse)
     func fetchDepartureAirport(_ airport: Airport)
     func fetchArrivalAirport(_ airport: Airport)
 }

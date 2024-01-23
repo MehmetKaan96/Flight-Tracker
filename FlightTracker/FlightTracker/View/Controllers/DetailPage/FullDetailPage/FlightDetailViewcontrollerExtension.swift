@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 extension FlightDetailViewController: FlightDetailsViewModelDelegate {
-    func fetchFlightData(_ flight: FlightInfo) {
+    func fetchFlightData(_ flight: FlightInfoResponse) {
         DispatchQueue.main.async { [self] in
             let flight = flight.response
             setupAircraftDetails(flight)
@@ -35,7 +35,7 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
         }
     }
     
-    private func setupAircraftDetails(_ response: Info) {
+    private func setupAircraftDetails(_ response: FlightInfo) {
         page.planeModel.text = response.model
         
         page.aircraftDetail1.setInfoDetail1(with: response.manufacturer)

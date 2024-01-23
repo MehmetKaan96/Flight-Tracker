@@ -21,7 +21,7 @@ final class FlightDetailViewController: UIViewController {
     var planeLocation: CLLocationCoordinate2D?
     var direction: Double?
     private var flightInfo: RealmFlightInfo!
-    var info: Info!
+    var info: FlightInfo!
     
     private var flightDataFetched = false
     private var departureAirportFetched = false
@@ -91,7 +91,7 @@ final class FlightDetailViewController: UIViewController {
         arrivalAirportFetched = false
     }
     
-    func addFlightToRealm(flight: Info) {
+    func addFlightToRealm(flight: FlightInfo) {
         flightInfo = RealmFlightInfo()
         flightInfo.arrCity = flight.arrCity
         flightInfo.arrEstimated = flight.arrEstimated
@@ -111,7 +111,7 @@ final class FlightDetailViewController: UIViewController {
         })
     }
     
-    func deleteFlightFromRealm(flight: Info) {
+    func deleteFlightFromRealm(flight: FlightInfo) {
         let realm = try! Realm()
         
         let selectedFlights = realm.objects(RealmFlightInfo.self)

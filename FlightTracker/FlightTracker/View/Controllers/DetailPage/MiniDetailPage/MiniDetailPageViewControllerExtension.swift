@@ -11,7 +11,7 @@ import MapKit
 
 
 extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
-    func fetchFlightData(_ flight: FlightInfo) {
+    func fetchFlightData(_ flight: FlightInfoResponse) {
         DispatchQueue.main.async { [self] in
             page.flightIATALabel.text = flight.response.flightIata ?? "N/A"
             page.arrCode.text = flight.response.arrIata ?? "N/A"
