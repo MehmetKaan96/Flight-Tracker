@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmFlightInfo: Object {
+class RealmFlightInfo: Object, Codable {
     @Persisted var flightIata: String?
     @Persisted var depIata: String?
     @Persisted var depTime: String?

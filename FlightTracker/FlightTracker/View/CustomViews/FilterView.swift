@@ -28,6 +28,7 @@ final class FilterView: UIView {
         scheduledStack.distribution = .fill
         scheduledStack.spacing = 5
 
+        scheduledButton.tag = 1
         scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
 
         let scheduledLabel = UILabel()
@@ -51,6 +52,7 @@ final class FilterView: UIView {
         enrouteStack.axis = .horizontal
         enrouteStack.distribution = .fill
         enrouteStack.spacing = 5
+        enRouteButton.tag = 2
         enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
         
         let enrouteLabel = UILabel()
@@ -74,6 +76,7 @@ final class FilterView: UIView {
         landedStack.axis = .horizontal
         landedStack.distribution = .fill
         landedStack.spacing = 5
+        landedButton.tag = 3
         landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)
         
         let landedLabel = UILabel()

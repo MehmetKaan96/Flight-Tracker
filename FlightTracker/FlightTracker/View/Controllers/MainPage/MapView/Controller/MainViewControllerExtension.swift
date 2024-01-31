@@ -9,6 +9,22 @@ import Foundation
 import MapKit
 
 extension MainViewController: RealtimeFlightsViewModelDelegate {
+    func filterFlightsAndShowOnMap(_ filteredFlights: [Flights]) {
+        let flightAnnotationsToRemove = mapView.annotations.filter { $0 is FlightAnnotation }
+        mapView.removeAnnotations(flightAnnotationsToRemove)
+
+        for flight in filteredFlights {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { return }
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { return }
+                let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: iata, dep_iata: dep, arr_iata: arr)
+                self.mapView.addAnnotation(flightAnnotation)
+            }
+        }
+    }
+    
     func fetchFlights(_ flights: [Flights]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -40,12 +56,13 @@ extension MainViewController: RealtimeFlightsViewModelDelegate {
     }
     
     func showFlightsOnMap() {
-        for flight in viewModel.flightsArray {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { return }
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            for flight in self.viewModel.flightsArray {
+                guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { continue }
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { return }
+                guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { continue }
                 let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: iata, dep_iata: dep, arr_iata: arr)
                 self.mapView.addAnnotation(flightAnnotation)
             }
@@ -87,29 +104,18 @@ extension MainViewController: MKMapViewDelegate {
         
     }
     
-    func filterFlightsAndShowOnMap() {
-        let filteredFlights = viewModel.flightsArray.filter { flight in
-            
-            if filterView.scheduledButton.isSelected && flight.status == "scheduled" {
-                return true
-            } else if filterView.enRouteButton.isSelected && flight.status == "en-route" {
-                return true
-            } else if filterView.landedButton.isSelected && flight.status == "landed" {
-                return true
-            }
-            return false
-        }
-        mapView.removeAnnotations(mapView.annotations)
-
-        for flight in filteredFlights {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                guard let dir = flight.dir, let lat = flight.lat, let lng = flight.lng else { return }
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-                guard let iata = flight.flight_iata, let dep = flight.dep_iata, let arr = flight.arr_iata else { return }
-                let flightAnnotation = FlightAnnotation(coordinate: coordinate, title: nil, subtitle: nil, direction: dir, flight_iata: iata, dep_iata: dep, arr_iata: arr)
-                self.mapView.addAnnotation(flightAnnotation)
-            }
-        }
-    }
+//    func filterFlightsAndShowOnMap() {
+//        let filteredFlights = viewModel.flightsArray.filter { flight in
+//            if filterView.scheduledButton.isSelected && flight.status == "scheduled" {
+//                return true
+//            } else if filterView.enRouteButton.isSelected && flight.status == "en-route" {
+//                return true
+//            } else if filterView.landedButton.isSelected && flight.status == "landed" {
+//                return true
+//            }
+//            return false
+//        }
+//
+//
+//    }
 }

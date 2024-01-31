@@ -78,6 +78,10 @@ extension MainListViewController: UISearchBarDelegate {
 
 //MARK: - Flight Data Protocol
 extension MainListViewController: RealtimeFlightsViewModelDelegate {
+    func filterFlightsAndShowOnMap(_ filteredFlights: [Flights]) {
+        //
+    }
+    
     func fetchFlights(_ flights: [Flights]) {
         DispatchQueue.main.async {
             //            flightsArray = flights

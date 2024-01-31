@@ -4,11 +4,12 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.mehmetkaan.FlightTracker</string>
+		<string>com.mehmetkaan.FlightTracker.backgroundTask</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>processing</string>
 	</array>
 </dict>
 </plist>

@@ -9,4 +9,5 @@ import Foundation
 
 protocol RealtimeFlightsViewModelDelegate {
     func fetchFlights(_ flights: [Flights])
+    func filterFlightsAndShowOnMap(_ filteredFlights: [Flights])
 }

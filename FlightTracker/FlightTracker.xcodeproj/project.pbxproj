@@ -21,6 +21,7 @@
 		D32A2C072B1CC9B600AC323F /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C062B1CC9B600AC323F /* IntExtension.swift */; };
 		D32A2C092B1CE0ED00AC323F /* DelayedFlightPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */; };
 		D32A2C0C2B1D15D500AC323F /* DelayedFlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */; };
+		D3346D0E2B5FF81E00A5D47B /* favorite.json in Resources */ = {isa = PBXBuildFile; fileRef = D3346D0D2B5FF81E00A5D47B /* favorite.json */; };
 		D34493612B566E0F009D3940 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34493602B566E0F009D3940 /* FilterView.swift */; };
 		D34493672B567220009D3940 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34493662B567220009D3940 /* FavoritesTableViewCell.swift */; };
 		D36EB3A82B3C283E00831500 /* RealmFlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36EB3A72B3C283E00831500 /* RealmFlightInfo.swift */; };
@@ -37,7 +38,6 @@
 		D384E7482B0781850013789A /* FlightTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7472B0781850013789A /* FlightTrackerTests.swift */; };
 		D384E7522B0781850013789A /* FlightTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7512B0781850013789A /* FlightTrackerUITests.swift */; };
 		D384E7542B0781850013789A /* FlightTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7532B0781850013789A /* FlightTrackerUITestsLaunchTests.swift */; };
-		D384E7652B07823A0013789A /* notify.json in Resources */ = {isa = PBXBuildFile; fileRef = D384E7622B07823A0013789A /* notify.json */; };
 		D384E76D2B0782680013789A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E76C2B0782680013789A /* OnboardingViewController.swift */; };
 		D384E7702B0782700013789A /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E76F2B0782700013789A /* OnboardingModel.swift */; };
 		D384E7732B0782D00013789A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D384E7722B0782D00013789A /* Lottie */; };
@@ -99,6 +99,7 @@
 		D32A2C062B1CC9B600AC323F /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		D32A2C082B1CE0ED00AC323F /* DelayedFlightPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightPage.swift; sourceTree = "<group>"; };
 		D32A2C0B2B1D15D500AC323F /* DelayedFlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsViewController.swift; sourceTree = "<group>"; };
+		D3346D0D2B5FF81E00A5D47B /* favorite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favorite.json; sourceTree = "<group>"; };
 		D34493602B566E0F009D3940 /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		D34493662B567220009D3940 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		D36EB3A72B3C283E00831500 /* RealmFlightInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFlightInfo.swift; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 		D384E74D2B0781850013789A /* FlightTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D384E7512B0781850013789A /* FlightTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTrackerUITests.swift; sourceTree = "<group>"; };
 		D384E7532B0781850013789A /* FlightTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D384E7622B07823A0013789A /* notify.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notify.json; sourceTree = "<group>"; };
 		D384E76C2B0782680013789A /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		D384E76F2B0782700013789A /* OnboardingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		D384E7782B078D4F0013789A /* RealTimeFlightData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeFlightData.swift; sourceTree = "<group>"; };
@@ -352,8 +352,8 @@
 				D384E7682B0782680013789A /* View */,
 				D384E7672B0782600013789A /* ViewModel */,
 				D384E7662B0782400013789A /* Supporting Files */,
-				D384E7622B07823A0013789A /* notify.json */,
 				D39C4E3B2B0A722400DD998E /* main.json */,
+				D3346D0D2B5FF81E00A5D47B /* favorite.json */,
 				D39C4E3D2B0A72B000DD998E /* start.json */,
 				D384E73E2B0781840013789A /* Info.plist */,
 			);
@@ -611,7 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39C4E3C2B0A722400DD998E /* main.json in Resources */,
-				D384E7652B07823A0013789A /* notify.json in Resources */,
+				D3346D0E2B5FF81E00A5D47B /* favorite.json in Resources */,
 				D384E73D2B0781840013789A /* LaunchScreen.storyboard in Resources */,
 				D384E73A2B0781840013789A /* Assets.xcassets in Resources */,
 				D39C4E3E2B0A72B000DD998E /* start.json in Resources */,

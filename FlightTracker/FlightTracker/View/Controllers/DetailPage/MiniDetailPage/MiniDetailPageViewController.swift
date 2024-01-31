@@ -19,7 +19,7 @@ final class MiniDetailPageViewController: UIViewController {
     let page = MiniDetailPage()
     var planeLocation: CLLocationCoordinate2D?
     var direction: Double?
-    
+    var timer: Timer?
     var flightDataFetched = false
     var departureAirportFetched = false
     var arrivalAirportFetched = false
@@ -42,6 +42,21 @@ final class MiniDetailPageViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         createUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [self] in
+            timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
+                guard let self = self, let flight_iata = self.selectedIATA, let dep_iata = self.depIATA, let arr_iata = self.arrIATA else { return }
+                self.viewModel.fetchFlightInfo(with: flight_iata)
+                self.viewModel.fetchArrivalAirport(with: arr_iata)
+                self.viewModel.fetchDepartureAirport(with: dep_iata)
+                print("çalıştı")
+            }
+            
+            RunLoop.main.add(timer!, forMode: .common)
+        }
     }
     
     private func createUI() {
@@ -79,6 +94,10 @@ final class MiniDetailPageViewController: UIViewController {
             flightDataFetched = false
             departureAirportFetched = false
             arrivalAirportFetched = false
+        }
+    
+    deinit {
+            timer?.invalidate()
         }
     
 }

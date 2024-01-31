@@ -17,6 +17,6 @@ struct OnboardingItem {
 
 let onboardingData = [
     OnboardingItem(title: "Flight Around the Globe", description: "View all flights around the world.", animation: "main"),
-    OnboardingItem(title: "Get Notifications", description: "Get notifications about the flight you're tracking.", animation: "notify"),
+    OnboardingItem(title: "Favorite Flights", description: "Add flights to favorite.", animation: "favorite"),
     OnboardingItem(title: "Let's Take Off!", description: "Get ready for takeoff! Explore the world of seamless flight tracking and enjoy the journey.", animation: "start")
 ]

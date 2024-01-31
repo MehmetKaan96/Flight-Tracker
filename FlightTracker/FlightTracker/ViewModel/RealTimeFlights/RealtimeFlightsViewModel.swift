@@ -6,6 +6,11 @@
 //
 
 import Foundation
+enum FilterCriteria: Int {
+    case scheduled = 1
+    case enRoute = 2
+    case landed = 3
+}
 
 final class RealtimeFlightsViewModel {
     private let flightsService: FlightDataService
@@ -28,5 +33,22 @@ final class RealtimeFlightsViewModel {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func filterFlights(by status: Int) {
+        let filter = FilterCriteria(rawValue: status)
+        
+        switch filter {
+        case .scheduled:
+            filteredArray = flightsArray.filter({$0.status == "scheduled"})
+        case .enRoute:
+            filteredArray = flightsArray.filter({$0.status == "en-route"})
+        case .landed:
+            filteredArray = flightsArray.filter({$0.status == "landed"})
+        default:
+            print("Error")
+        }
+        
+        delegate?.filterFlightsAndShowOnMap(filteredArray)
     }
 }

@@ -11,15 +11,12 @@ import RealmSwift
 final class FavoriteViewController: UIViewController {
     
     private let favoritesTableView = UITableView()
-    private var updateTimer: Timer?
-    private var currentStatus = "en-route"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         createUI()
         fetchFavFlights()
-        addNotificationCenter()
     }
     
     private func createUI() {
@@ -40,10 +37,6 @@ final class FavoriteViewController: UIViewController {
         favoritesTableView.refreshControl = refreshControl
     }
     
-    private func addNotificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name("appEnterBackground"), object: nil)
-    }
-    
     private func fetchFavFlights() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -55,21 +48,6 @@ final class FavoriteViewController: UIViewController {
                 favFlights.append(flight)
             }
             self.favoritesTableView.reloadData()
-        }
-    }
-    
-    @objc private func fetchData() {
-        for flight in favFlights {
-            guard let iata = flight.flightIata else { return }
-            
-            APIManager().fetchFlightInfo(with: iata) { result in
-                switch result {
-                case .success(let flight):
-                    print(flight.response.status)
-                case .failure(let failure):
-                    print(failure.localizedDescription)
-                }
-            }
         }
     }
     

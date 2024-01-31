@@ -33,17 +33,17 @@ final class MainViewController: UIViewController {
         setupUI()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//            let timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
-//                self?.viewModel.fetchFlights()
-//                print("çalıştı")
-//            }
-//            
-//            RunLoop.main.add(timer, forMode: .common)
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            let timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
+                self?.viewModel.fetchFlights()
+                print("çalıştı")
+            }
+            
+            RunLoop.main.add(timer, forMode: .common)
+        }
+    }
     
     private func setupUI() {
         view.backgroundColor = .white
@@ -81,9 +81,9 @@ final class MainViewController: UIViewController {
             make.height.width.equalTo(view.snp.width).dividedBy(2)
         }
         
-        filterView.scheduledButton.addTarget(self, action: #selector(scheduledTapped), for: .touchUpInside)
-        filterView.enRouteButton.addTarget(self, action: #selector(enrouteTapped), for: .touchUpInside)
-        filterView.landedButton.addTarget(self, action: #selector(landedTapped), for: .touchUpInside)
+        filterView.scheduledButton.addTarget(self, action: #selector(filterFlights(_:)), for: .touchUpInside)
+        filterView.enRouteButton.addTarget(self, action: #selector(filterFlights(_:)), for: .touchUpInside)
+        filterView.landedButton.addTarget(self, action: #selector(filterFlights(_:)), for: .touchUpInside)
     }
     
     @objc func openFilterMenu() {
@@ -94,53 +94,10 @@ final class MainViewController: UIViewController {
         }
     }
     
-    @objc func scheduledTapped() {
-        filterView.enRouteButton.isSelected = false
-            filterView.enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-            
-            filterView.landedButton.isSelected = false
-            filterView.landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-            
-        if !filterView.scheduledButton.isSelected {
-            filterView.scheduledButton.isSelected = true
-            filterView.scheduledButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
-            filterFlightsAndShowOnMap()
-        } else {
-            filterView.scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-            filterView.scheduledButton.isSelected = false
-        }
-        print("Tapped")
+    @objc func filterFlights(_ sender: UIButton) {
+        viewModel.filterFlights(by: sender.tag)
     }
-    
-    @objc func enrouteTapped() {
-        filterView.landedButton.isSelected = false
-        filterView.landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-        filterView.scheduledButton.isSelected = false
-        filterView.scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-        if !filterView.enRouteButton.isSelected {
-            filterView.enRouteButton.isSelected = true
-            filterView.enRouteButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
-            filterFlightsAndShowOnMap()
-        } else {
-            filterView.enRouteButton.isSelected = false
-            filterView.enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-        }
-    }
-    
-    @objc func landedTapped() {
-        filterView.enRouteButton.isSelected = false
-        filterView.enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-        filterView.scheduledButton.isSelected = false
-        filterView.scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-        if !filterView.landedButton.isSelected {
-            filterView.landedButton.isSelected = true
-            filterView.landedButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
-            filterFlightsAndShowOnMap()
-        } else {
-            filterView.landedButton.isSelected = false
-            filterView.landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)
-        }
-    }
+
 }
 
 
