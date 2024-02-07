@@ -11,4 +11,9 @@ protocol FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfoResponse)
     func fetchDepartureAirport(_ airport: Airport)
     func fetchArrivalAirport(_ airport: Airport)
+    func checkStatus(_ flight: FlightInfoResponse)
+}
+
+extension FlightDetailsViewModelDelegate {
+    func checkStatus(_ flight: FlightInfoResponse) {}
 }

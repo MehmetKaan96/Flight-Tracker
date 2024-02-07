@@ -37,7 +37,7 @@ final class FavoriteViewController: UIViewController {
         favoritesTableView.refreshControl = refreshControl
     }
     
-    private func fetchFavFlights() {
+    func fetchFavFlights() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             let realm = try! Realm()
@@ -49,11 +49,30 @@ final class FavoriteViewController: UIViewController {
             }
             self.favoritesTableView.reloadData()
         }
+        
+        for flight in favFlights {
+            print(flight.arrCity)
+        }
     }
     
     @objc private func refreshTableView(refreshControl: UIRefreshControl) {
         fetchFavFlights()
         refreshControl.endRefreshing()
+    }
+    
+    func fetchStatus(completion: @escaping () -> ()) {
+        APIManager().fetchFlights { result in
+            switch result {
+            case .success(let flights):
+                    completion()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func sayHello() {
+        print("Hello")
     }
     
 }

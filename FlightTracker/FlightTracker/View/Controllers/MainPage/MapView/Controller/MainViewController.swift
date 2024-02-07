@@ -97,6 +97,21 @@ final class MainViewController: UIViewController {
     @objc func filterFlights(_ sender: UIButton) {
         viewModel.filterFlights(by: sender.tag)
     }
+    
+    func fetchStatus(completion: @escaping () -> ()) {
+        APIManager().fetchFlights { result in
+            switch result {
+            case .success(let flights):
+                    completion()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func sayHello() {
+        print("Hello")
+    }
 
 }
 

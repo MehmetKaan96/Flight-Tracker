@@ -32,6 +32,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             planeLocation = CLLocationCoordinate2D(latitude: planeLat, longitude: planeLng)
             flightDataFetched = true
             checkAndShowAnnotations()
+            checkStatus(flight)
         }
     }
     
@@ -80,6 +81,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     }
     
     func showAnnotationsOnMap() {
+        self.page.mapView.removeAnnotations(self.page.mapView.annotations)
         var annotations = [MKPointAnnotation]()
         if let departureLocation = self.departureLocation, let arrivalLocation = self.arrivalLocation, let planeLocation = self.planeLocation, let direction = self.direction {
             let departureAnnotation = MKPointAnnotation()
@@ -142,6 +144,10 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
         }
         
         return region
+    }
+    
+    func checkStatus(_ flight: FlightInfoResponse) {
+        print(flight.response.status, "Mehmet")
     }
 }
 

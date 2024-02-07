@@ -11,11 +11,11 @@ import RealmSwift
 
 final class FlightDetailViewController: UIViewController {
     
-    private let viewModel: FlightDetailsViewModel
+    let viewModel: FlightDetailsViewModel
     let page = DetailPage()
-    private var selectedIATA: String?
-    private var depIATA: String?
-    private var arrIATA: String?
+    var selectedIATA: String?
+    var depIATA: String?
+    var arrIATA: String?
     var departureLocation: CLLocationCoordinate2D?
     var arrivalLocation: CLLocationCoordinate2D?
     var planeLocation: CLLocationCoordinate2D?
@@ -89,6 +89,21 @@ final class FlightDetailViewController: UIViewController {
         flightDataFetched = false
         departureAirportFetched = false
         arrivalAirportFetched = false
+    }
+    
+    func fetchStatus(completion: @escaping () -> ()) {
+        APIManager().fetchFlights { result in
+            switch result {
+            case .success(let flights):
+                    completion()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func sayHello() {
+        print("Hello")
     }
     
     func addFlightToRealm(flight: FlightInfo) {

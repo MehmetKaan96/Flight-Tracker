@@ -58,6 +58,21 @@ final class DelayedFlightsViewController: UIViewController {
         view.addSubview(animatedView)
     }
     
+    func fetchStatus(completion: @escaping () -> ()) {
+        APIManager().fetchFlights { result in
+            switch result {
+            case .success(let flights):
+                    completion()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func sayHello() {
+        print("Hello")
+    }
+    
 //    @objc func filterTapped() {
 //        UIView.animate(withDuration: 0.5) {
 //                self.animatedView.frame.origin = CGPoint(x: self.view.frame.size.width / 2 - self.animatedView.frame.size.width / 2,

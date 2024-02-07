@@ -59,6 +59,21 @@ final class MiniDetailPageViewController: UIViewController {
         }
     }
     
+    func fetchStatus(completion: @escaping () -> ()) {
+        APIManager().fetchFlights { result in
+            switch result {
+            case .success(let flights):
+                    completion()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func sayHello() {
+        print("Hello")
+    }
+    
     private func createUI() {
         guard let iata = selectedIATA, let depiata = depIATA, let arriata = arrIATA else { return }
         fetchData(iata: iata, depIata: depiata, arrIata: arriata)

@@ -48,4 +48,8 @@ final class FlightDetailsViewModel {
             }
         }
     }
+    
+    func checkStatus (for flight: FlightInfoResponse) {
+        delegate?.checkStatus(flight)
+    }
 }
