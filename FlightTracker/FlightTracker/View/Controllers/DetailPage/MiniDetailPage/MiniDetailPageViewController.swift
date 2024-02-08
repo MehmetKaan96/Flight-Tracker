@@ -69,11 +69,7 @@ final class MiniDetailPageViewController: UIViewController {
             }
         }
     }
-    
-    func sayHello() {
-        print("Hello")
-    }
-    
+        
     private func createUI() {
         guard let iata = selectedIATA, let depiata = depIATA, let arriata = arrIATA else { return }
         fetchData(iata: iata, depIata: depiata, arrIata: arriata)

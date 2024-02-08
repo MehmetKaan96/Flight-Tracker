@@ -46,7 +46,7 @@ final class RealtimeFlightsViewModel {
         case .landed:
             filteredArray = flightsArray.filter({$0.status == "landed"})
         default:
-            print("Error")
+            filteredArray = flightsArray
         }
         
         delegate?.filterFlightsAndShowOnMap(filteredArray)

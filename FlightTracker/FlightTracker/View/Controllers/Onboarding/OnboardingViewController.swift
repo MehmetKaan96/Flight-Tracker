@@ -33,6 +33,7 @@ final class OnboardingViewController: UIViewController {
         onboardingAnimation.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
             make.leading.trailing.equalToSuperview().inset(30)
+            make.width.height.equalTo(150)
         }
         
         
@@ -55,7 +56,6 @@ final class OnboardingViewController: UIViewController {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.height.equalTo(45)
         }
         
         if #available(iOS 15.0, *) {
@@ -63,12 +63,15 @@ final class OnboardingViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
-        nextButton.backgroundColor = .theme
+        
+        nextButton.layer.cornerRadius = 30
+        nextButton.configuration = .filled()
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(100)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
-            make.height.equalTo(55)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(75)
+                make.centerX.equalToSuperview()
+                make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
+                make.height.equalTo(55)
         }
         
         pageControl.numberOfPages = onboardingData.count

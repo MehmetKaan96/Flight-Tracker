@@ -90,8 +90,4 @@ final class MainListViewController: UIViewController {
             }
         }
     }
-    
-    func sayHello() {
-        print("Hello")
-    }
 }

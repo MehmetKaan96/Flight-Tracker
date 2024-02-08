@@ -70,11 +70,6 @@ final class FavoriteViewController: UIViewController {
             }
         }
     }
-    
-    func sayHello() {
-        print("Hello")
-    }
-    
 }
 
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {

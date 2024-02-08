@@ -32,6 +32,7 @@ final class DelayedFlightsViewController: UIViewController {
     private func createUI() {
         navigationItem.title = "Delayed Flights"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.isNavigationBarHidden = true
         view.addSubview(page)
         page.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -51,8 +52,6 @@ final class DelayedFlightsViewController: UIViewController {
         page.delayedTableView.delegate = self
         page.delayedTableView.dataSource = self
         
-//        page.filterButton.addTarget(self, action: #selector(filterTapped), for: .touchUpInside)
-        
         animatedView.frame = CGRect(x: 0, y: view.frame.size.height, width: 200, height: 200)
         animatedView.backgroundColor = .red
         view.addSubview(animatedView)
@@ -67,10 +66,6 @@ final class DelayedFlightsViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    func sayHello() {
-        print("Hello")
     }
     
 //    @objc func filterTapped() {

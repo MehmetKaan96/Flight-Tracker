@@ -102,10 +102,6 @@ final class FlightDetailViewController: UIViewController {
         }
     }
     
-    func sayHello() {
-        print("Hello")
-    }
-    
     func addFlightToRealm(flight: FlightInfo) {
         flightInfo = RealmFlightInfo()
         flightInfo.arrCity = flight.arrCity

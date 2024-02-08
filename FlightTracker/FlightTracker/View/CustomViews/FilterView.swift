@@ -12,6 +12,9 @@ final class FilterView: UIView {
    let scheduledButton = UIButton()
    let enRouteButton = UIButton()
    let landedButton = UIButton()
+    var scheduledSelected = false
+        var enRouteSelected = false
+        var landedSelected = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +33,7 @@ final class FilterView: UIView {
 
         scheduledButton.tag = 1
         scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
+        scheduledButton.isSelected = false
 
         let scheduledLabel = UILabel()
         scheduledLabel.text = "Scheduled"
@@ -54,6 +58,7 @@ final class FilterView: UIView {
         enrouteStack.spacing = 5
         enRouteButton.tag = 2
         enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
+        enRouteButton.isSelected = false
         
         let enrouteLabel = UILabel()
         enrouteLabel.text = "En-Route"
@@ -78,6 +83,7 @@ final class FilterView: UIView {
         landedStack.spacing = 5
         landedButton.tag = 3
         landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)
+        landedButton.isSelected = false
         
         let landedLabel = UILabel()
         landedLabel.text = "Landed"

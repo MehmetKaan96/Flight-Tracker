@@ -63,7 +63,7 @@ final class MainViewController: UIViewController {
         view.addSubview(filterButton)
         view.bringSubviewToFront(filterButton)
         filterButton.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top).offset(90)
+            make.top.equalTo(view.snp.top).offset(50)
             make.right.equalToSuperview().inset(30)
         }
         filterButton.addTarget(self, action: #selector(openFilterMenu), for: .touchUpInside)
@@ -95,24 +95,44 @@ final class MainViewController: UIViewController {
     }
     
     @objc func filterFlights(_ sender: UIButton) {
-        viewModel.filterFlights(by: sender.tag)
+        switch sender.tag {
+        case 1:
+            filterView.scheduledSelected.toggle()
+        case 2:
+            filterView.enRouteSelected.toggle()
+        case 3:
+            filterView.landedSelected.toggle()
+        default:
+            break
+        }
+        
+        if filterView.scheduledSelected {
+            viewModel.filterFlights(by: FilterCriteria.scheduled.rawValue)
+            filterView.scheduledButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
+        } else if filterView.enRouteSelected {
+            viewModel.filterFlights(by: FilterCriteria.enRoute.rawValue)
+            filterView.enRouteButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
+        } else if filterView.landedSelected {
+            viewModel.filterFlights(by: FilterCriteria.landed.rawValue)
+            filterView.landedButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
+        } else {
+            viewModel.filterFlights(by: 4) // Bu, tüm filtrelerin kaldırıldığı durumu temsil eder.
+            filterView.scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
+            filterView.enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
+            filterView.landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)
+        }
     }
     
     func fetchStatus(completion: @escaping () -> ()) {
         APIManager().fetchFlights { result in
             switch result {
             case .success(let flights):
-                    completion()
+                completion()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
-    
-    func sayHello() {
-        print("Hello")
-    }
-
 }
 
 
