@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  FlightTracker
+
+  Created by Mehmet Kaan on 8.02.2024.
+  
+*/
+"En-Route" = "Yolda";
+"Scheduled" = "Planlanmış";
+"Landed" = "İndi";
+"Detailed Info" = "Detaylı Bilgi";
+"Name, Time, Terminal, Gate" = "İsim, Zaman, Terminal, Kapı";
+"Airport Name" = "Havalimanı Adı";
+"Time" = "Zaman";
+"Terminal" = "Terminal";
+"Gate" = "Kapı";
+"Map View" = "Harita Görünümü";
+"List View" = "Liste Görünümü";
+"Delayed Flight" = "Gecikmiş Uçuş";
+"Favorites" = "Favoriler";
+"FROM" = "KAYNAK";
+"TO" = "HEDİYE";
+"See Full Info" = "Tüm Bilgileri Gör";
+"arrivals" = "varışlar";
+"departures" = "kalkışlar";
+"Flight Type" = "Uçuş Türü";
+"Delay Time" = "Gecikme Süresi";
+"Select a time" = "Bir zaman seçin";
+"Search Flight" = "Uçuş Ara";
+"Delete" = "Sil";
+"Favorites" = "Favoriler";
+"Delayed Flights" = "Gecikmiş Uçuşlar";
+"Real-Time Flights" = "Gerçek Zamanlı Uçuşlar";
+"Get Started" = "Başla";
+"Next" = "Sonraki";
+"Flights Around the Globe" = "Dünya Çapındaki Uçuşlar";
+"Explore and gather information on all flights across the globe. Gain insight info about destinations worldwide. Whether you're planning your next adventure or simply curious about air traffic worldwide." = "Dünya çapındaki tüm uçuşlar hakkında bilgi edinin ve toplayın. Dünya çapındaki destinasyonlar hakkında iç görü bilgisi edinin. Bir sonraki maceranızı planlıyor olun veya sadece dünya çapındaki hava trafiği hakkında meraklıysanız.";
+"Favorite Flights" = "Favori Uçuşlar";
+"Keep track of your favorite flights by adding them to your list of favorites, ensuring easy access to their updates, status changes, and important notifications." = "Favori uçuşlarınızı favori listenize ekleyerek, güncellemelere, durum değişikliklerine ve önemli bildirimlere kolay erişim sağlayarak takip edin.";
+"Let's Take Off!" = "Kalkışa Geçelim!";
+"Prepare for takeoff! Immerse yourself in the world of effortless flight tracking and embark on an exhilarating journey." = "Kalkışa hazırlanın! Zahmetsiz uçuş takibi dünyasına dalın ve heyecan verici bir yolculuğa çıkın.";
+"Manufacturer" = "Üretici";
+"Engine" = "Motor";
+"Built" = "İnşa edildi";
+"Age" = "Yaş";
+"Engine Count" = "Motor Sayısı";

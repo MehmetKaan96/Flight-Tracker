@@ -46,7 +46,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
                 self.page.depAirport.text = airportName
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = self.departureLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
-                annotation.title = "Departure"
+                annotation.title = "Departure".localized()
                 self.page.mapView.addAnnotation(annotation)
 //                self.showAnnotationsOnMap()
             } else {
@@ -65,7 +65,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
                 self.page.arrAirport.text = airportName
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = self.arrivalLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
-                annotation.title = "Arrival"
+                annotation.title = "Arrival".localized()
                 self.page.mapView.addAnnotation(annotation)
 //                self.showAnnotationsOnMap()
             } else {
@@ -86,12 +86,12 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
         if let departureLocation = self.departureLocation, let arrivalLocation = self.arrivalLocation, let planeLocation = self.planeLocation, let direction = self.direction {
             let departureAnnotation = MKPointAnnotation()
             departureAnnotation.coordinate = departureLocation
-            departureAnnotation.title = "Departure"
+            departureAnnotation.title = "Departure".localized()
             annotations.append(departureAnnotation)
             
             let arrivalAnnotation = MKPointAnnotation()
             arrivalAnnotation.coordinate = arrivalLocation
-            arrivalAnnotation.title = "Arrival"
+            arrivalAnnotation.title = "Arrival".localized()
             annotations.append(arrivalAnnotation)
             
             

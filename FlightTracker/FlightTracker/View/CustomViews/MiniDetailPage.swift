@@ -68,7 +68,7 @@ final class MiniDetailPage: UIView {
         }
         
         let fromLabel = UILabel()
-        fromLabel.text = "FROM"
+        fromLabel.text = "FROM".localized()
         fromLabel.textColor = .dynamicText.withAlphaComponent(0.8)
         fromLabel.font = .systemFont(ofSize: 10, weight: .regular)
         fromLabel.textAlignment = .center
@@ -125,7 +125,7 @@ final class MiniDetailPage: UIView {
         }
         
         let toLabel = UILabel()
-        toLabel.text = "TO"
+        toLabel.text = "TO".localized()
         toLabel.textColor = .dynamicText.withAlphaComponent(0.8)
         toLabel.font = .systemFont(ofSize: 10, weight: .regular)
         toLabel.textAlignment = .center
@@ -185,7 +185,7 @@ final class MiniDetailPage: UIView {
             make.centerY.equalTo(arrCode)
         }
         
-        fullInfoButton.setTitle("See Full Info", for: .normal)
+        fullInfoButton.setTitle("See Full Info".localized(), for: .normal)
         fullInfoButton.configuration = .plain()
         fullInfoButton.layer.borderWidth = 1
         fullInfoButton.layer.borderColor = UIColor.systemBlue.cgColor

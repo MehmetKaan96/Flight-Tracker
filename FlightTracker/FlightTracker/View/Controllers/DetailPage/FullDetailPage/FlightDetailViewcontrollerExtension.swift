@@ -56,10 +56,10 @@ extension FlightDetailViewController: FlightDetailsViewModelDelegate {
     }
     
     private func setupAirportDetails(_ airportDetail: AirportDetailView, _ gate: String?, _ info: String, _ terminal: String?, _ time: String?) {
-        airportDetail.setGate(with: gate)
-        airportDetail.setAirport(with: info)
-        airportDetail.setTerminal(with: terminal)
-        airportDetail.setArrivalTime(with: time)
+        airportDetail.setGate(with: gate?.localized())
+        airportDetail.setAirport(with: info.localized())
+        airportDetail.setTerminal(with: terminal?.localized())
+        airportDetail.setArrivalTime(with: time?.localized())
     }
     
     func fetchDepartureAirport(_ airport: Airport) {

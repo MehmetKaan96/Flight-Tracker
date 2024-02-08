@@ -20,7 +20,7 @@ final class FavoriteViewController: UIViewController {
     }
     
     private func createUI() {
-        navigationItem.title = "Favorites"
+        navigationItem.title = "Favorites".localized()
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .dynamicBG
         

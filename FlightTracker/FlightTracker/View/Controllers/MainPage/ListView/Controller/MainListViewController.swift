@@ -41,10 +41,10 @@ final class MainListViewController: UIViewController {
     }
     
     private func setupUI() {
-        navigationItem.title = "Real-Time Flights"
+        navigationItem.title = "Real-Time Flights".localized()
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        searchBar.placeholder = "Search Flight"
+        searchBar.placeholder = "Search Flight".localized()
         searchBar.barTintColor = .clear
         searchBar.backgroundImage = UIImage()
         searchBar.searchTextField.backgroundColor = .systemGray5

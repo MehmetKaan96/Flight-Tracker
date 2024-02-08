@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  FlightTracker
+
+  Created by Mehmet Kaan on 8.02.2024.
+  
+*/
+"En-Route" = "In viaggio";
+"Scheduled" = "Pianificato";
+"Landed" = "Atterrato";
+"Detailed Info" = "Informazioni dettagliate";
+"Name, Time, Terminal, Gate" = "Nome, Orario, Terminal, Cancello";
+"Airport Name" = "Nome dell'aeroporto";
+"Time" = "Ora";
+"Terminal" = "Terminal";
+"Gate" = "Gate";
+"Map View" = "Vista mappa";
+"List View" = "Vista elenco";
+"Delayed Flight" = "Volo in ritardo";
+"Favorites" = "Preferiti";
+"FROM" = "DA";
+"TO" = "A";
+"See Full Info" = "Visualizza tutte le informazioni";
+"arrivals" = "Arrivi";
+"departures" = "Partenze";
+"Flight Type" = "Tipo di volo";
+"Delay Time" = "Tempo di ritardo";
+"Select a time" = "Seleziona un'ora";
+"Search Flight" = "Cerca volo";
+"Delete" = "Elimina";
+"Favorites" = "Preferiti";
+"Delayed Flights" = "Voli in ritardo";
+"Real-Time Flights" = "Voli in tempo reale";
+"Get Started" = "Iniziare";
+"Next" = "Successivo";
+"Flights Around the Globe" = "Voli in tutto il mondo";
+"Explore and gather information on all flights across the globe. Gain insight info about destinations worldwide. Whether you're planning your next adventure or simply curious about air traffic worldwide." = "Esplora e raccogli informazioni su tutti i voli in tutto il mondo. Ottieni informazioni dettagliate sulle destinazioni in tutto il mondo. Che tu stia pianificando la tua prossima avventura o semplicemente sia curioso del traffico aereo in tutto il mondo.";
+"Favorite Flights" = "Voli preferiti";
+"Keep track of your favorite flights by adding them to your list of favorites, ensuring easy access to their updates, status changes, and important notifications." = "Tieni traccia dei tuoi voli preferiti aggiungendoli alla tua lista dei preferiti, garantendo così un facile accesso ai loro aggiornamenti, cambi di stato e importanti notifiche.";
+"Let's Take Off!" = "Partiamo!";
+"Prepare for takeoff! Immerse yourself in the world of effortless flight tracking and embark on an exhilarating journey." = "Preparati al decollo! Immergiti nel mondo del tracciamento dei voli senza sforzo e intraprendi un viaggio emozionante.";
+"Manufacturer" = "Produttore";
+"Engine" = "Motore";
+"Built" = "Costruito";
+"Age" = "Età";
+"Engine Count" = "Numero di motori";

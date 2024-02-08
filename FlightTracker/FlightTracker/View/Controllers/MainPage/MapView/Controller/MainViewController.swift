@@ -116,7 +116,7 @@ final class MainViewController: UIViewController {
             viewModel.filterFlights(by: FilterCriteria.landed.rawValue)
             filterView.landedButton.setImage(UIImage(named: "selected_radiobutton"), for: .normal)
         } else {
-            viewModel.filterFlights(by: 4) // Bu, tüm filtrelerin kaldırıldığı durumu temsil eder.
+            viewModel.filterFlights(by: 4)
             filterView.scheduledButton.setImage(UIImage(named: "radiobutton"), for: .normal)
             filterView.enRouteButton.setImage(UIImage(named: "radiobutton"), for: .normal)
             filterView.landedButton.setImage(UIImage(named: "radiobutton"), for: .normal)

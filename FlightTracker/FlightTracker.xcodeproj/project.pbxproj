@@ -47,6 +47,7 @@
 		D384E77E2B078DFB0013789A /* FlightDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E77D2B078DFB0013789A /* FlightDataService.swift */; };
 		D384E7802B078E8B0013789A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E77F2B078E8B0013789A /* APIManager.swift */; };
 		D384E7832B078EBE0013789A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384E7822B078EBE0013789A /* Constants.swift */; };
+		D39B2C5B2B74F23D00AA39C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D39B2C5D2B74F23D00AA39C7 /* Localizable.strings */; };
 		D39C4E3C2B0A722400DD998E /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = D39C4E3B2B0A722400DD998E /* main.json */; };
 		D39C4E3E2B0A72B000DD998E /* start.json in Resources */ = {isa = PBXBuildFile; fileRef = D39C4E3D2B0A72B000DD998E /* start.json */; };
 		D39C4E402B0A7F2900DD998E /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39C4E3F2B0A7F2900DD998E /* MainListViewController.swift */; };
@@ -126,6 +127,19 @@
 		D384E77D2B078DFB0013789A /* FlightDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDataService.swift; sourceTree = "<group>"; };
 		D384E77F2B078E8B0013789A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D384E7822B078EBE0013789A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D39B2C5C2B74F23D00AA39C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B2C612B74F27A00AA39C7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		D39B2C622B74F27A00AA39C7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B2C632B74F28700AA39C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		D39B2C642B74F28700AA39C7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B2C652B74F29800AA39C7 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		D39B2C662B74F29800AA39C7 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B2C672B74F2A000AA39C7 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		D39B2C682B74F2B600AA39C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		D39B2C692B74F2B600AA39C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B2C6A2B74F2C100AA39C7 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		D39B2C6B2B74F2C100AA39C7 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B2C6C2B74F2FA00AA39C7 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D39C4E3B2B0A722400DD998E /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		D39C4E3D2B0A72B000DD998E /* start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = start.json; sourceTree = "<group>"; };
 		D39C4E3F2B0A7F2900DD998E /* MainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +399,7 @@
 				D384E7362B0781830013789A /* Main.storyboard */,
 				D384E7392B0781840013789A /* Assets.xcassets */,
 				D384E73B2B0781840013789A /* LaunchScreen.storyboard */,
+				D39B2C5D2B74F23D00AA39C7 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -586,6 +601,12 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
+				tr,
+				ar,
+				de,
+				it,
 			);
 			mainGroup = D384E7242B0781830013789A;
 			packageReferences = (
@@ -613,6 +634,7 @@
 				D39C4E3C2B0A722400DD998E /* main.json in Resources */,
 				D3346D0E2B5FF81E00A5D47B /* favorite.json in Resources */,
 				D384E73D2B0781840013789A /* LaunchScreen.storyboard in Resources */,
+				D39B2C5B2B74F23D00AA39C7 /* Localizable.strings in Resources */,
 				D384E73A2B0781840013789A /* Assets.xcassets in Resources */,
 				D39C4E3E2B0A72B000DD998E /* start.json in Resources */,
 				D384E7382B0781830013789A /* Main.storyboard in Resources */,
@@ -724,6 +746,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				D384E7372B0781830013789A /* Base */,
+				D39B2C612B74F27A00AA39C7 /* fr */,
+				D39B2C632B74F28700AA39C7 /* es */,
+				D39B2C652B74F29800AA39C7 /* tr */,
+				D39B2C672B74F2A000AA39C7 /* ar */,
+				D39B2C682B74F2B600AA39C7 /* de */,
+				D39B2C6A2B74F2C100AA39C7 /* it */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -736,6 +764,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		D39B2C5D2B74F23D00AA39C7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D39B2C5C2B74F23D00AA39C7 /* en */,
+				D39B2C622B74F27A00AA39C7 /* fr */,
+				D39B2C642B74F28700AA39C7 /* es */,
+				D39B2C662B74F29800AA39C7 /* tr */,
+				D39B2C692B74F2B600AA39C7 /* de */,
+				D39B2C6B2B74F2C100AA39C7 /* it */,
+				D39B2C6C2B74F2FA00AA39C7 /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -744,6 +786,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -807,6 +850,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

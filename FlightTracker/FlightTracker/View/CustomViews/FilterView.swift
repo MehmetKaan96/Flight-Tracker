@@ -36,7 +36,7 @@ final class FilterView: UIView {
         scheduledButton.isSelected = false
 
         let scheduledLabel = UILabel()
-        scheduledLabel.text = "Scheduled"
+        scheduledLabel.text = "Scheduled".localized()
         scheduledLabel.textColor = .dynamicText
         scheduledLabel.textAlignment = .left
         scheduledLabel.numberOfLines = 0
@@ -61,7 +61,7 @@ final class FilterView: UIView {
         enRouteButton.isSelected = false
         
         let enrouteLabel = UILabel()
-        enrouteLabel.text = "En-Route"
+        enrouteLabel.text = "En-Route".localized()
         enrouteLabel.textColor = .dynamicText
         enrouteLabel.textAlignment = .left
         enrouteLabel.numberOfLines = 0
@@ -86,7 +86,7 @@ final class FilterView: UIView {
         landedButton.isSelected = false
         
         let landedLabel = UILabel()
-        landedLabel.text = "Landed"
+        landedLabel.text = "Landed".localized()
         landedLabel.textColor = .dynamicText
         landedLabel.textAlignment = .left
         landedLabel.numberOfLines = 0

@@ -39,7 +39,7 @@ final class AirportDetailView: UIView {
         let airportLabel = UILabel()
         airportLabel.textColor = .dynamicText
         airportLabel.font = .systemFont(ofSize: 23, weight: .bold)
-        airportLabel.text = "Detailed Info"
+        airportLabel.text = "Detailed Info".localized()
         addSubview(airportLabel)
         airportLabel.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview().offset(10)
@@ -47,7 +47,7 @@ final class AirportDetailView: UIView {
         }
         
         let airportSubLabel = UILabel()
-        airportSubLabel.text = "Name, Time, Terminal, Gate"
+        airportSubLabel.text = "Name, Time, Terminal, Gate".localized()
         airportSubLabel.textColor = .systemGray2
         addSubview(airportSubLabel)
         airportSubLabel.snp.makeConstraints { make in
@@ -71,7 +71,7 @@ final class AirportDetailView: UIView {
         nameStack.distribution = .fillEqually
         
         let airportNameLabel = UILabel()
-        airportNameLabel.text = "Airport Name:"
+        airportNameLabel.text = "Airport Name:".localized()
         airportNameLabel.textColor = .systemGray
         airportNameLabel.font = .systemFont(ofSize: 18, weight: .medium)
         airportName.numberOfLines = 0
@@ -88,7 +88,7 @@ final class AirportDetailView: UIView {
         timeStack.distribution = .fillEqually
         
         let flightTime = UILabel()
-        flightTime.text = "Time:"
+        flightTime.text = "Time:".localized()
         flightTime.textColor = .systemGray
         flightTime.font = .systemFont(ofSize: 18, weight: .medium)
         flightTimeText.font = .systemFont(ofSize: 16, weight: .regular)
@@ -105,7 +105,7 @@ final class AirportDetailView: UIView {
         terminalStack.distribution = .fillEqually
         
         let terminalLabel = UILabel()
-        terminalLabel.text = "Terminal:"
+        terminalLabel.text = "Terminal:".localized()
         terminalLabel.font = .systemFont(ofSize: 18, weight: .medium)
         terminalLabel.textColor = .systemGray
         terminalText.font = .systemFont(ofSize: 16, weight: .regular)
@@ -122,7 +122,7 @@ final class AirportDetailView: UIView {
         gateStack.distribution = .fillEqually
         
         let gateLabel = UILabel()
-        gateLabel.text = "Gate:"
+        gateLabel.text = "Gate:".localized()
         gateLabel.textColor = .systemGray
         gateLabel.font = .systemFont(ofSize: 18, weight: .medium)
         gateText.font = .systemFont(ofSize: 16, weight: .regular)

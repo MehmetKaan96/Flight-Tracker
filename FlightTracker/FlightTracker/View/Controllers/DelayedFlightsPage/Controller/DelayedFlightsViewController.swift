@@ -30,7 +30,7 @@ final class DelayedFlightsViewController: UIViewController {
     }
         
     private func createUI() {
-        navigationItem.title = "Delayed Flights"
+        navigationItem.title = "Delayed Flights".localized()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.isNavigationBarHidden = true
         view.addSubview(page)

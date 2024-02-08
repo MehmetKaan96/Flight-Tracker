@@ -52,7 +52,7 @@ final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSour
         selectionStack.addArrangedSubview(typeStack)
 
         let typeLabel = UILabel()
-        typeLabel.text = "Flight Type"
+        typeLabel.text = "Flight Type".localized()
         typeLabel.textColor = .dynamicText
         typeLabel.textAlignment = .center
         typeLabel.numberOfLines = 0
@@ -61,7 +61,7 @@ final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSour
         
         typeTextField.inputView = typePicker
         typeTextField.textColor = .dynamicText
-        typeTextField.placeholder = "Flight Type"
+        typeTextField.placeholder = "Flight Type".localized()
         typeTextField.textAlignment = .center
         typeStack.addArrangedSubview(typeTextField)
 
@@ -70,7 +70,7 @@ final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSour
         selectionStack.addArrangedSubview(timeStack)
 
         let delayTimeLabel = UILabel()
-        delayTimeLabel.text = "Delay Time"
+        delayTimeLabel.text = "Delay Time".localized()
         delayTimeLabel.textColor = .dynamicText
         delayTimeLabel.textAlignment = .center
         delayTimeLabel.numberOfLines = 0
@@ -79,11 +79,11 @@ final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSour
         
         timeTextField.inputView = delayTimePicker
         timeTextField.textColor = .dynamicText
-        timeTextField.placeholder = "Select a time"
+        timeTextField.placeholder = "Select a time".localized()
         timeTextField.textAlignment = .center
         timeStack.addArrangedSubview(timeTextField)
         
-        searchBar.placeholder = "Search Flight"
+        searchBar.placeholder = "Search Flight".localized()
         searchBar.barTintColor = .clear
         searchBar.backgroundImage = UIImage()
         searchBar.searchTextField.backgroundColor = .systemGray5

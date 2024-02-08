@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  FlightTracker
+
+  Created by Mehmet Kaan on 8.02.2024.
+  
+*/
+"En-Route" = "En ruta";
+"Scheduled" = "Programado";
+"Landed" = "Aterrizado";
+"Detailed Info" = "Información detallada";
+"Name, Time, Terminal, Gate" = "Nombre, Hora, Terminal, Puerta";
+"Airport Name" = "Nombre del aeropuerto";
+"Time" = "Hora";
+"Terminal" = "Terminal";
+"Gate" = "Puerta";
+"Map View" = "Vista de mapa";
+"List View" = "Vista de lista";
+"Delayed Flight" = "Vuelo retrasado";
+"Favorites" = "Favoritos";
+"FROM" = "DE";
+"TO" = "A";
+"See Full Info" = "Ver toda la información";
+"arrivals" = "llegadas";
+"departures" = "salidas";
+"Flight Type" = "Tipo de vuelo";
+"Delay Time" = "Tiempo de retraso";
+"Select a time" = "Seleccione una hora";
+"Search Flight" = "Buscar vuelo";
+"Delete" = "Eliminar";
+"Favorites" = "Favoritos";
+"Delayed Flights" = "Vuelos retrasados";
+"Real-Time Flights" = "Vuelos en tiempo real";
+"Get Started" = "Empezar";
+"Next" = "Siguiente";
+"Flights Around the Globe" = "Vuelos alrededor del mundo";
+"Explore and gather information on all flights across the globe. Gain insight info about destinations worldwide. Whether you're planning your next adventure or simply curious about air traffic worldwide." = "Explora y recopila información sobre todos los vuelos en todo el mundo. Obtén información detallada sobre destinos en todo el mundo. Ya sea que estés planeando tu próxima aventura o simplemente curioso sobre el tráfico aéreo en todo el mundo.";
+"Favorite Flights" = "Vuelos favoritos";
+"Keep track of your favorite flights by adding them to your list of favorites, ensuring easy access to their updates, status changes, and important notifications." = "Haz un seguimiento de tus vuelos favoritos agregándolos a tu lista de favoritos, asegurando un acceso fácil a sus actualizaciones, cambios de estado y notificaciones importantes.";
+"Let's Take Off!" = "¡Despeguemos!";
+"Prepare for takeoff! Immerse yourself in the world of effortless flight tracking and embark on an exhilarating journey." = "¡Prepárate para despegar! Sumérgete en el mundo del seguimiento de vuelos sin esfuerzo y embarca en un viaje emocionante.";
+"Manufacturer" = "Fabricante";
+"Engine" = "Motor";
+"Built" = "Construido";
+"Age" = "Edad";
+"Engine Count" = "Cantidad de motores";
