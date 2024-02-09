@@ -48,7 +48,7 @@ final class CustomAircraftInfoView: UIView {
         addSubview(labelStack)
         labelStack.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.left.right.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
         }
         
         
@@ -79,7 +79,7 @@ final class CustomAircraftInfoView: UIView {
         addSubview(detailStack)
         detailStack.snp.makeConstraints { make in
             make.top.equalTo(labelStack.snp.bottom).offset(10)
-            make.left.right.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
         }
         
         info1Detail.font = .systemFont(ofSize: 18, weight: .medium)

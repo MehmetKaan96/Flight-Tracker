@@ -135,11 +135,11 @@ final class FlightsTableViewCell: UITableViewCell {
     }
     
     func configure(flight: Flights) {
-        self.statusLabel.text = flight.status ?? "N/A"
-        self.aircraftICAO.text = flight.aircraft_icao ?? "N/A"
-        self.arrIATA.text = flight.arr_iata ?? "N/A"
-        self.depIATA.text = flight.dep_iata ?? "N/A"
-        self.flightIATA.text = flight.flight_iata ?? "N/A"
+        self.statusLabel.text = flight.status?.localized() ?? "N/A"
+        self.aircraftICAO.text = flight.aircraft_icao?.localized() ?? "N/A"
+        self.arrIATA.text = flight.arr_iata?.localized() ?? "N/A"
+        self.depIATA.text = flight.dep_iata?.localized() ?? "N/A"
+        self.flightIATA.text = flight.flight_iata?.localized() ?? "N/A"
     }
 
 }

@@ -127,9 +127,9 @@ final class OnboardingViewController: UIViewController {
         currentPage = index
         
         if index == onboardingData.count - 1 {
-            nextButton.setTitle("Get Started", for: .normal)
+            nextButton.setTitle("Get Started".localized(), for: .normal)
         } else {
-            nextButton.setTitle("Next", for: .normal)
+            nextButton.setTitle("Next".localized(), for: .normal)
         }
     }
 }

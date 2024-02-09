@@ -42,7 +42,7 @@ final class MainListViewController: UIViewController {
     
     private func setupUI() {
         navigationItem.title = "Real-Time Flights".localized()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         searchBar.placeholder = "Search Flight".localized()
         searchBar.barTintColor = .clear

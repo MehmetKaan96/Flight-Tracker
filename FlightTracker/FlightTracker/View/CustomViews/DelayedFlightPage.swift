@@ -39,7 +39,7 @@ final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSour
     private func createUI() {
         let selectionStack = UIStackView()
         selectionStack.axis = .horizontal
-        selectionStack.spacing = 100
+        selectionStack.spacing = 10
         addSubview(selectionStack)
         selectionStack.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(20)

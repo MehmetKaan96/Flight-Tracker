@@ -49,21 +49,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func showOnboarding() {
-        window = UIWindow()
-        let onboardingViewController = OnboardingViewController()
-        window?.rootViewController = onboardingViewController
-        window?.makeKeyAndVisible()
-    }
-    
-    func showMainScreen() {
-        window = UIWindow()
-        let navController = UINavigationController()
-        let customTabBarController = CustomTabBarController()
-        navController.viewControllers = [customTabBarController]
+            let onboardingViewController = OnboardingViewController()
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = onboardingViewController
+            window?.makeKeyAndVisible()
+        }
         
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
-    }
+        func showMainScreen() {
+            let navController = UINavigationController()
+            let customTabBarController = CustomTabBarController()
+            navController.viewControllers = [customTabBarController]
+            
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = navController
+            window?.makeKeyAndVisible()
+        }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
@@ -127,7 +127,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         guard let flightIATA = flight.flightIata else { return }
         
         let content = UNMutableNotificationContent()
-        content.title = "Flight Status Update"
+        content.title = "Flight-Tracker"
+        content.subtitle = "Flight Status Update"
         content.body = "The status of your flight \(flightIATA) has been updated to \(status)."
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

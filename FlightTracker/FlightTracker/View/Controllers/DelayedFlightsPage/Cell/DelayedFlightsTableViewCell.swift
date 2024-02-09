@@ -109,11 +109,11 @@ final class DelayedFlightsTableViewCell: UITableViewCell {
     }
     
     func configure(flight: DelayResponse) {
-        self.statusLabel.text = flight.status ?? "N/A"
-        self.aircraftICAO.text = flight.aircraftIcao ?? "N/A"
-        self.arrIATA.text = flight.arrIata ?? "N/A"
-        self.depIATA.text = flight.depIata ?? "N/A"
-        self.flightIATA.text = flight.flightIata ?? "N/A"
+        self.statusLabel.text = flight.status?.localized() ?? "N/A"
+        self.aircraftICAO.text = flight.aircraftIcao?.localized() ?? "N/A"
+        self.arrIATA.text = flight.arrIata?.localized() ?? "N/A"
+        self.depIATA.text = flight.depIata?.localized() ?? "N/A"
+        self.flightIATA.text = flight.flightIata?.localized() ?? "N/A"
     }
 
 }

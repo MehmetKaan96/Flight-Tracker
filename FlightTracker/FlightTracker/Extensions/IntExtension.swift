@@ -17,6 +17,6 @@ extension Int {
         
         let timeString = [hourString, minuteString].joined(separator: " ")
         
-        return timeString.isEmpty ? "No flight time" : "Total \(timeString) flight time"
+        return timeString.isEmpty ? "No flight time" : "Total \(timeString) flight time".localized()
     }
 }

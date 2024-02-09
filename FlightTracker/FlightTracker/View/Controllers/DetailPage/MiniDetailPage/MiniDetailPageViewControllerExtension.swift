@@ -14,8 +14,8 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     func fetchFlightData(_ flight: FlightInfoResponse) {
         DispatchQueue.main.async { [self] in
             page.flightIATALabel.text = flight.response.flightIata ?? "N/A"
-            page.arrCode.text = flight.response.arrIata ?? "N/A"
-            page.depCode.text = flight.response.depIata ?? "N/A"
+            page.arrCode.text = flight.response.arrIata?.localized() ?? "N/A"
+            page.depCode.text = flight.response.depIata?.localized() ?? "N/A"
             
             guard let arrTime = flight.response.arrTime, let depTime = flight.response.depTime, let duration = flight.response.duration else { return }
             let formattetArrTime = arrTime.formatDateTimeToTime()
