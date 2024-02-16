@@ -58,18 +58,7 @@ final class MiniDetailPageViewController: UIViewController {
             RunLoop.main.add(timer!, forMode: .common)
         }
     }
-    
-    func fetchStatus(completion: @escaping () -> ()) {
-        APIManager().fetchFlights { result in
-            switch result {
-            case .success(let flights):
-                    completion()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-        
+            
     private func createUI() {
         guard let iata = selectedIATA, let depiata = depIATA, let arriata = arrIATA else { return }
         fetchData(iata: iata, depIata: depiata, arrIata: arriata)
@@ -94,6 +83,7 @@ final class MiniDetailPageViewController: UIViewController {
         let viewModel = FlightDetailsViewModel(service: service)
         let vc = FlightDetailViewController(viewModel: viewModel, selectedIATA: iata, dep_iata: depiata, arr_iata: arriata)
         vc.modalPresentationStyle = .fullScreen
+        timer?.invalidate()
         self.present(vc, animated: true)
     }
     
@@ -106,9 +96,5 @@ final class MiniDetailPageViewController: UIViewController {
             departureAirportFetched = false
             arrivalAirportFetched = false
         }
-    
-    deinit {
-            timer?.invalidate()
-        }
-    
+        
 }

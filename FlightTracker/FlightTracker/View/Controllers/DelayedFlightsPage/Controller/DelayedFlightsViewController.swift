@@ -56,22 +56,4 @@ final class DelayedFlightsViewController: UIViewController {
         animatedView.backgroundColor = .red
         view.addSubview(animatedView)
     }
-    
-    func fetchStatus(completion: @escaping () -> ()) {
-        APIManager().fetchFlights { result in
-            switch result {
-            case .success(let flights):
-                    completion()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-//    @objc func filterTapped() {
-//        UIView.animate(withDuration: 0.5) {
-//                self.animatedView.frame.origin = CGPoint(x: self.view.frame.size.width / 2 - self.animatedView.frame.size.width / 2,
-//                                                         y: self.view.frame.size.height / 2 - self.animatedView.frame.size.height / 2)
-//            }
-//    }
 }

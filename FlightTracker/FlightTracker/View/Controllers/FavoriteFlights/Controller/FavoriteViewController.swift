@@ -59,17 +59,6 @@ final class FavoriteViewController: UIViewController {
         fetchFavFlights()
         refreshControl.endRefreshing()
     }
-    
-    func fetchStatus(completion: @escaping () -> ()) {
-        APIManager().fetchFlights { result in
-            switch result {
-            case .success(let flights):
-                    completion()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
 }
 
 extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {

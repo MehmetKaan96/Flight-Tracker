@@ -22,6 +22,7 @@ final class FlightDetailViewController: UIViewController {
     var direction: Double?
     private var flightInfo: RealmFlightInfo!
     var info: FlightInfo!
+    var timer: Timer!
     
     private var flightDataFetched = false
     private var departureAirportFetched = false
@@ -44,6 +45,21 @@ final class FlightDetailViewController: UIViewController {
         super.viewDidLoad()
         
         createUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [self] in
+            timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
+                guard let self = self, let flight_iata = self.selectedIATA, let dep_iata = self.depIATA, let arr_iata = self.arrIATA else { return }
+                self.viewModel.fetchFlightInfo(with: flight_iata)
+                self.viewModel.fetchArrivalAirport(with: arr_iata)
+                self.viewModel.fetchDepartureAirport(with: dep_iata)
+                print("çalıştı")
+            }
+            
+            RunLoop.main.add(timer!, forMode: .common)
+        }
     }
     
     private func createUI() {
@@ -90,18 +106,7 @@ final class FlightDetailViewController: UIViewController {
         departureAirportFetched = false
         arrivalAirportFetched = false
     }
-    
-    func fetchStatus(completion: @escaping () -> ()) {
-        APIManager().fetchFlights { result in
-            switch result {
-            case .success(let flights):
-                    completion()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
+        
     func addFlightToRealm(flight: FlightInfo) {
         flightInfo = RealmFlightInfo()
         flightInfo.arrCity = flight.arrCity

@@ -79,15 +79,4 @@ final class MainListViewController: UIViewController {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-    
-    func fetchStatus(completion: @escaping () -> ()) {
-        APIManager().fetchFlights { result in
-            switch result {
-            case .success(let flights):
-                    completion()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
 }

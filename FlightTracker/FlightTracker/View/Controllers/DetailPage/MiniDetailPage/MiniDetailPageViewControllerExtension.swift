@@ -81,17 +81,16 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     }
     
     func showAnnotationsOnMap() {
-        self.page.mapView.removeAnnotations(self.page.mapView.annotations)
         var annotations = [MKPointAnnotation]()
         if let departureLocation = self.departureLocation, let arrivalLocation = self.arrivalLocation, let planeLocation = self.planeLocation, let direction = self.direction {
             let departureAnnotation = MKPointAnnotation()
             departureAnnotation.coordinate = departureLocation
-            departureAnnotation.title = "Departure".localized()
+            departureAnnotation.title = "Departure"
             annotations.append(departureAnnotation)
             
             let arrivalAnnotation = MKPointAnnotation()
             arrivalAnnotation.coordinate = arrivalLocation
-            arrivalAnnotation.title = "Arrival".localized()
+            arrivalAnnotation.title = "Arrival"
             annotations.append(arrivalAnnotation)
             
             
@@ -107,7 +106,6 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             let airplaneToArrivalPolyline = MKPolyline(coordinates: airplaneToArrivalCoordinates, count: airplaneToArrivalCoordinates.count)
             airplaneToArrivalPolyline.title = "airplaneToArrival"
             self.page.mapView.addOverlay(airplaneToArrivalPolyline)
-            
             
         }
         let region = regionForAnnotations(annotations)
