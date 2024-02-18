@@ -19,7 +19,7 @@ final class DelayedFlightPage: UIView,  UITextFieldDelegate, UITableViewDataSour
     let delayedTableView = UITableView()
     
     let type: [String] = ["arrivals", "departures"]
-    let duration: [Int] = Array(30...180)
+    let duration: [Int] = Array(stride(from: 30, to: 280, by: 10))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

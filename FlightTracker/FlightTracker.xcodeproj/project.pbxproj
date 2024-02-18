@@ -151,6 +151,7 @@
 		D3AA312E2B12523C003E07D4 /* FlightDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewModel.swift; sourceTree = "<group>"; };
 		D3AA31302B1289E5003E07D4 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		D3B322842B307B9200FBA109 /* FlightDetailViewcontrollerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailViewcontrollerExtension.swift; sourceTree = "<group>"; };
+		D3B8A2EC2B82559D000B0078 /* FlightTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlightTracker.entitlements; sourceTree = "<group>"; };
 		D3C222C72B08E5DB00C3EF61 /* RealtimeFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeFlightsViewModel.swift; sourceTree = "<group>"; };
 		D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeFlightsViewModelDelegate.swift; sourceTree = "<group>"; };
 		D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -359,6 +360,7 @@
 		D384E72F2B0781830013789A /* FlightTracker */ = {
 			isa = PBXGroup;
 			children = (
+				D3B8A2EC2B82559D000B0078 /* FlightTracker.entitlements */,
 				D39C4E412B0A88FE00DD998E /* Extensions */,
 				D384E7812B078EB40013789A /* Constants */,
 				D384E77A2B078D850013789A /* WebService */,
@@ -907,6 +909,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlightTracker/FlightTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8TRXM8F5W6;
@@ -934,6 +937,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlightTracker/FlightTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8TRXM8F5W6;
