@@ -10,6 +10,7 @@
 		D311C8712B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */; };
 		D32126802B0CA0E800DA2FCE /* CustomAircraftInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */; };
 		D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */; };
+		D323E0442BA38318009AEF0F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D323E0432BA38318009AEF0F /* NetworkManager.swift */; };
 		D328CDF62B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */; };
 		D328CDFF2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CDFE2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift */; };
 		D328CE022B2DDA1400A96594 /* DelayedFlightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328CE012B2DDA1400A96594 /* DelayedFlightViewModel.swift */; };
@@ -63,6 +64,7 @@
 		D3C222CA2B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */; };
 		D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */; };
 		D3C222CE2B090E6700C3EF61 /* FlightAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */; };
+		D3CF92FE2BA4F094000D60B4 /* backgroundVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D3CF92FD2BA4F094000D60B4 /* backgroundVideo.mp4 */; };
 		D3EC90C32B3AFC7700C0B6BF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D3EC90C22B3AFC7700C0B6BF /* Realm */; };
 		D3EC90C52B3AFC7700C0B6BF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D3EC90C42B3AFC7700C0B6BF /* RealmSwift */; };
 		D3EE61022B0A2B1F008EA536 /* FlightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */; };
@@ -89,6 +91,7 @@
 		D311C8702B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetailPageViewControllerExtension.swift; sourceTree = "<group>"; };
 		D321267F2B0CA0E800DA2FCE /* CustomAircraftInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAircraftInfoView.swift; sourceTree = "<group>"; };
 		D32126812B0CAE4D00DA2FCE /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
+		D323E0432BA38318009AEF0F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D328CDF52B2DB65700A96594 /* DelayedFlightsViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsViewControllerExtension.swift; sourceTree = "<group>"; };
 		D328CDFE2B2DB96700A96594 /* DelayedFlightsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightsTableViewCell.swift; sourceTree = "<group>"; };
 		D328CE012B2DDA1400A96594 /* DelayedFlightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedFlightViewModel.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 		D3C222C92B08E6D900C3EF61 /* RealtimeFlightsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeFlightsViewModelDelegate.swift; sourceTree = "<group>"; };
 		D3C222CB2B08E8BD00C3EF61 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
 		D3C222CD2B090E6700C3EF61 /* FlightAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightAnnotation.swift; sourceTree = "<group>"; };
+		D3CF92FD2BA4F094000D60B4 /* backgroundVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundVideo.mp4; sourceTree = "<group>"; };
 		D3EE61012B0A2B1F008EA536 /* FlightsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +209,14 @@
 				D37484AB2B0B84B50005FC8F /* FlightDetailViewController.swift */,
 			);
 			path = FullDetailPage;
+			sourceTree = "<group>";
+		};
+		D323E0422BA38301009AEF0F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D323E0432BA38318009AEF0F /* NetworkManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		D328CDF72B2DB89C00A96594 /* MapView */ = {
@@ -363,6 +375,7 @@
 				D3B8A2EC2B82559D000B0078 /* FlightTracker.entitlements */,
 				D39C4E412B0A88FE00DD998E /* Extensions */,
 				D384E7812B078EB40013789A /* Constants */,
+				D384E7822B078EBE0013789A /* Constants.swift */,
 				D384E77A2B078D850013789A /* WebService */,
 				D384E76E2B0782700013789A /* Model */,
 				D384E7682B0782680013789A /* View */,
@@ -372,6 +385,7 @@
 				D3346D0D2B5FF81E00A5D47B /* favorite.json */,
 				D39C4E3D2B0A72B000DD998E /* start.json */,
 				D384E73E2B0781840013789A /* Info.plist */,
+				D323E0422BA38301009AEF0F /* Manager */,
 			);
 			path = FlightTracker;
 			sourceTree = "<group>";
@@ -396,6 +410,7 @@
 		D384E7662B0782400013789A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3CF92FD2BA4F094000D60B4 /* backgroundVideo.mp4 */,
 				D384E7302B0781830013789A /* AppDelegate.swift */,
 				D384E7322B0781830013789A /* SceneDelegate.swift */,
 				D384E7362B0781830013789A /* Main.storyboard */,
@@ -495,7 +510,6 @@
 		D384E7812B078EB40013789A /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				D384E7822B078EBE0013789A /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -634,6 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39C4E3C2B0A722400DD998E /* main.json in Resources */,
+				D3CF92FE2BA4F094000D60B4 /* backgroundVideo.mp4 in Resources */,
 				D3346D0E2B5FF81E00A5D47B /* favorite.json in Resources */,
 				D384E73D2B0781840013789A /* LaunchScreen.storyboard in Resources */,
 				D39B2C5B2B74F23D00AA39C7 /* Localizable.strings in Resources */,
@@ -691,6 +706,7 @@
 				D3C222CC2B08E8BD00C3EF61 /* MainViewControllerExtension.swift in Sources */,
 				D32126822B0CAE4D00DA2FCE /* AirportDetailView.swift in Sources */,
 				D3AA312F2B12523C003E07D4 /* FlightDetailsViewModel.swift in Sources */,
+				D323E0442BA38318009AEF0F /* NetworkManager.swift in Sources */,
 				D32A2C012B1BB0C100AC323F /* MiniDetailPageViewController.swift in Sources */,
 				D311C8712B2205180031FF88 /* MiniDetailPageViewControllerExtension.swift in Sources */,
 				D3AA31312B1289E5003E07D4 /* Airport.swift in Sources */,
@@ -911,7 +927,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FlightTracker/FlightTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8TRXM8F5W6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightTracker/Info.plist;
@@ -926,9 +942,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mehmetkaan.FlightTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -939,7 +959,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FlightTracker/FlightTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8TRXM8F5W6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlightTracker/Info.plist;
@@ -954,9 +974,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mehmetkaan.FlightTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

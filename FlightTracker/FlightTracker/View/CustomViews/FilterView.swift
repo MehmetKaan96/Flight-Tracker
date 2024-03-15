@@ -26,6 +26,16 @@ final class FilterView: UIView {
     }
 
     private func createUI() {
+        
+        let filterLabel = UILabel()
+        filterLabel.text = "Filter By:".localized()
+        filterLabel.font = .systemFont(ofSize: 25, weight: .semibold)
+        filterLabel.textColor = .dynamicText
+        addSubview(filterLabel)
+        filterLabel.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview().inset(10)
+        }
+        
         let scheduledStack = UIStackView()
         scheduledStack.axis = .horizontal
         scheduledStack.distribution = .fill
@@ -47,8 +57,8 @@ final class FilterView: UIView {
         addSubview(scheduledStack)
 
         scheduledStack.snp.makeConstraints { make in
-            make.top.equalTo(snp.top).offset(20)
-            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(filterLabel.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(15)
             make.height.equalToSuperview().dividedBy(4)
         }
         
@@ -73,7 +83,7 @@ final class FilterView: UIView {
         
         enrouteStack.snp.makeConstraints { make in
             make.top.equalTo(scheduledStack.snp.bottom).offset(10)
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview().inset(15)
             make.height.equalToSuperview().dividedBy(4)
         }
         
@@ -98,7 +108,7 @@ final class FilterView: UIView {
         
         landedStack.snp.makeConstraints { make in
             make.top.equalTo(enrouteStack.snp.bottom).offset(10)
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview().inset(15)
             make.height.equalToSuperview().dividedBy(4)
         }
     }

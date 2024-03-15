@@ -17,7 +17,14 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             page.arrCode.text = flight.response.arrIata?.localized() ?? "N/A"
             page.depCode.text = flight.response.depIata?.localized() ?? "N/A"
             
-            guard let arrTime = flight.response.arrTime, let depTime = flight.response.depTime, let duration = flight.response.duration else { return }
+            guard let arrTime = flight.response.arrTime,
+                  let depTime = flight.response.depTime,
+                  let duration = flight.response.duration,
+                  let planeLat = flight.response.lat,
+                  let planeLng = flight.response.lng else {
+                showAlert(message: "Sorry, Data couldn't be fetched.".localized())
+                return
+            }
             let formattetArrTime = arrTime.formatDateTimeToTime()
             let formattedDepTime = depTime.formatDateTimeToTime()
             let formattedDuration = duration.convertDuration()
@@ -27,8 +34,7 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
             page.flightDuration.text = formattedDuration
             
             self.direction = flight.response.dir
-            
-            guard let planeLat = flight.response.lat, let planeLng = flight.response.lng else { return }
+
             planeLocation = CLLocationCoordinate2D(latitude: planeLat, longitude: planeLng)
             flightDataFetched = true
             checkAndShowAnnotations()
@@ -39,6 +45,11 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     func fetchDepartureAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            
+            if airport.response.first?.lat == nil || airport.response.first?.lng == nil {
+                showAlert(message: "Departure airport location data is unavailable.".localized())
+                    }
+            
             if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng, let airportName = airport.response.first?.name {
                 departureLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 departureAirportFetched = true
@@ -58,6 +69,11 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     func fetchArrivalAirport(_ airport: Airport) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            
+            if airport.response.first?.lat == nil || airport.response.first?.lng == nil {
+                        showAlert(message: "Arrival airport location data is unavailable.")
+                    }
+            
             if let lat = airport.response.first?.lat, let lng = airport.response.first?.lng, let airportName = airport.response.first?.name {
                 arrivalLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 arrivalAirportFetched = true
@@ -82,32 +98,37 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     
     func showAnnotationsOnMap() {
         var annotations = [MKPointAnnotation]()
-        if let departureLocation = self.departureLocation, let arrivalLocation = self.arrivalLocation, let planeLocation = self.planeLocation, let direction = self.direction {
-            let departureAnnotation = MKPointAnnotation()
-            departureAnnotation.coordinate = departureLocation
-            departureAnnotation.title = "Departure"
-            annotations.append(departureAnnotation)
-            
-            let arrivalAnnotation = MKPointAnnotation()
-            arrivalAnnotation.coordinate = arrivalLocation
-            arrivalAnnotation.title = "Arrival"
-            annotations.append(arrivalAnnotation)
-            
-            
-            let airplane = FlightAnnotation(coordinate: planeLocation, title: "Airplane", subtitle: nil, direction: direction, flight_iata: "", dep_iata: "", arr_iata: "")
-            self.page.mapView.addAnnotation(airplane)
-            
-            let departureToAirplaneCoordinates = [departureLocation, planeLocation]
-            let departureToAirplanePolyline = MKPolyline(coordinates: departureToAirplaneCoordinates, count: departureToAirplaneCoordinates.count)
-            departureToAirplanePolyline.title = "departureToAirplane"
-            self.page.mapView.addOverlay(departureToAirplanePolyline)
-            
-            let airplaneToArrivalCoordinates = [planeLocation, arrivalLocation]
-            let airplaneToArrivalPolyline = MKPolyline(coordinates: airplaneToArrivalCoordinates, count: airplaneToArrivalCoordinates.count)
-            airplaneToArrivalPolyline.title = "airplaneToArrival"
-            self.page.mapView.addOverlay(airplaneToArrivalPolyline)
-            
+        guard let departureLocation = self.departureLocation,
+              let arrivalLocation = self.arrivalLocation,
+              let planeLocation = self.planeLocation,
+              let direction = self.direction else {
+            showAlert(message: "Couldn't fetch data.".localized())
+            return
         }
+        
+        let departureAnnotation = MKPointAnnotation()
+        departureAnnotation.coordinate = departureLocation
+        departureAnnotation.title = "Departure"
+        annotations.append(departureAnnotation)
+        
+        let arrivalAnnotation = MKPointAnnotation()
+        arrivalAnnotation.coordinate = arrivalLocation
+        arrivalAnnotation.title = "Arrival"
+        annotations.append(arrivalAnnotation)
+        
+        let airplane = FlightAnnotation(coordinate: planeLocation, title: "Airplane", subtitle: nil, direction: direction, flight_iata: "", dep_iata: "", arr_iata: "")
+        self.page.mapView.addAnnotation(airplane)
+        
+        let departureToAirplaneCoordinates = [departureLocation, planeLocation]
+        let departureToAirplanePolyline = MKPolyline(coordinates: departureToAirplaneCoordinates, count: departureToAirplaneCoordinates.count)
+        departureToAirplanePolyline.title = "departureToAirplane"
+        self.page.mapView.addOverlay(departureToAirplanePolyline)
+        
+        let airplaneToArrivalCoordinates = [planeLocation, arrivalLocation]
+        let airplaneToArrivalPolyline = MKPolyline(coordinates: airplaneToArrivalCoordinates, count: airplaneToArrivalCoordinates.count)
+        airplaneToArrivalPolyline.title = "airplaneToArrival"
+        self.page.mapView.addOverlay(airplaneToArrivalPolyline)
+
         let region = regionForAnnotations(annotations)
         self.page.mapView.setRegion(region, animated: true)
     }
@@ -146,6 +167,12 @@ extension MiniDetailPageViewController: FlightDetailsViewModelDelegate {
     
     func checkStatus(_ flight: FlightInfoResponse) {
         print(flight.response.status, "Mehmet")
+    }
+    
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

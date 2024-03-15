@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import SnapKit
+import AVFoundation
 
 final class OnboardingViewController: UIViewController {
     private let titleLabel = UILabel()
@@ -17,119 +18,92 @@ final class OnboardingViewController: UIViewController {
     private let nextButton = UIButton()
     private var currentPage = 0
     
+    private var avPlayer: AVPlayer!
+    private var avPlayerLayer: AVPlayerLayer!
+    private var paused: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        if !NetworkManager.shared.isConnected {
+            let alert = UIAlertController(title: "Error".localized(), message: "No Internet Connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                exit(0)
+            }))
+            self.present(alert, animated: true)
+        }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            avPlayer.play()
+            paused = false
+
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
+                self.avPlayer.seek(to: CMTime.zero)
+                self.avPlayer.play()
+            }
+        }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 //        view.setGradientBackground()
-        view.backgroundColor = .dynamicBG
+        avPlayerLayer.frame = view.layer.bounds
     }
     
     private func setupUI() {
-        view.addSubview(onboardingAnimation)
-        onboardingAnimation.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.width.height.equalTo(150)
-        }
         
+        let videoURL: URL = Bundle.main.url(forResource: "backgroundVideo", withExtension: "mp4")!
+        avPlayer = AVPlayer(url: videoURL)
         
+        avPlayerLayer = AVPlayerLayer(player: avPlayer)
+        avPlayerLayer.videoGravity = .resizeAspectFill
+        avPlayer.volume = 0
+        
+        view.layer.insertSublayer(avPlayerLayer, at: 0)
+
+        titleLabel.text = "Flight Finder"
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.textColor = .dynamicText
-        titleLabel.font = .boldSystemFont(ofSize: 25)
+        titleLabel.font = .boldSystemFont(ofSize: 45)
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(onboardingAnimation.snp.bottom).offset(5)
-            make.centerY.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.centerY.equalToSuperview().offset(-75)
+            make.left.equalToSuperview().offset(20)
             make.height.equalTo(50)
         }
         
+        descriptionLabel.text = "Get current information about flights, departure and arrival times, gate numbers, and more. Stay informed about delays, cancellations, and any other changes to your flight schedule. Whether you're a frequent flyer or an occasional traveler, our app ensures you have all the essential details at your fingertips for a smooth and hassle-free journey.".localized()
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.textAlignment = .center
+        descriptionLabel.textAlignment = .left
         descriptionLabel.textColor = .dynamicText
+        descriptionLabel.font = .systemFont(ofSize: 15, weight: .semibold)
         view.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
         
-        if #available(iOS 15.0, *) {
-            nextButton.configuration = .plain()
-        } else {
-            // Fallback on earlier versions
-        }
-        
+        nextButton.setTitle("Continue".localized(), for: .normal)
         nextButton.layer.cornerRadius = 30
         nextButton.configuration = .filled()
         view.addSubview(nextButton)
+        view.bringSubviewToFront(nextButton)
         nextButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(75)
                 make.centerX.equalToSuperview()
                 make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
                 make.height.equalTo(55)
         }
-        
-        pageControl.numberOfPages = onboardingData.count
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.currentPageIndicatorTintColor = .white
-        if #available(iOS 16.0, *) {
-            pageControl.direction = .leftToRight
-        } else {
-            // Fallback on earlier versions
-        }
-        view.addSubview(pageControl)
-        pageControl.snp.makeConstraints { make in
-            make.top.equalTo(nextButton.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-        }
-        
-        setPage(index: 0)
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-        pageControl.addTarget(self, action: #selector(pageControlChanged), for: .valueChanged)
     }
     
     @objc func nextButtonTapped(_ sender: UIButton) {
-        if currentPage == onboardingData.count - 1 {
             UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
-            let service: FlightDataService = APIManager()
-            let viewModel = RealtimeFlightsViewModel(flightsService: service)
-            let mainViewController = MainViewController(viewModel: viewModel)
+            let mainViewController = CustomTabBarController()
             mainViewController.modalPresentationStyle = .fullScreen
             self.present(mainViewController, animated: true)
-        } else {
-            let nextIndex = min(currentPage + 1, onboardingData.count - 1)
-            setPage(index: nextIndex)
-        }
-    }
-    
-    @objc func pageControlChanged(_ sender: UIPageControl) {
-        setPage(index: sender.currentPage)
-    }
-    
-    private func setPage(index: Int) {
-        guard index >= 0 && index < onboardingData.count else {
-            return
-        }
-        
-        let item = onboardingData[index]
-        titleLabel.text = item.title
-        descriptionLabel.text = item.description
-        onboardingAnimation.animation = LottieAnimation.named(item.animation)
-        onboardingAnimation.loopMode = .loop
-        onboardingAnimation.play()
-        
-        pageControl.currentPage = index
-        currentPage = index
-        
-        if index == onboardingData.count - 1 {
-            nextButton.setTitle("Get Started".localized(), for: .normal)
-        } else {
-            nextButton.setTitle("Next".localized(), for: .normal)
-        }
     }
 }

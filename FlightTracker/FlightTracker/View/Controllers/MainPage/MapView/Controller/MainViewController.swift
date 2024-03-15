@@ -30,6 +30,13 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if !NetworkManager.shared.isConnected {
+            let alert = UIAlertController(title: "Error".localized(), message: "No Internet Connection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                exit(0)
+            }))
+            self.present(alert, animated: true)
+        }
         setupUI()
     }
     
@@ -78,7 +85,7 @@ final class MainViewController: UIViewController {
             //            make.centerX.equalTo(view)
             make.top.equalTo(filterButton.snp.bottom)
             make.right.equalTo(filterButton.snp.left)
-            make.height.width.equalTo(view.snp.width).dividedBy(2)
+            make.height.width.equalTo(view.snp.width).dividedBy(1.5)
         }
         
         filterView.scheduledButton.addTarget(self, action: #selector(filterFlights(_:)), for: .touchUpInside)

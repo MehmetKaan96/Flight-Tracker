@@ -13,16 +13,10 @@ final class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         adjustTabBarLayout()
-        self.tabBar.layer.cornerRadius = 10
     }
     
     private func setupTabs() {
-        //        self.tabBar.setGradientBackground()
         self.tabBar.backgroundColor = .dynamicBG
         self.tabBar.unselectedItemTintColor = .dynamicText
         
@@ -33,7 +27,7 @@ final class CustomTabBarController: UITabBarController {
         
         let mainVC = self.createNav(with: "Map View".localized(), image: UIImage(systemName: "map"), vc: MainViewController(viewModel: mapViewModel))
         let listVC = self.createNav(with: "List View".localized(), image: UIImage(systemName: "tablecells"), vc: MainListViewController(viewModel: listViewModel))
-        let delayVC = self.createNav(with: "Delayed Flight".localized(), image: UIImage(systemName: "watch.analog"), vc: DelayedFlightsViewController(viewModel: delayViewModel))
+        let delayVC = self.createNav(with: "Delayed Flight".localized(), image: UIImage(named: "delay"), vc: DelayedFlightsViewController(viewModel: delayViewModel))
         let favorites = self.createNav(with: "Favorites".localized(), image: UIImage(systemName: "heart"), vc: FavoriteViewController())
         
         setViewControllers([mainVC, listVC, delayVC, favorites], animated: true)
@@ -47,7 +41,6 @@ final class CustomTabBarController: UITabBarController {
     }
     
     private func adjustTabBarLayout() {
-        // Adjust the tab bar layout here
         self.tabBar.frame.size.height = 60
         self.tabBar.frame.origin.y = self.view.frame.height - 60
     }
